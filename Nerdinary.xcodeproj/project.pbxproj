@@ -113,12 +113,8 @@
 			children = (
 				396CEFA82411BC8000C1FC41 /* AppDelegate.swift */,
 				396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */,
-				396CEFAF2411BC8000C1FC41 /* DashBoard.swift */,
-				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
-				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
-				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
-				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
-				396CEFDD2411BF6900C1FC41 /* Entry.swift */,
+				396CEFE524143BE500C1FC41 /* Views */,
+				396CEFE624143BEE00C1FC41 /* Model */,
 				396CEFB12411BC8300C1FC41 /* Assets.xcassets */,
 				396CEFB62411BC8300C1FC41 /* LaunchScreen.storyboard */,
 				396CEFB92411BC8300C1FC41 /* Info.plist */,
@@ -152,6 +148,26 @@
 				396CEFCF2411BC8400C1FC41 /* Info.plist */,
 			);
 			path = NerdinaryUITests;
+			sourceTree = "<group>";
+		};
+		396CEFE524143BE500C1FC41 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				396CEFAF2411BC8000C1FC41 /* DashBoard.swift */,
+				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
+				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
+				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
+				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		396CEFE624143BEE00C1FC41 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				396CEFDD2411BF6900C1FC41 /* Entry.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
