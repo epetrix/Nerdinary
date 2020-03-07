@@ -14,6 +14,7 @@ struct NewWordView: View {
 	@State private var definitions = [String]()
 	@State private var wordToSearch: String = ""
 	@State private var homographs = [Entry]()
+	@State private var wordDoesntExistAlert: Bool = false
 	
 	@Binding var presenting: Bool
 	@Binding var entries: [Entry]
@@ -30,6 +31,7 @@ struct NewWordView: View {
 					.padding(.trailing)
 				
 				Button(action: {
+					UIApplication.shared.endEditing()
 					self.loadData()
 				}) {
 					HStack {
@@ -51,6 +53,9 @@ struct NewWordView: View {
 			}
 			.padding(.leading)
 			.padding(.trailing)
+			.alert(isPresented: $wordDoesntExistAlert) {
+				Alert(title: Text("Word doesn't exist"), message: Text("Please check your spelling and try again"), dismissButton: .default(Text("OK")))
+			}
 			
 			List(definitions, id: \.count) { def in
 				Text(def)
@@ -126,7 +131,7 @@ struct NewWordView: View {
 
 							self.definitions = []
 							for entry in self.homographs {
-								let partOfSpeech = entry.fl
+								let partOfSpeech = entry.fl.uppercased()
 								let firstShortDef = entry.shortdef.first ?? "error"
 								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
 							}
@@ -140,6 +145,8 @@ struct NewWordView: View {
 
 				// if we're still here it means there was a problem
 				print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+				self.wordDoesntExistAlert = true
+				
 			}.resume()
 		}
 	
@@ -147,6 +154,52 @@ struct NewWordView: View {
 		
 	}
 }
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+//struct SearchBarView: View {
+//    @Binding var text: String
+//    @Binding var isActiveBar: Bool
+//    var body: some View {
+//        HStack(alignment: VerticalAlignment.center, spacing: 0, content: {
+//            ContainerView(text: $text, isActiveField: $isActiveBar)
+//
+//            Button(action: {
+//                self.isActiveBar = false
+//                self.text = ""
+//            }) {
+//                Text("Cancel")
+//            }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: isActiveBar ? 16 : -52))
+//        }).animation(.default)
+//    }
+//}
+//
+//struct ContainerView: View {
+//    @Binding var text: String
+//    @Binding var isActiveField: Bool
+//    var body: some View {
+//        ZStack {
+//            //BackgroundView()
+//            HStack {
+//                Image(systemName: "magnifyingglass")
+//                TextField($text, placeholder: Text("Search photos"), onEditingChanged: { isActive in
+//                    self.isActiveField = isActive
+//                })
+//                if !text.isEmpty {
+//                    Button(action: {
+//						self.text.
+//                    }) {
+//                        Image(systemName: "multiply.circle")
+//                    }
+//                }
+//            }
+//        }
+//    }
+//}
 
 struct NewWordView_Previews: PreviewProvider {
 	
