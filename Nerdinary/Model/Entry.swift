@@ -12,6 +12,7 @@ struct Entry: Codable {
 	
 	var meta: Metadata
 	var hwi: HWI
+	var fl: String
 	var shortdef: [String] = []
 }
 

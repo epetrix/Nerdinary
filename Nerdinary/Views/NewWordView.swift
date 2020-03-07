@@ -10,16 +10,95 @@ import SwiftUI
 
 struct NewWordView: View {
 	
-	@State private var headWord: String = ""
+	@State private var headWord: String = "Search for a New Word"
 	@State private var definitions = [String]()
 	@State private var wordToSearch: String = ""
-	@State private var results = [Entry]()
+	@State private var homographs = [Entry]()
 	
 	@Binding var presenting: Bool
 	@Binding var entries: [Entry]
 	
 	var body: some View {
-		Text("Hello Word")
+		VStack {
+			Text(headWord)
+				.font(.system(size: 32))
+				.padding(.top)
+			
+			HStack {
+				TextField("Enter for Word", text: $wordToSearch)
+				.textFieldStyle(RoundedBorderTextFieldStyle())
+					.padding(.trailing)
+				
+				Button(action: {
+					self.loadData()
+				}) {
+					HStack {
+						Spacer()
+
+						Text("Search")
+						.foregroundColor(.white)
+						.font(.system(size: 24))
+							.padding(.top, 5)
+							.padding(.bottom, 5)
+
+						Spacer()
+					}
+					.frame(width: 100)
+					.background(Color.blue)
+					.cornerRadius(4)
+					
+				}
+			}
+			.padding(.leading)
+			.padding(.trailing)
+			
+			List(definitions, id: \.count) { def in
+				Text(def)
+			}
+			
+			HStack {
+				Button(action: {
+					self.presenting = false
+				}) {
+					HStack {
+						Spacer()
+
+						Text("Cancel")
+						.foregroundColor(.white)
+						.font(.system(size: 24))
+							.padding(.top, 5)
+							.padding(.bottom, 5)
+
+						Spacer()
+					}
+					.background(Color.red)
+					.cornerRadius(4)
+					.padding(.leading)
+					.padding(.trailing, 5)
+				}
+				
+				Button(action: {
+					self.presenting = false
+					self.saveToServer()
+				}) {
+					HStack {
+						Spacer()
+
+						Text("Save")
+						.foregroundColor(.white)
+						.font(.system(size: 24))
+							.padding(.top, 5)
+							.padding(.bottom, 5)
+
+						Spacer()
+					}
+					.background(Color.green)
+					.cornerRadius(4)
+					.padding(.leading, 5)
+					.padding(.trailing)
+				}
+			}
+		}
 	}
 	
 	func loadData() {
@@ -41,13 +120,15 @@ struct NewWordView: View {
 						// we have good data – go back to the main thread
 						DispatchQueue.main.async {
 	//						 update our UI
-							self.results = decodedResponse
+							self.homographs = decodedResponse
 
-							self.headWord = self.results.first?.hwi.hw ?? "error"
+							self.headWord = self.homographs.first?.hwi.hw ?? "error"
 
 							self.definitions = []
-							for entry in self.results {
-								self.definitions.append(entry.shortdef.first ?? "error")
+							for entry in self.homographs {
+								let partOfSpeech = entry.fl
+								let firstShortDef = entry.shortdef.first ?? "error"
+								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
 							}
 							
 						}
@@ -61,6 +142,10 @@ struct NewWordView: View {
 				print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
 			}.resume()
 		}
+	
+	func saveToServer() {
+		
+	}
 }
 
 struct NewWordView_Previews: PreviewProvider {
