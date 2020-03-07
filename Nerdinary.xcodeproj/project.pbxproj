@@ -10,12 +10,17 @@
 		396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFA82411BC8000C1FC41 /* AppDelegate.swift */; };
 		396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */; };
 		396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAC2411BC8000C1FC41 /* Nerdinary.xcdatamodeld */; };
-		396CEFB02411BC8000C1FC41 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAF2411BC8000C1FC41 /* ContentView.swift */; };
+		396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAF2411BC8000C1FC41 /* DashBoard.swift */; };
 		396CEFB22411BC8300C1FC41 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396CEFB12411BC8300C1FC41 /* Assets.xcassets */; };
 		396CEFB52411BC8300C1FC41 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 396CEFB42411BC8300C1FC41 /* Preview Assets.xcassets */; };
 		396CEFB82411BC8300C1FC41 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 396CEFB62411BC8300C1FC41 /* LaunchScreen.storyboard */; };
 		396CEFC32411BC8400C1FC41 /* NerdinaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFC22411BC8400C1FC41 /* NerdinaryTests.swift */; };
 		396CEFCE2411BC8400C1FC41 /* NerdinaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFCD2411BC8400C1FC41 /* NerdinaryUITests.swift */; };
+		396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */; };
+		396CEFDE2411BF6900C1FC41 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDD2411BF6900C1FC41 /* Entry.swift */; };
+		396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDF2411C37100C1FC41 /* ShortWordView.swift */; };
+		396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE12411C3C500C1FC41 /* NewWordView.swift */; };
+		396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE32411C59700C1FC41 /* DetailedWordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +45,7 @@
 		396CEFA82411BC8000C1FC41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		396CEFAD2411BC8000C1FC41 /* Nerdinary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Nerdinary.xcdatamodel; sourceTree = "<group>"; };
-		396CEFAF2411BC8000C1FC41 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		396CEFAF2411BC8000C1FC41 /* DashBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashBoard.swift; sourceTree = "<group>"; };
 		396CEFB12411BC8300C1FC41 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		396CEFB42411BC8300C1FC41 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		396CEFB72411BC8300C1FC41 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +56,11 @@
 		396CEFC92411BC8400C1FC41 /* NerdinaryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NerdinaryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		396CEFCD2411BC8400C1FC41 /* NerdinaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdinaryUITests.swift; sourceTree = "<group>"; };
 		396CEFCF2411BC8400C1FC41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWordsView.swift; sourceTree = "<group>"; };
+		396CEFDD2411BF6900C1FC41 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		396CEFDF2411C37100C1FC41 /* ShortWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWordView.swift; sourceTree = "<group>"; };
+		396CEFE12411C3C500C1FC41 /* NewWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordView.swift; sourceTree = "<group>"; };
+		396CEFE32411C59700C1FC41 /* DetailedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +113,12 @@
 			children = (
 				396CEFA82411BC8000C1FC41 /* AppDelegate.swift */,
 				396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */,
-				396CEFAF2411BC8000C1FC41 /* ContentView.swift */,
+				396CEFAF2411BC8000C1FC41 /* DashBoard.swift */,
+				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
+				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
+				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
+				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
+				396CEFDD2411BF6900C1FC41 /* Entry.swift */,
 				396CEFB12411BC8300C1FC41 /* Assets.xcassets */,
 				396CEFB62411BC8300C1FC41 /* LaunchScreen.storyboard */,
 				396CEFB92411BC8300C1FC41 /* Info.plist */,
@@ -270,10 +285,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				396CEFDE2411BF6900C1FC41 /* Entry.swift in Sources */,
 				396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */,
+				396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
-				396CEFB02411BC8000C1FC41 /* ContentView.swift in Sources */,
+				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
+				396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */,
 				396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */,
+				396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */,
+				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
