@@ -21,6 +21,7 @@
 		396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDF2411C37100C1FC41 /* ShortWordView.swift */; };
 		396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE12411C3C500C1FC41 /* NewWordView.swift */; };
 		396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE32411C59700C1FC41 /* DetailedWordView.swift */; };
+		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		396CEFDF2411C37100C1FC41 /* ShortWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWordView.swift; sourceTree = "<group>"; };
 		396CEFE12411C3C500C1FC41 /* NewWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordView.swift; sourceTree = "<group>"; };
 		396CEFE32411C59700C1FC41 /* DetailedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWordView.swift; sourceTree = "<group>"; };
+		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				396CEFAF2411BC8000C1FC41 /* DashBoard.swift */,
+				39EDE89E241849F8008A75EE /* LoginView.swift */,
 				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
 				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
 				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
@@ -309,6 +312,7 @@
 				396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */,
 				396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */,
 				396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */,
+				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
