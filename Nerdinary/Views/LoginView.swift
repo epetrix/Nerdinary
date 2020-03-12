@@ -15,7 +15,7 @@ struct LoginView: View {
 	
 	@State private var username = ""
 	@State private var password = ""
-	@State var unlocked: Bool = false
+	@State var presentingRegisterView: Bool = false
 	
     var body: some View {
 		VStack {
@@ -61,7 +61,7 @@ struct LoginView: View {
 			
 			Spacer()
 			
-			passwordAndRegisterButtons()
+			registerButton(presenting: $presentingRegisterView)
 		}
 		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
@@ -86,7 +86,7 @@ struct LoginView: View {
 				DispatchQueue.main.async {
 					if success {
 						// authenticated successfully
-						self.unlocked = true
+						self.viewRouter.currentPage = .main
 					} else {
 						// there was a problem
 					}
@@ -127,24 +127,21 @@ struct InputTextField: View {
 	}
 }
 
-struct passwordAndRegisterButtons: View {
+struct registerButton: View {
+	
+	@Binding var presenting: Bool
 	
 	var body: some View {
 		VStack {
 			Button(action: {
-				//
+				self.presenting = true
 			}) {
 				Text("Don't have an account? Register here")
 					.foregroundColor(.black)
-				//.underline()
 			}
-			
-//			Button(action: {
-//				//
-//			}) {
-//				Text("Forgot password? Click here")
-//				.underline()
-//			}
+			.sheet(isPresented: $presenting) {
+				RegisterView(presented: self.$presenting)
+			}
 		}
 	}
 }
