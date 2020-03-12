@@ -29,17 +29,10 @@ struct LoginView: View {
 			Spacer()
 			
 			VStack(spacing: 20) {
-				TextField("Username", text: $username)
-				.padding()
-				.background(Color("TextFieldColor"))
-				.cornerRadius(20)
-				.shadow(radius: 10, x: 20, y: 10)
 				
-				SecureField("Password", text: $username)
-				.padding()
-				.background(Color("TextFieldColor"))
-				.cornerRadius(20)
-				.shadow(radius: 10, x: 20, y: 10)
+				InputTextField(title: "Username", text: $username)
+				
+				InputTextField(title: "Password", text: $password, secure: true)
 				
 				Button(action: {
 					UIApplication.shared.endEditing()
@@ -62,25 +55,6 @@ struct LoginView: View {
 					.shadow(radius: 10, x: 20, y: 10)
 
 				}
-				
-//				Button(action: {
-//					self.authenticate()
-//				}) {
-//					HStack {
-//						Spacer()
-//
-//						Text("Use FaceID")
-//						.foregroundColor(.white)
-//						.font(.system(size: 24))
-//							.padding(.top, 5)
-//							.padding(.bottom, 5)
-//
-//						Spacer()
-//					}
-//					.background(Color.blue)
-//					.cornerRadius(4)
-//
-//				}
 			}
 			.padding(.leading, 30) //should refactor this for geometry reader at some point to make more modular
 			.padding(.trailing, 30)
@@ -120,6 +94,35 @@ struct LoginView: View {
 			}
 		} else {
 			// no biometrics
+		}
+	}
+}
+
+struct InputTextField: View {
+	
+	var title: String
+	@Binding var text: String
+	var secure: Bool? = false
+	
+	@ViewBuilder
+	var body: some View {
+		
+		if secure != nil && secure! {
+			SecureField(title, text: $text)
+			.modifier(NerdInput())
+		} else {
+			TextField(title, text: $text)
+			.modifier(NerdInput())
+		}
+	}
+	
+	private struct NerdInput: ViewModifier {
+		func body(content: Content) -> some View {
+			content
+				.padding()
+				.background(Color("TextFieldColor"))
+				.cornerRadius(20)
+				.shadow(radius: 10, x: 20, y: 10)
 		}
 	}
 }
