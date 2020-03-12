@@ -16,7 +16,7 @@ struct LocalWordsView: View {
 	
     var body: some View {
         
-		NavigationView {
+		//NavigationView {
 			VStack {
 				List {
 					ForEach(entries, id: \.meta.uuid) { entry in
@@ -49,7 +49,7 @@ struct LocalWordsView: View {
 					NewWordView(presenting: self.$presentNewWordView, entries: self.$entries)
 				}
 			}.navigationBarTitle("My Nerdinary")
-		}
+		//}
     }
 	
 	func loadLocalWords() {

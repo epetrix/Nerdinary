@@ -11,25 +11,35 @@ import LocalAuthentication
 
 struct LoginView: View {
 	
+	@EnvironmentObject var viewRouter: ViewRouter
+	
 	@State private var username = ""
 	@State private var password = ""
-	@State private var unlocked = false
+	@State var unlocked: Bool = false
 	
     var body: some View {
 		VStack {
 			
 			Text("Nerdinary")
+				.foregroundColor(.white)
 				.font(.system(size: 48))
 				.bold()
+				.shadow(radius: 10, x: 20, y: 10)
 			
 			Spacer()
 			
-			VStack(spacing: 10) {
+			VStack(spacing: 20) {
 				TextField("Username", text: $username)
-				.textFieldStyle(RoundedBorderTextFieldStyle())
+				.padding()
+				.background(Color("TextFieldColor"))
+				.cornerRadius(20)
+				.shadow(radius: 10, x: 20, y: 10)
 				
-				TextField("Password", text: $username)
-				.textFieldStyle(RoundedBorderTextFieldStyle())
+				SecureField("Password", text: $username)
+				.padding()
+				.background(Color("TextFieldColor"))
+				.cornerRadius(20)
+				.shadow(radius: 10, x: 20, y: 10)
 				
 				Button(action: {
 					UIApplication.shared.endEditing()
@@ -41,60 +51,51 @@ struct LoginView: View {
 						Text("Login")
 						.foregroundColor(.white)
 						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
+						.padding([.top, .bottom], 5)
 
 						Spacer()
 					}
-					.background(Color.blue)
-					.cornerRadius(4)
-					
+					.background(Color.green)
+					.cornerRadius(15)
+					.padding([.leading, .trailing], 30)
+					.padding(.top, 40)
+					.shadow(radius: 10, x: 20, y: 10)
+
 				}
 				
-				Button(action: {
-					self.login()
-				}) {
-					HStack {
-						Spacer()
-
-						Text("Use FaceID")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
-
-						Spacer()
-					}
-					.background(Color.blue)
-					.cornerRadius(4)
-					
-				}
+//				Button(action: {
+//					self.authenticate()
+//				}) {
+//					HStack {
+//						Spacer()
+//
+//						Text("Use FaceID")
+//						.foregroundColor(.white)
+//						.font(.system(size: 24))
+//							.padding(.top, 5)
+//							.padding(.bottom, 5)
+//
+//						Spacer()
+//					}
+//					.background(Color.blue)
+//					.cornerRadius(4)
+//
+//				}
 			}
 			.padding(.leading, 30) //should refactor this for geometry reader at some point to make more modular
 			.padding(.trailing, 30)
 			
 			Spacer()
 			
-			VStack {
-				Button(action: {
-					//
-				}) {
-					Text("Don't have an account? Register here")
-					.underline()
-				}
-				
-				Button(action: {
-					//
-				}) {
-					Text("Forgot password? Click here")
-					.underline()
-				}
-			}
+			passwordAndRegisterButtons()
 		}
+		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+		.edgesIgnoringSafeArea(.all))
     }
 	
 	func login() {
-		unlocked = true
+//		unlocked = true
+		self.viewRouter.currentPage = .main
 	}
 	
 	func authenticate() {
@@ -123,8 +124,33 @@ struct LoginView: View {
 	}
 }
 
+struct passwordAndRegisterButtons: View {
+	
+	var body: some View {
+		VStack {
+			Button(action: {
+				//
+			}) {
+				Text("Don't have an account? Register here")
+					.foregroundColor(.black)
+				//.underline()
+			}
+			
+//			Button(action: {
+//				//
+//			}) {
+//				Text("Forgot password? Click here")
+//				.underline()
+//			}
+		}
+	}
+}
+
 struct LoginView_Previews: PreviewProvider {
+	
+	@State static var isUnlocked: Bool = false
+	
     static var previews: some View {
-        LoginView()
+		LoginView().environmentObject(ViewRouter())
     }
 }

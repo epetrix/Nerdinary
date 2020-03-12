@@ -10,6 +10,8 @@ import SwiftUI
 
 struct DashBoard: View {
 	
+	@EnvironmentObject var viewRouter: ViewRouter
+	
 	@State var selectedView = 0
 	
     var body: some View {
@@ -32,7 +34,7 @@ struct DashBoard: View {
 				Text("Quiz")
 			}.tag(2)
 			
-			Text("Settings View")
+			SettingsView()
 			.tabItem {
 				Image(systemName: "4.circle")
 				Text("Settings")
@@ -41,8 +43,21 @@ struct DashBoard: View {
     }
 }
 
+struct SettingsView: View {
+	
+	@EnvironmentObject var viewRouter: ViewRouter
+	
+	var body: some View {
+		Button(action: {
+			self.viewRouter.currentPage = .login
+		}) {
+			Text("Logout")
+		}
+	}
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        DashBoard()
+		DashBoard().environmentObject(ViewRouter())
     }
 }
