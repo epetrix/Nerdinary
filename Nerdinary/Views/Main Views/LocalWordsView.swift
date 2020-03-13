@@ -16,44 +16,38 @@ struct LocalWordsView: View {
 	
     var body: some View {
         
-		//NavigationView {
-			VStack {
-				List {
-					ForEach(entries, id: \.meta.uuid) { entry in
-						ShortWordView(headword: entry.hwi.hw, definition: entry.shortdef.first ?? "Error")
-					}
-				}
-				.onAppear(perform: loadLocalWords)
-				
-				Button(action: {
-					self.presentNewWordView = true
-				}) {
-					HStack {
-						Spacer()
-
-						Text("Add Word")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
-
-						Spacer()
-					}
-					.background(Color.blue)
-					.cornerRadius(4)
-					.padding(.leading)
-					.padding(.trailing)
-					.padding(.bottom)
-				}
-				.sheet(isPresented: self.$presentNewWordView) {
-					NewWordView(presenting: self.$presentNewWordView, entries: self.$entries)
-				}
-			}.navigationBarTitle("My Nerdinary")
-		//}
+		VStack {
+			WordsListView(entries: $entries, loadMethod: loadLocalWords)
+			
+			Button(action: {
+				self.presentNewWordView = true
+			}) {
+				WideButtonView(text: "Add Word", backgroundColor: .blue, cornerRadius: 4)
+				.padding([.leading, .trailing, .bottom])
+			}
+			.sheet(isPresented: self.$presentNewWordView) {
+				NewWordView(presenting: self.$presentNewWordView, entries: self.$entries)
+			}
+		}.navigationBarTitle("My Nerdinary")
     }
 	
 	func loadLocalWords() {
-		
+		print("Displaying local words")
+	}
+}
+
+struct WordsListView: View {
+	
+	@Binding var entries: [Entry]
+	var loadMethod: () -> ()
+	
+	var body: some View {
+		List {
+			ForEach(entries, id: \.meta.uuid) { entry in
+				ShortWordView(headword: entry.hwi.hw, definition: entry.shortdef.first ?? "Error")
+			}
+		}
+		.onAppear(perform: loadMethod)
 	}
 }
 

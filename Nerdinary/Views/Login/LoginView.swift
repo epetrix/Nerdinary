@@ -41,11 +41,11 @@ struct LoginView: View {
 					UIApplication.shared.endEditing()
 					self.login()
 				}) {
-					LoginButtonView(text: Text("Login"))
+					WideButtonView(text: "Login")
+					.UseNiceShadow()
 				}
 			}
-			.padding(.leading, 30) //should refactor this for geometry reader at some point to make more modular
-			.padding(.trailing, 30)
+				.padding([.leading, .trailing], 30) //should refactor this for geometry reader at some point to make more modular
 			
 			Spacer()
 			
@@ -91,12 +91,12 @@ struct InputTextField: View {
 	
 	var title: String
 	@Binding var text: String
-	var secure: Bool? = false
+	var secure: Bool = false
 	
 	@ViewBuilder
 	var body: some View {
 		
-		if secure != nil && secure! {
+		if secure {
 			SecureField(title, text: $text)
 			.modifier(NerdInput())
 		} else {
@@ -116,25 +116,26 @@ struct InputTextField: View {
 	}
 }
 
-struct LoginButtonView: View {
+struct WideButtonView: View {
 	
-	var text: Text
+	var text: String = "Custom Text"
+	var backgroundColor: Color = .green
+	var cornerRadius: CGFloat = 15
 	
 	var body: some View {
 		HStack {
 			Spacer()
 
-			text
+			Text(text)
 			.foregroundColor(.white)
 			.font(.system(size: 24))
 			.padding([.top, .bottom], 5)
 
 			Spacer()
 		}
-		.background(Color.green)
-		.cornerRadius(15)
-		.padding([.leading, .trailing], 30)
-		.UseNiceShadow()
+		.background(self.backgroundColor)
+		.cornerRadius(self.cornerRadius)
+		//.padding([.leading, .trailing], 30)
 	}
 }
 

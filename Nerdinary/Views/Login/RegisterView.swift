@@ -34,7 +34,8 @@ struct RegisterView: View {
 			Button(action: {
 				self.presented = false
 			}) {
-				LoginButtonView(text: Text("Register"))
+				WideButtonView(text: "Register")
+				.UseNiceShadow()
 			}
 			
 			Spacer()

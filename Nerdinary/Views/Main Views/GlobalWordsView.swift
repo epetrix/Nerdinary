@@ -10,9 +10,15 @@ import SwiftUI
 
 struct GlobalWordsView: View {
 	
+	@State private var entries: [Entry] = [Entry]()
+	
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        WordsListView(entries: $entries, loadMethod: loadGlobalWords)
     }
+	
+	func loadGlobalWords() {
+		
+	}
 }
 
 struct GlobalWordsView_Previews: PreviewProvider {
