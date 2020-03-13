@@ -23,6 +23,7 @@
 		396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE32411C59700C1FC41 /* DetailedWordView.swift */; };
 		39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E901241ACCC000248D73 /* RegisterView.swift */; };
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
+		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -68,6 +69,7 @@
 		396CEFE32411C59700C1FC41 /* DetailedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWordView.swift; sourceTree = "<group>"; };
 		39A0E901241ACCC000248D73 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
+		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 			children = (
 				396CEFAF2411BC8000C1FC41 /* DashBoard.swift */,
 				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
+				39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */,
 				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
 				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
 				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
@@ -354,6 +357,7 @@
 				39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */,
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
+				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
 				396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
