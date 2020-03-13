@@ -34,7 +34,7 @@ struct NewWordView: View {
 					UIApplication.shared.endEditing()
 					self.loadData()
 				}) {
-					WideButtonView(text: "Search", backgroundColor: .blue, cornerRadius: 4)
+					WideButtonView(text: "Search", backgroundColor: .blue, cornerRadius: 4, systemFontSize: 20)
 					.frame(width: 100)
 				}
 			}
@@ -44,8 +44,10 @@ struct NewWordView: View {
 				Alert(title: Text("Word doesn't exist"), message: Text("Please check your spelling and try again"), dismissButton: .default(Text("OK")))
 			}
 			
-			List(definitions, id: \.count) { def in
-				Text(def)
+			List {
+				ForEach(definitions, id: \.count) { def in
+					Text(def)
+				}
 			}
 			
 			HStack {
@@ -65,6 +67,7 @@ struct NewWordView: View {
 				}
 			}
 		}
+		.ableToEndEditing()
 	}
 	
 	func loadData() {

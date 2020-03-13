@@ -48,7 +48,7 @@ struct RegisterView: View {
 			}
 		}
 		.padding([.leading, .trailing], 30)
-		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
     }
 }
