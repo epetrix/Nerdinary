@@ -122,46 +122,6 @@ extension UIApplication {
     }
 }
 
-//struct SearchBarView: View {
-//    @Binding var text: String
-//    @Binding var isActiveBar: Bool
-//    var body: some View {
-//        HStack(alignment: VerticalAlignment.center, spacing: 0, content: {
-//            ContainerView(text: $text, isActiveField: $isActiveBar)
-//
-//            Button(action: {
-//                self.isActiveBar = false
-//                self.text = ""
-//            }) {
-//                Text("Cancel")
-//            }.padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: isActiveBar ? 16 : -52))
-//        }).animation(.default)
-//    }
-//}
-//
-//struct ContainerView: View {
-//    @Binding var text: String
-//    @Binding var isActiveField: Bool
-//    var body: some View {
-//        ZStack {
-//            //BackgroundView()
-//            HStack {
-//                Image(systemName: "magnifyingglass")
-//                TextField($text, placeholder: Text("Search photos"), onEditingChanged: { isActive in
-//                    self.isActiveField = isActive
-//                })
-//                if !text.isEmpty {
-//                    Button(action: {
-//						self.text.
-//                    }) {
-//                        Image(systemName: "multiply.circle")
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
-
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true
