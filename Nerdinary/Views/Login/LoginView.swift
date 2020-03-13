@@ -135,7 +135,6 @@ struct WideButtonView: View {
 		}
 		.background(self.backgroundColor)
 		.cornerRadius(self.cornerRadius)
-		//.padding([.leading, .trailing], 30)
 	}
 }
 

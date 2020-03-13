@@ -34,21 +34,8 @@ struct NewWordView: View {
 					UIApplication.shared.endEditing()
 					self.loadData()
 				}) {
-					HStack {
-						Spacer()
-
-						Text("Search")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
-
-						Spacer()
-					}
+					WideButtonView(text: "Search", backgroundColor: .blue, cornerRadius: 4)
 					.frame(width: 100)
-					.background(Color.blue)
-					.cornerRadius(4)
-					
 				}
 			}
 			.padding(.leading)
@@ -65,42 +52,16 @@ struct NewWordView: View {
 				Button(action: {
 					self.presenting = false
 				}) {
-					HStack {
-						Spacer()
-
-						Text("Cancel")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
-
-						Spacer()
-					}
-					.background(Color.red)
-					.cornerRadius(4)
-					.padding(.leading)
-					.padding(.trailing, 5)
+					WideButtonView(text: "Cancel", backgroundColor: .red, cornerRadius: 4)
+					.padding([.leading, .trailing], 5)
 				}
 				
 				Button(action: {
 					self.presenting = false
 					self.saveToServer()
 				}) {
-					HStack {
-						Spacer()
-
-						Text("Save")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-							.padding(.top, 5)
-							.padding(.bottom, 5)
-
-						Spacer()
-					}
-					.background(Color.green)
-					.cornerRadius(4)
-					.padding(.leading, 5)
-					.padding(.trailing)
+					WideButtonView(text: "Save", cornerRadius: 4)
+					.padding([.leading, .trailing], 5)
 				}
 			}
 		}
