@@ -34,26 +34,13 @@ struct LoginView: View {
 				
 				InputTextField(title: "Password", text: $password, secure: true)
 				
+				Spacer().frame(height: 40)
+				
 				Button(action: {
 					UIApplication.shared.endEditing()
 					self.login()
 				}) {
-					HStack {
-						Spacer()
-
-						Text("Login")
-						.foregroundColor(.white)
-						.font(.system(size: 24))
-						.padding([.top, .bottom], 5)
-
-						Spacer()
-					}
-					.background(Color.green)
-					.cornerRadius(15)
-					.padding([.leading, .trailing], 30)
-					.padding(.top, 40)
-					.shadow(radius: 10, x: 20, y: 10)
-
+					LoginButtonView(text: Text("Login"))
 				}
 			}
 			.padding(.leading, 30) //should refactor this for geometry reader at some point to make more modular
@@ -65,10 +52,11 @@ struct LoginView: View {
 		}
 		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
+		.ableToEndEditing()
+		
     }
 	
 	func login() {
-//		unlocked = true
 		self.viewRouter.currentPage = .main
 	}
 	
@@ -94,6 +82,20 @@ struct LoginView: View {
 			}
 		} else {
 			// no biometrics
+		}
+	}
+}
+
+extension View {
+	func ableToEndEditing() -> some View {
+		self.modifier(canEndEditing())
+	}
+}
+
+struct canEndEditing: ViewModifier {
+	func body(content: Content) -> some View {
+		content.onTapGesture {
+			UIApplication.shared.endEditing()
 		}
 	}
 }
@@ -124,6 +126,28 @@ struct InputTextField: View {
 				.cornerRadius(20)
 				.shadow(radius: 10, x: 20, y: 10)
 		}
+	}
+}
+
+struct LoginButtonView: View {
+	
+	var text: Text
+	
+	var body: some View {
+		HStack {
+			Spacer()
+
+			text
+			.foregroundColor(.white)
+			.font(.system(size: 24))
+			.padding([.top, .bottom], 5)
+
+			Spacer()
+		}
+		.background(Color.green)
+		.cornerRadius(15)
+		.padding([.leading, .trailing], 30)
+		.shadow(radius: 10, x: 20, y: 10)
 	}
 }
 

@@ -17,6 +17,12 @@ struct RegisterView: View {
 	
     var body: some View {
 		VStack(spacing: 20) {
+			
+			Text("Create a new Account")
+				.font(.largeTitle)
+				.foregroundColor(.white)
+				.bold()
+			
 			Spacer()
 			
 			InputTextField(title: "Username", text: $username)
@@ -26,13 +32,12 @@ struct RegisterView: View {
 			Button(action: {
 				self.presented = false
 			}) {
-				Text("Register")
-					.foregroundColor(.white)
+				LoginButtonView(text: Text("Register"))
 			}
 			
 			Spacer()
 		}
-		.padding([.leading, .trailing], 20)
+		.padding([.leading, .trailing], 30)
 		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
     }
