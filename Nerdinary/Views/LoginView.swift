@@ -87,31 +87,6 @@ struct LoginView: View {
 	}
 }
 
-extension View {
-	func ableToEndEditing() -> some View {
-		self.modifier(canEndEditing())
-	}
-	
-	func UseNiceShadow() -> some View {
-		self.modifier(NiceShadow())
-	}
-}
-
-struct NiceShadow: ViewModifier {
-	func body(content: Content) -> some View {
-		content
-		.shadow(radius: 10, x: 20, y: 10)
-	}
-}
-
-struct canEndEditing: ViewModifier {
-	func body(content: Content) -> some View {
-		content.onTapGesture {
-			UIApplication.shared.endEditing()
-		}
-	}
-}
-
 struct InputTextField: View {
 	
 	var title: String
