@@ -22,7 +22,7 @@ struct DashBoard: View {
 					Text("Local")
 				}.tag(0)
 			
-			Text("Global View")
+			GlobalWordsView()
 			.tabItem {
 				Image(systemName: "2.circle")
 				Text("Global")
