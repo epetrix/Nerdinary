@@ -17,6 +17,15 @@ struct LocalWordsView: View {
     var body: some View {
         
 		VStack {
+			HStack {
+				Text("My Nerdinary")
+					.font(.largeTitle)
+					.bold()
+				
+				Spacer()
+			}
+			.padding([.leading, .top])
+			
 			WordsListView(entries: $entries, loadMethod: loadLocalWords)
 			
 			Button(action: {
@@ -28,7 +37,7 @@ struct LocalWordsView: View {
 			.sheet(isPresented: self.$presentNewWordView) {
 				NewWordView(presenting: self.$presentNewWordView, entries: self.$entries)
 			}
-		}.navigationBarTitle("My Nerdinary")
+		}
     }
 	
 	func loadLocalWords() {
