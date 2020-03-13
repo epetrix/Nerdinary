@@ -51,7 +51,7 @@ struct LoginView: View {
 			
 			registerButton(presenting: $presentingRegisterView)
 		}
-		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
 		.ableToEndEditing()
 		
@@ -121,6 +121,7 @@ struct WideButtonView: View {
 	var text: String = "Custom Text"
 	var backgroundColor: Color = .green
 	var cornerRadius: CGFloat = 15
+	var systemFontSize: CGFloat = 24
 	
 	var body: some View {
 		HStack {
@@ -128,7 +129,7 @@ struct WideButtonView: View {
 
 			Text(text)
 			.foregroundColor(.white)
-			.font(.system(size: 24))
+			.font(.system(size: self.systemFontSize))
 			.padding([.top, .bottom], 5)
 
 			Spacer()
