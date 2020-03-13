@@ -24,7 +24,8 @@ struct LoginView: View {
 				.foregroundColor(.white)
 				.font(.system(size: 48))
 				.bold()
-				.shadow(radius: 10, x: 20, y: 10)
+				.UseNiceShadow()
+				.padding(.top)
 			
 			Spacer()
 			
@@ -90,6 +91,17 @@ extension View {
 	func ableToEndEditing() -> some View {
 		self.modifier(canEndEditing())
 	}
+	
+	func UseNiceShadow() -> some View {
+		self.modifier(NiceShadow())
+	}
+}
+
+struct NiceShadow: ViewModifier {
+	func body(content: Content) -> some View {
+		content
+		.shadow(radius: 10, x: 20, y: 10)
+	}
 }
 
 struct canEndEditing: ViewModifier {
@@ -124,7 +136,7 @@ struct InputTextField: View {
 				.padding()
 				.background(Color("TextFieldColor"))
 				.cornerRadius(20)
-				.shadow(radius: 10, x: 20, y: 10)
+				.UseNiceShadow()
 		}
 	}
 }
@@ -147,7 +159,7 @@ struct LoginButtonView: View {
 		.background(Color.green)
 		.cornerRadius(15)
 		.padding([.leading, .trailing], 30)
-		.shadow(radius: 10, x: 20, y: 10)
+		.UseNiceShadow()
 	}
 }
 

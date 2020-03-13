@@ -22,6 +22,8 @@ struct RegisterView: View {
 				.font(.largeTitle)
 				.foregroundColor(.white)
 				.bold()
+				.UseNiceShadow()
+				.padding(.top)
 			
 			Spacer()
 			
@@ -36,6 +38,13 @@ struct RegisterView: View {
 			}
 			
 			Spacer()
+			
+			Button(action: {
+				self.presented = false
+			}) {
+				Text("Already have an account? Login here")
+				.foregroundColor(.black)
+			}
 		}
 		.padding([.leading, .trailing], 30)
 		.background(LinearGradient(gradient: Gradient(colors: [.purple, .blue]), startPoint: .top, endPoint: .bottom)
