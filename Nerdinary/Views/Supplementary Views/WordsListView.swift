@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WordsListView: View {
 	
-	@Binding var entries: [Entry] = [Entry]()
+	@Binding var entries: [Entry]
 	var loadMethod: () -> ()
 	
 	var body: some View {
@@ -24,7 +24,14 @@ struct WordsListView: View {
 }
 
 struct WordsListView_Previews: PreviewProvider {
+	
+	@State static var entries: [Entry] = [Entry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), fl: "Adjective", shortdef: ["Mike is a cool guy"])]
+	
     static var previews: some View {
-        WordsListView()
+		WordsListView(entries: $entries, loadMethod: testFunc)
     }
+	
+	static func testFunc() {
+		
+	}
 }

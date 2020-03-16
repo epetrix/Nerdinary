@@ -26,7 +26,7 @@ struct LocalWordsView: View {
 			}
 			.padding([.leading, .top])
 			
-			WordsListView(entries: entries, loadMethod: loadLocalWords)
+			WordsListView(entries: $entries, loadMethod: loadLocalWords)
 			
 			Button(action: {
 				self.presentNewWordView = true
