@@ -8,14 +8,20 @@
 
 import SwiftUI
 
-struct Settings: View {
-    var body: some View {
-        Text("Settings")
-    }
+struct SettingsView: View {
+    @EnvironmentObject var viewRouter: ViewRouter
+	
+	var body: some View {
+		Button(action: {
+			self.viewRouter.currentPage = .login
+		}) {
+			Text("Logout")
+		}
+	}
 }
 
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        Settings()
+        SettingsView()
     }
 }
