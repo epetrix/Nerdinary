@@ -119,12 +119,6 @@ struct NewWordView: View {
 	}
 }
 
-extension UIApplication {
-    func endEditing() {
-        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-}
-
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true

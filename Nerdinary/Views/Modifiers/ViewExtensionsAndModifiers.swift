@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+//MARK: - View
+
 extension View {
 	func ableToEndEditing() -> some View {
 		self.modifier(canEndEditing())
@@ -31,4 +33,12 @@ struct canEndEditing: ViewModifier {
 			UIApplication.shared.endEditing()
 		}
 	}
+}
+
+//MARK: - Editing
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
 }
