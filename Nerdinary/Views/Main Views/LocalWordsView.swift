@@ -26,7 +26,7 @@ struct LocalWordsView: View {
 			}
 			.padding([.leading, .top])
 			
-			WordsListView(entries: $entries, loadMethod: loadLocalWords)
+			WordsListView(entries: entries, loadMethod: loadLocalWords)
 			
 			Button(action: {
 				self.presentNewWordView = true
@@ -42,21 +42,6 @@ struct LocalWordsView: View {
 	
 	func loadLocalWords() {
 		print("Displaying local words")
-	}
-}
-
-struct WordsListView: View {
-	
-	@Binding var entries: [Entry]
-	var loadMethod: () -> ()
-	
-	var body: some View {
-		List {
-			ForEach(entries, id: \.meta.uuid) { entry in
-				ShortWordView(headword: entry.hwi.hw, definition: entry.shortdef.first ?? "Error")
-			}
-		}
-		.onAppear(perform: loadMethod)
 	}
 }
 

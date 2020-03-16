@@ -13,7 +13,7 @@ struct GlobalWordsView: View {
 	@State private var entries: [Entry] = [Entry]()
 	
     var body: some View {
-        WordsListView(entries: $entries, loadMethod: loadGlobalWords)
+        WordsListView(entries: entries, loadMethod: loadGlobalWords)
     }
 	
 	func loadGlobalWords() {
