@@ -25,6 +25,7 @@
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
 		39A0E90E241F238500248D73 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E90D241F238500248D73 /* SettingsView.swift */; };
+		39A0E911241F259400248D73 /* WordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E910241F259400248D73 /* WordsListView.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -72,6 +73,7 @@
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
 		39A0E90D241F238500248D73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		39A0E910241F259400248D73 /* WordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListView.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				39A0E906241BDB2200248D73 /* Login */,
 				39A0E905241BDB0D00248D73 /* Modifiers */,
 				39A0E908241BDB4000248D73 /* Main Views */,
+				39A0E90F241F24E800248D73 /* Supplementary Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +224,14 @@
 				39A0E90D241F238500248D73 /* SettingsView.swift */,
 			);
 			path = "Main Views";
+			sourceTree = "<group>";
+		};
+		39A0E90F241F24E800248D73 /* Supplementary Views */ = {
+			isa = PBXGroup;
+			children = (
+				39A0E910241F259400248D73 /* WordsListView.swift */,
+			);
+			path = "Supplementary Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -358,6 +369,7 @@
 				396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */,
 				39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */,
 				39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */,
+				39A0E911241F259400248D73 /* WordsListView.swift in Sources */,
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
