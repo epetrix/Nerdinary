@@ -16,7 +16,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		setupUserDefaults()
+		
 		return true
+	}
+	
+	private func setupUserDefaults() {
+		let openedBefore = UserDefaults.standard.bool(forKey: "OpenedAppBefore")
+		
+		if !openedBefore { //important to set these, otherwise they may be nil when we check them later
+			UserDefaults.standard.set(false, forKey: "UserIsLoggenIn")
+			UserDefaults.standard.set(true, forKey: "OpenedAppBefore")
+		}
+		
 	}
 
 	// MARK: UISceneSession Lifecycle
