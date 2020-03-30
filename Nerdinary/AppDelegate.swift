@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if !openedBefore { //important to set these, otherwise they may be nil when we check them later
 			UserDefaults.standard.set(false, forKey: "UserIsLoggedIn")
 			UserDefaults.standard.set(true, forKey: "OpenedAppBefore")
+			UserDefaults.standard.set(false, forKey: "UseBiometricsToLogin")
 		}
 		
 	}

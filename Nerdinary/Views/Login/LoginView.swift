@@ -16,6 +16,7 @@ struct LoginView: View {
 	@State private var username = ""
 	@State private var password = ""
 	@State var presentingRegisterView: Bool = false
+	@State private var biometricToggle: Bool = false
 	
     var body: some View {
 		VStack {
@@ -34,6 +35,20 @@ struct LoginView: View {
 				InputTextField(title: "Username", text: $username)
 				
 				InputTextField(title: "Password", text: $password, secure: true)
+				
+				Toggle(isOn: $biometricToggle) { //giving this a shadow breaks it
+					Text("Use Biometrics")
+				}
+				.padding(.leading, 5)
+				.toggleStyle(NerdToggleStyle())
+				.onAppear {
+					self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+					
+					if self.biometricToggle && UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
+						self.authenticate()
+						return
+					}
+				}
 				
 				Spacer().frame(height: 40)
 				
@@ -59,21 +74,23 @@ struct LoginView: View {
 	
 	func login() {
 		
-		if UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
-			self.viewRouter.currentPage = .main
-			return
-		}
+//		if UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
+//			self.viewRouter.currentPage = .main
+//			return
+//		}
 		
 		//TODO: - update this with db check
 		var success: Bool = true
 		
 		if success {
 			UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
+			UserDefaults.standard.set(biometricToggle, forKey: "UseBiometricsToLogin")
 			self.viewRouter.currentPage = .main
 		}
 	}
 	
 	func authenticate() {
+		print("authenticating")
 		let context = LAContext()
 		var error: NSError?
 
@@ -97,6 +114,36 @@ struct LoginView: View {
 			// no biometrics
 		}
 	}
+}
+
+struct NerdToggleStyle: ToggleStyle {
+    var onColor = Color.green
+    var offColor = Color(UIColor.systemGray5)
+    var thumbColor = Color.white
+    
+    func makeBody(configuration: Self.Configuration) -> some View {
+		HStack {
+            RoundedRectangle(cornerRadius: 16, style: .circular)
+                .fill(configuration.isOn ? onColor : offColor)
+                .frame(width: 50, height: 29)
+				.UseNiceShadow()
+                .overlay(
+                    Circle()
+                        .fill(thumbColor)
+                        .shadow(radius: 1, x: 0, y: 1)
+                        .padding(1.5)
+                        .offset(x: configuration.isOn ? 10 : -10))
+                .animation(Animation.easeInOut(duration: 0.2))
+                .onTapGesture { configuration.isOn.toggle() }
+				.padding(.trailing)
+			
+			configuration.label // The text (or view) portion of the Toggle
+				.font(.system(size: 18))
+			
+			Spacer()
+        }
+        .font(.title)
+    }
 }
 
 struct InputTextField: View {
