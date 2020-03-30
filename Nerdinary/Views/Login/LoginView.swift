@@ -64,7 +64,7 @@ struct LoginView: View {
 			
 			Spacer()
 			
-			registerButton(presenting: $presentingRegisterView)
+			RegisterButton(presenting: $presentingRegisterView)
 		}
 		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
@@ -112,107 +112,6 @@ struct LoginView: View {
 			}
 		} else {
 			// no biometrics
-		}
-	}
-}
-
-struct NerdToggleStyle: ToggleStyle {
-    var onColor = Color.green
-    var offColor = Color(UIColor.systemGray5)
-    var thumbColor = Color.white
-    
-    func makeBody(configuration: Self.Configuration) -> some View {
-		HStack {
-            RoundedRectangle(cornerRadius: 16, style: .circular)
-                .fill(configuration.isOn ? onColor : offColor)
-                .frame(width: 50, height: 29)
-				.UseNiceShadow()
-                .overlay(
-                    Circle()
-                        .fill(thumbColor)
-                        .shadow(radius: 1, x: 0, y: 1)
-                        .padding(1.5)
-                        .offset(x: configuration.isOn ? 10 : -10))
-                .animation(Animation.easeInOut(duration: 0.2))
-                .onTapGesture { configuration.isOn.toggle() }
-				.padding(.trailing)
-			
-			configuration.label // The text (or view) portion of the Toggle
-				.font(.system(size: 18))
-			
-			Spacer()
-        }
-        .font(.title)
-    }
-}
-
-struct InputTextField: View {
-	
-	var title: String
-	@Binding var text: String
-	var secure: Bool = false
-	
-	@ViewBuilder
-	var body: some View {
-		
-		if secure {
-			SecureField(title, text: $text)
-			.modifier(NerdInput())
-		} else {
-			TextField(title, text: $text)
-			.modifier(NerdInput())
-		}
-	}
-	
-	private struct NerdInput: ViewModifier {
-		func body(content: Content) -> some View {
-			content
-				.padding()
-				.background(Color("TextFieldColor"))
-				.cornerRadius(20)
-				.UseNiceShadow()
-		}
-	}
-}
-
-struct WideButtonView: View {
-	
-	var text: String = "Custom Text"
-	var backgroundColor: Color = .green
-	var cornerRadius: CGFloat = 15
-	var systemFontSize: CGFloat = 24
-	
-	var body: some View {
-		HStack {
-			Spacer()
-
-			Text(text)
-			.foregroundColor(.white)
-			.font(.system(size: self.systemFontSize))
-			.padding([.top, .bottom], 5)
-
-			Spacer()
-		}
-		.background(self.backgroundColor)
-		.cornerRadius(self.cornerRadius)
-	}
-}
-
-struct registerButton: View {
-	
-	@Binding var presenting: Bool
-	
-	var body: some View {
-		VStack {
-			Button(action: {
-				self.presenting = true
-			}) {
-				Text("Don't have an account? Register here")
-					.foregroundColor(.black)
-			}
-			.sheet(isPresented: $presenting) {
-				RegisterView(presented: self.$presenting)
-			}
 		}
 	}
 }
