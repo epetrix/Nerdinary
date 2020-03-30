@@ -14,6 +14,7 @@ struct SettingsView: View {
 	var body: some View {
 		Button(action: {
 			UserDefaults.standard.set(false, forKey: "UserIsLoggedIn")
+			UserDefaults.standard.set(false, forKey: "UseBiometricsToLogin")
 			self.viewRouter.currentPage = .login
 		}) {
 			Text("Logout")
