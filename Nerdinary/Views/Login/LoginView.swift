@@ -58,7 +58,19 @@ struct LoginView: View {
     }
 	
 	func login() {
-		self.viewRouter.currentPage = .main
+		
+		if UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
+			self.viewRouter.currentPage = .main
+			return
+		}
+		
+		//TODO: - update this with db check
+		var success: Bool = true
+		
+		if success {
+			UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
+			self.viewRouter.currentPage = .main
+		}
 	}
 	
 	func authenticate() {

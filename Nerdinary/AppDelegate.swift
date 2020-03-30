@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		let openedBefore = UserDefaults.standard.bool(forKey: "OpenedAppBefore")
 		
 		if !openedBefore { //important to set these, otherwise they may be nil when we check them later
-			UserDefaults.standard.set(false, forKey: "UserIsLoggenIn")
+			UserDefaults.standard.set(false, forKey: "UserIsLoggedIn")
 			UserDefaults.standard.set(true, forKey: "OpenedAppBefore")
 		}
 		
