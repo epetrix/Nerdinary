@@ -45,21 +45,6 @@ struct LocalWordsView: View {
 	}
 }
 
-struct WordsListView: View {
-	
-	@Binding var entries: [Entry]
-	var loadMethod: () -> ()
-	
-	var body: some View {
-		List {
-			ForEach(entries, id: \.meta.uuid) { entry in
-				ShortWordView(headword: entry.hwi.hw, definition: entry.shortdef.first ?? "Error")
-			}
-		}
-		.onAppear(perform: loadMethod)
-	}
-}
-
 struct LocalWordsView_Previews: PreviewProvider {
 	
     static var previews: some View {

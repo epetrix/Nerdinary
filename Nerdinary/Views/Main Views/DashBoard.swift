@@ -28,7 +28,7 @@ struct DashBoard: View {
 				Text("Global")
 			}.tag(1)
 			
-			Text("Quiz View")
+			SettingsView()
 			.tabItem {
 				Image(systemName: "3.circle")
 				Text("Quiz")
@@ -41,19 +41,6 @@ struct DashBoard: View {
 			}.tag(3)
 		}
     }
-}
-
-struct SettingsView: View {
-	
-	@EnvironmentObject var viewRouter: ViewRouter
-	
-	var body: some View {
-		Button(action: {
-			self.viewRouter.currentPage = .login
-		}) {
-			Text("Logout")
-		}
-	}
 }
 
 struct ContentView_Previews: PreviewProvider {
