@@ -12,6 +12,8 @@ struct RegisterView: View {
 	
 	@State var username = ""
 	@State var password = ""
+	@State var showingIndicator: Bool = false
+	@State var disableRegisterButton: Bool = false
 	
 	@Binding var presented: Bool
 	
@@ -31,11 +33,19 @@ struct RegisterView: View {
 			
 			InputTextField(title: "Password", text: $password)
 			
-			Button(action: {
-				self.presented = false
-			}) {
-				WideButtonView(text: "Register")
-				.UseNiceShadow()
+			ZStack {
+				Button(action: {
+					print("Hello")
+					self.register()
+				}) {
+					WideButtonView(text: "Register")
+						.UseNiceShadow()
+				}.disabled(disableRegisterButton)
+				
+				if showingIndicator {
+					ActivityIndicator()
+					.frame(width: 45, height: 45)
+				}
 			}
 			
 			Spacer()
@@ -51,6 +61,42 @@ struct RegisterView: View {
 		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
     }
+	
+	func register() {
+		showingIndicator = true
+		disableRegisterButton = true
+		
+		DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+			self.showingIndicator = false
+			self.presented = false
+		}
+	}
+}
+
+struct ActivityIndicator: View {
+
+	@State private var isAnimating: Bool = false
+
+	var body: some View {
+	GeometryReader { geometry in
+		ForEach(0..<5) { index in
+			Group {
+			  Circle()
+				.frame(width: geometry.size.width / 5, height: geometry.size.height / 5)
+				.scaleEffect(!self.isAnimating ? 1 - CGFloat(index) / 5 : 0.2 + CGFloat(index) / 5)
+				.offset(y: geometry.size.width / 10 - geometry.size.height / 2)
+			  }.frame(width: geometry.size.width, height: geometry.size.height)
+				.rotationEffect(!self.isAnimating ? .degrees(0) : .degrees(360))
+				.animation(Animation
+					.timingCurve(0.5, 0.15 + Double(index) / 5, 0.25, 1, duration: 1.5)
+					.repeatForever(autoreverses: false))
+			}
+		}
+		.aspectRatio(1, contentMode: .fit)
+		.onAppear {
+			self.isAnimating = true
+		}
+	}
 }
 
 struct RegisterView_Previews: PreviewProvider {
