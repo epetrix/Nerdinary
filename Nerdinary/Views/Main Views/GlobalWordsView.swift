@@ -13,7 +13,18 @@ struct GlobalWordsView: View {
 	@State private var entries: [DictEntry] = [DictEntry]()
 	
     var body: some View {
-        WordsListView(entries: $entries, loadMethod: loadGlobalWords)
+		VStack {
+			HStack {
+				Text("Global Nerdinary")
+					.font(.largeTitle)
+					.bold()
+				
+				Spacer()
+			}
+			.padding([.leading, .top])
+			
+			WordsListView(entries: $entries, loadMethod: loadGlobalWords)
+		}
     }
 	
 	func loadGlobalWords() {

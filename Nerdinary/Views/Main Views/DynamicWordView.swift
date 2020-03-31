@@ -17,23 +17,10 @@ struct DynamicWordView: View {
 		
 		HStack(alignment: .top) {
 			
-//			if !showDetail {
-//				VStack(alignment: .leading) {
-//					Text(entry.hwi.hw)
-//						.font(.largeTitle)
-//
-//					Text(entry.shortdef.first!)
-//				}
-//			} else {
-//				VStack(alignment: .leading) {
-//					Text(entry.hwi.hw)
-//					.font(.largeTitle)
-//				}
-//			}
-			
 			VStack(alignment: .leading) {
 				Text(entry.hwi.hw)
 					.font(.largeTitle)
+					.background(Color.green)
 				
 				if !showDetail {
 					Text(entry.shortdef.first!)

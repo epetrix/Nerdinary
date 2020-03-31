@@ -14,14 +14,17 @@ struct WordsListView: View {
 	var loadMethod: () -> ()
 	
 	var body: some View {
-		ScrollView {
-			ForEach(entries, id: \.meta.uuid) { entry in
-				DynamicWordView(entry: entry)
-				.modifier(ListRowModifier())
+		GeometryReader { geometry in
+			ScrollView(.vertical, showsIndicators: false) {
+				ForEach(self.entries, id: \.meta.uuid) { entry in
+					DynamicWordView(entry: entry)
+					.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
+				}
+				.frame(width: geometry.size.width)
 			}
+			.onAppear(perform: self.loadMethod)
 		}
-		.onAppear(perform: loadMethod)
 	}
 }
 
