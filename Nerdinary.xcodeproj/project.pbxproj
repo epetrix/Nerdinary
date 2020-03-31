@@ -26,6 +26,7 @@
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
 		39933071243274AF00B087C0 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39933070243274AF00B087C0 /* RegisterButton.swift */; };
 		399330732432C3EC00B087C0 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330722432C3EC00B087C0 /* DBProfile.swift */; };
+		399330752432C52000B087C0 /* DBEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330742432C52000B087C0 /* DBEntry.swift */; };
 		39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E901241ACCC000248D73 /* RegisterView.swift */; };
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
@@ -79,6 +80,7 @@
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
 		39933070243274AF00B087C0 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		399330722432C3EC00B087C0 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
+		399330742432C52000B087C0 /* DBEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntry.swift; sourceTree = "<group>"; };
 		39A0E901241ACCC000248D73 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				396CEFDD2411BF6900C1FC41 /* DictEntry.swift */,
 				399330722432C3EC00B087C0 /* DBProfile.swift */,
+				399330742432C52000B087C0 /* DBEntry.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
+				399330752432C52000B087C0 /* DBEntry.swift in Sources */,
 				399330732432C3EC00B087C0 /* DBProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

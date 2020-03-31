@@ -6,6 +6,8 @@
 //  Copyright © 2020 Josh Jaslow. All rights reserved.
 //
 
+//Data model for words from the MW Dictionary API. Different structure than DBEntry
+
 import SwiftUI
 
 struct DictEntry: Codable {

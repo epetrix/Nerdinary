@@ -6,4 +6,16 @@
 //  Copyright © 2020 Josh Jaslow. All rights reserved.
 //
 
-import Foundation
+//Intended to temporarily store user's profile information and words
+
+import SwiftUI
+
+struct DBProfile {
+	var userdata: UserData
+	var entries: [DBEntry]
+}
+
+struct UserData {
+	var username: String
+	var password: String
+}
