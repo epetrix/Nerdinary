@@ -27,6 +27,7 @@
 		39933071243274AF00B087C0 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39933070243274AF00B087C0 /* RegisterButton.swift */; };
 		399330732432C3EC00B087C0 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330722432C3EC00B087C0 /* DBProfile.swift */; };
 		399330752432C52000B087C0 /* DBEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330742432C52000B087C0 /* DBEntry.swift */; };
+		399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330762432EA2300B087C0 /* DynamicWordView.swift */; };
 		39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E901241ACCC000248D73 /* RegisterView.swift */; };
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
@@ -81,6 +82,7 @@
 		39933070243274AF00B087C0 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		399330722432C3EC00B087C0 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
 		399330742432C52000B087C0 /* DBEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntry.swift; sourceTree = "<group>"; };
+		399330762432EA2300B087C0 /* DynamicWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicWordView.swift; sourceTree = "<group>"; };
 		39A0E901241ACCC000248D73 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
 				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
 				39A0E90D241F238500248D73 /* SettingsView.swift */,
+				399330762432EA2300B087C0 /* DynamicWordView.swift */,
 			);
 			path = "Main Views";
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
 				396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */,
+				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
 				39A0E90E241F238500248D73 /* SettingsView.swift in Sources */,

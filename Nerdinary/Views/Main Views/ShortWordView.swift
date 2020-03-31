@@ -9,22 +9,22 @@
 import SwiftUI
 
 struct ShortWordView: View {
-	
-	var headword: String
-	var definition: String
+	var entry: DictEntry
 	
 	var body: some View {
 		VStack(alignment: .leading) {
-			Text(headword)
+			Text(entry.hwi.hw)
 				.font(.system(size: 32))
 			
-			Text(definition)
+			Text(entry.shortdef.first ?? "Error")
 		}
 	}
 }
 
 struct WordView_Previews: PreviewProvider {
+	static var entry: DictEntry = DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Test"), fl: "Adjective", shortdef: ["A difficult thing"])
+	
     static var previews: some View {
-        ShortWordView(headword: "Test", definition: "A difficult thing")
+		ShortWordView(entry: entry)
 	}
 }

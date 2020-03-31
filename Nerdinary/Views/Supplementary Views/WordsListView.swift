@@ -16,7 +16,8 @@ struct WordsListView: View {
 	var body: some View {
 		List {
 			ForEach(entries, id: \.meta.uuid) { entry in
-				ShortWordView(headword: entry.hwi.hw, definition: entry.shortdef.first ?? "Error")
+				DynamicWordView(entry: entry)
+					.animation(.easeInOut(duration: 0.3))
 			}
 		}
 		.onAppear(perform: loadMethod)
@@ -25,7 +26,7 @@ struct WordsListView: View {
 
 struct WordsListView_Previews: PreviewProvider {
 	
-	@State static var entries: [DictEntry] = [DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), fl: "Adjective", shortdef: ["Mike is a cool guy"])]
+	@State static var entries: [DictEntry] = [DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Word"), fl: "Noun", shortdef: ["Short Definition"])]
 	
     static var previews: some View {
 		WordsListView(entries: $entries, loadMethod: testFunc)
