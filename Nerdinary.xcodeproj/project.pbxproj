@@ -18,9 +18,7 @@
 		396CEFCE2411BC8400C1FC41 /* NerdinaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFCD2411BC8400C1FC41 /* NerdinaryUITests.swift */; };
 		396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */; };
 		396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDD2411BF6900C1FC41 /* DictEntry.swift */; };
-		396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDF2411C37100C1FC41 /* ShortWordView.swift */; };
 		396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE12411C3C500C1FC41 /* NewWordView.swift */; };
-		396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE32411C59700C1FC41 /* DetailedWordView.swift */; };
 		3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306A243273E000B087C0 /* ActivityIndicator.swift */; };
 		3993306D2432745900B087C0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306C2432745900B087C0 /* InputTextField.swift */; };
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
@@ -73,9 +71,7 @@
 		396CEFCF2411BC8400C1FC41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWordsView.swift; sourceTree = "<group>"; };
 		396CEFDD2411BF6900C1FC41 /* DictEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictEntry.swift; sourceTree = "<group>"; };
-		396CEFDF2411C37100C1FC41 /* ShortWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWordView.swift; sourceTree = "<group>"; };
 		396CEFE12411C3C500C1FC41 /* NewWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordView.swift; sourceTree = "<group>"; };
-		396CEFE32411C59700C1FC41 /* DetailedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWordView.swift; sourceTree = "<group>"; };
 		3993306A243273E000B087C0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3993306C2432745900B087C0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
@@ -235,8 +231,6 @@
 				396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */,
 				39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */,
 				396CEFE12411C3C500C1FC41 /* NewWordView.swift */,
-				396CEFDF2411C37100C1FC41 /* ShortWordView.swift */,
-				396CEFE32411C59700C1FC41 /* DetailedWordView.swift */,
 				39A0E90D241F238500248D73 /* SettingsView.swift */,
 				399330762432EA2300B087C0 /* DynamicWordView.swift */,
 			);
@@ -397,14 +391,12 @@
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
-				396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */,
 				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
 				39A0E90E241F238500248D73 /* SettingsView.swift in Sources */,
 				396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */,
 				396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */,
-				396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */,
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
