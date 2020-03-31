@@ -20,7 +20,6 @@ struct DynamicWordView: View {
 			VStack(alignment: .leading) {
 				Text(entry.hwi.hw)
 					.font(.largeTitle)
-					.background(Color.green)
 				
 				if !showDetail {
 					Text(entry.shortdef.first!)
