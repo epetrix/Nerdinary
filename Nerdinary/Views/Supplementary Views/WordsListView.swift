@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WordsListView: View {
 	
-	@Binding var entries: [DictEntry]
+	@Binding var entries: [DictEntry] //TODO: - Change this to DBEntry
 	var loadMethod: () -> ()
 	
 	var body: some View {
