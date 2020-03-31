@@ -14,14 +14,26 @@ struct WordsListView: View {
 	var loadMethod: () -> ()
 	
 	var body: some View {
-		List {
+		ScrollView {
 			ForEach(entries, id: \.meta.uuid) { entry in
 				DynamicWordView(entry: entry)
+				.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
 			}
 		}
 		.onAppear(perform: loadMethod)
 	}
+}
+
+struct ListRowModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        Group {
+            content
+				.padding(.horizontal)
+            Divider()
+			.offset(x: 20)
+        }
+    }
 }
 
 struct WordsListView_Previews: PreviewProvider {

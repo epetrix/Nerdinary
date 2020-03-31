@@ -10,7 +10,12 @@ import SwiftUI
 
 struct LocalWordsView: View {
 	
-	@State private var entries: [DictEntry] = [DictEntry]() //[Entry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), shortdef: ["Mike is a cool guy"])]
+	@State private var entries: [DictEntry] = [
+		DictEntry(meta: Metadata(uuid: "1", offensive: false), hwi: HWI(hw: "Mike"), fl: "Noun", shortdef: ["Mike is a cool person"]),
+		DictEntry(meta: Metadata(uuid: "2", offensive: false), hwi: HWI(hw: "Eden"), fl: "Noun", shortdef: ["Eden is a cool person"]),
+		DictEntry(meta: Metadata(uuid: "3", offensive: false), hwi: HWI(hw: "Celeste"), fl: "Noun", shortdef: ["Celeste is a cool person"]),
+		DictEntry(meta: Metadata(uuid: "4", offensive: false), hwi: HWI(hw: "Micah"), fl: "Noun", shortdef: ["Micah is a cool person"])
+	]
 	
 	@State private var presentNewWordView: Bool = false
 	
