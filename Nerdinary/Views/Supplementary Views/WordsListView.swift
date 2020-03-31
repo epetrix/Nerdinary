@@ -28,17 +28,6 @@ struct WordsListView: View {
 	}
 }
 
-struct ListRowModifier: ViewModifier {
-    func body(content: Content) -> some View {
-        Group {
-            content
-				.padding(.horizontal)
-            Divider()
-			.offset(x: 20)
-        }
-    }
-}
-
 struct WordsListView_Previews: PreviewProvider {
 	
 	@State static var entries: [DictEntry] = [DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Word"), fl: "Noun", shortdef: ["Short Definition"])]

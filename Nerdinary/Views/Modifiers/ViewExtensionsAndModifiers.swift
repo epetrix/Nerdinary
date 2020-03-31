@@ -35,6 +35,17 @@ struct canEndEditing: ViewModifier {
 	}
 }
 
+struct ListRowModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        Group {
+            content
+				.padding(.horizontal)
+            Divider()
+			.offset(x: 20)
+        }
+    }
+}
+
 //MARK: - Editing
 
 extension UIApplication {
