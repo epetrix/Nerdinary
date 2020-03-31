@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Entry: Codable {
+struct DictEntry: Codable {
 	
 	var meta: Metadata
 	var hwi: HWI

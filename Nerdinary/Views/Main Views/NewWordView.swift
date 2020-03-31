@@ -13,11 +13,11 @@ struct NewWordView: View {
 	@State private var headWord: String = "Search for a New Word"
 	@State private var definitions = [String]()
 	@State private var wordToSearch: String = ""
-	@State private var homographs = [Entry]()
+	@State private var homographs = [DictEntry]()
 	@State private var wordDoesntExistAlert: Bool = false
 	
 	@Binding var presenting: Bool
-	@Binding var entries: [Entry]
+	@Binding var entries: [DictEntry]
 	
 	var body: some View {
 		VStack {
@@ -84,7 +84,7 @@ struct NewWordView: View {
 				if let data = data {
 					//print("JSON String: \(String(data: data, encoding: .utf8) ?? "error")")
 					
-					if let decodedResponse = try? JSONDecoder().decode([Entry].self, from: data) {
+					if let decodedResponse = try? JSONDecoder().decode([DictEntry].self, from: data) {
 						
 						// we have good data – go back to the main thread
 						DispatchQueue.main.async {
@@ -122,7 +122,7 @@ struct NewWordView: View {
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true
-	@State static var entries: [Entry] = []
+	@State static var entries: [DictEntry] = []
 	
     static var previews: some View {
 		NewWordView(presenting: $present, entries: $entries)

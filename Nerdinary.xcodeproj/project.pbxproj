@@ -17,7 +17,7 @@
 		396CEFC32411BC8400C1FC41 /* NerdinaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFC22411BC8400C1FC41 /* NerdinaryTests.swift */; };
 		396CEFCE2411BC8400C1FC41 /* NerdinaryUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFCD2411BC8400C1FC41 /* NerdinaryUITests.swift */; };
 		396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */; };
-		396CEFDE2411BF6900C1FC41 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDD2411BF6900C1FC41 /* Entry.swift */; };
+		396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDD2411BF6900C1FC41 /* DictEntry.swift */; };
 		396CEFE02411C37100C1FC41 /* ShortWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDF2411C37100C1FC41 /* ShortWordView.swift */; };
 		396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE12411C3C500C1FC41 /* NewWordView.swift */; };
 		396CEFE42411C59700C1FC41 /* DetailedWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE32411C59700C1FC41 /* DetailedWordView.swift */; };
@@ -25,6 +25,7 @@
 		3993306D2432745900B087C0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306C2432745900B087C0 /* InputTextField.swift */; };
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
 		39933071243274AF00B087C0 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39933070243274AF00B087C0 /* RegisterButton.swift */; };
+		399330732432C3EC00B087C0 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330722432C3EC00B087C0 /* DBProfile.swift */; };
 		39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E901241ACCC000248D73 /* RegisterView.swift */; };
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
@@ -69,7 +70,7 @@
 		396CEFCD2411BC8400C1FC41 /* NerdinaryUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NerdinaryUITests.swift; sourceTree = "<group>"; };
 		396CEFCF2411BC8400C1FC41 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWordsView.swift; sourceTree = "<group>"; };
-		396CEFDD2411BF6900C1FC41 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
+		396CEFDD2411BF6900C1FC41 /* DictEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictEntry.swift; sourceTree = "<group>"; };
 		396CEFDF2411C37100C1FC41 /* ShortWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWordView.swift; sourceTree = "<group>"; };
 		396CEFE12411C3C500C1FC41 /* NewWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordView.swift; sourceTree = "<group>"; };
 		396CEFE32411C59700C1FC41 /* DetailedWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedWordView.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		3993306C2432745900B087C0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
 		39933070243274AF00B087C0 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
+		399330722432C3EC00B087C0 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
 		39A0E901241ACCC000248D73 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
@@ -189,7 +191,8 @@
 		396CEFE624143BEE00C1FC41 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				396CEFDD2411BF6900C1FC41 /* Entry.swift */,
+				396CEFDD2411BF6900C1FC41 /* DictEntry.swift */,
+				399330722432C3EC00B087C0 /* DBProfile.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -377,7 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				396CEFDE2411BF6900C1FC41 /* Entry.swift in Sources */,
+				396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */,
 				396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */,
 				39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */,
 				39933071243274AF00B087C0 /* RegisterButton.swift in Sources */,
@@ -398,6 +401,7 @@
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
+				399330732432C3EC00B087C0 /* DBProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GlobalWordsView: View {
 	
-	@State private var entries: [Entry] = [Entry]()
+	@State private var entries: [DictEntry] = [DictEntry]()
 	
     var body: some View {
         WordsListView(entries: $entries, loadMethod: loadGlobalWords)

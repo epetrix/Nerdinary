@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocalWordsView: View {
 	
-	@State private var entries: [Entry] = [Entry]() //[Entry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), shortdef: ["Mike is a cool guy"])]
+	@State private var entries: [DictEntry] = [DictEntry]() //[Entry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), shortdef: ["Mike is a cool guy"])]
 	
 	@State private var presentNewWordView: Bool = false
 	

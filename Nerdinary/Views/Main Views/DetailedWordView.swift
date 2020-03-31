@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DetailedWordView: View {
 	
-	@Binding var entry: Entry
+	@Binding var entry: DictEntry
 	
     var body: some View {
 		VStack {
@@ -29,7 +29,7 @@ struct DetailedWordView: View {
 
 struct DetailedWordView_Previews: PreviewProvider {
 	
-	@State static var entry = Entry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), fl: "Adjective", shortdef: ["Mike is a cool guy", "lsklkdlksd"])
+	@State static var entry = DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Cool"), fl: "Adjective", shortdef: ["Mike is a cool guy", "lsklkdlksd"])
 	
     static var previews: some View {
 		DetailedWordView(entry: $entry)
