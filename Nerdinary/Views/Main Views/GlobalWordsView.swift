@@ -10,7 +10,7 @@ import SwiftUI
 
 struct GlobalWordsView: View {
 	
-	@State private var entries: [DictEntry] = [DictEntry]()
+	@State private var entries: [DBEntry] = [DBEntry]()
 	
     var body: some View {
 		VStack {

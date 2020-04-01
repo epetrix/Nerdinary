@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocalWordsView: View {
 	
-	@State private var entries: [DictEntry] = [DictEntry]()
+	@State private var entries: [DBEntry] = [DBEntry]()
 	
 //	@State private var entries: [DictEntry] = [
 //		DictEntry(meta: Metadata(uuid: "1", offensive: false), hwi: HWI(hw: "Mike"), fl: "Noun", shortdef: ["Mike is a cool human"]),
@@ -42,7 +42,7 @@ struct LocalWordsView: View {
 				.padding([.leading, .trailing, .bottom])
 			}
 			.sheet(isPresented: self.$presentNewWordView) {
-				NewWordView(presenting: self.$presentNewWordView, entries: self.$entries)
+				NewWordView(loadFunc: self.loadLocalWords, presenting: self.$presentNewWordView)
 			}
 		}
     }

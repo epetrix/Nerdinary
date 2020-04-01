@@ -11,20 +11,20 @@ import SwiftUI
 struct DynamicWordView: View {
 	
 	@State var showDetail: Bool = false
-	var entry: DictEntry
+	var entry: DBEntry
 	
 	var body: some View {
 		
 		HStack(alignment: .top) {
 			
 			VStack(alignment: .leading) {
-				Text(entry.hwi.hw)
+				Text(entry.headword)
 					.font(.largeTitle)
 				
 				if !showDetail {
-					Text(entry.shortdef.first!)
+					Text(entry.shortdef)
 				} else {
-					Text("Functional Label: \(entry.fl)")
+					Text("Functional Label: \(entry.functionalLabel.rawValue)")
 					Spacer()
 					Text("Sense: Definition 1")
 					Text("Sense: Definition 2")
@@ -52,7 +52,7 @@ struct DynamicWordView: View {
 
 
 struct DynamicWordView_Previews: PreviewProvider {
-	@State static var entry: DictEntry = DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Word"), fl: "Noun", shortdef: ["Short Definition"])
+	@State static var entry: DBEntry = DBEntry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)
 	
     static var previews: some View {
         DynamicWordView(entry: entry)

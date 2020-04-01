@@ -16,8 +16,10 @@ struct NewWordView: View {
 	@State private var homographs = [DictEntry]()
 	@State private var wordDoesntExistAlert: Bool = false
 	
+	var loadFunc: () -> ()
+	
 	@Binding var presenting: Bool
-	@Binding var entries: [DictEntry]
+	//@Binding var entries: [DBEntry]
 	
 	var body: some View {
 		VStack {
@@ -115,16 +117,17 @@ struct NewWordView: View {
 		}
 	
 	func saveToServer() {
-		
+		self.loadFunc()
 	}
 }
 
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true
-	@State static var entries: [DictEntry] = []
+	@State static var entries: [DBEntry] = []
+	static func function() {}
 	
     static var previews: some View {
-		NewWordView(presenting: $present, entries: $entries)
+		NewWordView(loadFunc: function, presenting: $present)
     }
 }

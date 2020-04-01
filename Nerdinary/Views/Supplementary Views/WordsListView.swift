@@ -10,13 +10,13 @@ import SwiftUI
 
 struct WordsListView: View {
 	
-	@Binding var entries: [DictEntry] //TODO: - Change this to DBEntry
+	@Binding var entries: [DBEntry] //TODO: - Change this to DBEntry
 	var loadMethod: () -> ()
 	
 	var body: some View {
 		GeometryReader { geometry in
 			ScrollView(.vertical, showsIndicators: false) {
-				ForEach(self.entries, id: \.meta.uuid) { entry in
+				ForEach(self.entries, id: \.id) { entry in
 					DynamicWordView(entry: entry)
 					.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
@@ -30,7 +30,7 @@ struct WordsListView: View {
 
 struct WordsListView_Previews: PreviewProvider {
 	
-	@State static var entries: [DictEntry] = [DictEntry(meta: Metadata(offensive: false), hwi: HWI(hw: "Word"), fl: "Noun", shortdef: ["Short Definition"])]
+	@State static var entries: [DBEntry] = [DBEntry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)]
 	
     static var previews: some View {
 		WordsListView(entries: $entries, loadMethod: testFunc)

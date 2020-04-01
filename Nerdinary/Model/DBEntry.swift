@@ -10,6 +10,17 @@
 
 import SwiftUI
 
+enum fl: String {
+	case noun, adjective, adverb, verb
+}
+
 struct DBEntry {
 	
+	var id = UUID()
+	var headword: String
+	var shortdef: String
+	var definitions: [String]
+	var functionalLabel: fl
+	
+	var fromGlobalNerdinary: Bool = false
 }
