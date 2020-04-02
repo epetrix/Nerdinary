@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		390F4FF32436756D009DE049 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 390F4FF22436756D009DE049 /* Alamofire */; };
 		396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFA82411BC8000C1FC41 /* AppDelegate.swift */; };
 		396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */; };
 		396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAC2411BC8000C1FC41 /* Nerdinary.xcdatamodeld */; };
@@ -94,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				390F4FF32436756D009DE049 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +267,9 @@
 			dependencies = (
 			);
 			name = Nerdinary;
+			packageProductDependencies = (
+				390F4FF22436756D009DE049 /* Alamofire */,
+			);
 			productName = Nerdinary;
 			productReference = 396CEFA52411BC8000C1FC41 /* Nerdinary.app */;
 			productType = "com.apple.product-type.application";
@@ -337,6 +342,9 @@
 				Base,
 			);
 			mainGroup = 396CEF9C2411BC8000C1FC41;
+			packageReferences = (
+				390F4FF12436756D009DE049 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 396CEFA62411BC8000C1FC41 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -726,6 +734,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		390F4FF12436756D009DE049 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		390F4FF22436756D009DE049 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 390F4FF12436756D009DE049 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		396CEFAC2411BC8000C1FC41 /* Nerdinary.xcdatamodeld */ = {
