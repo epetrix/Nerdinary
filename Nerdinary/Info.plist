@@ -58,5 +58,10 @@
 	</array>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Would you like to use your face to login in the future?</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>
