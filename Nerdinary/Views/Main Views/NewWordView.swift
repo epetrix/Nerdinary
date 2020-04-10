@@ -57,7 +57,7 @@ struct NewWordView: View {
 					self.presenting = false
 				}) {
 					WideButtonView(text: "Cancel", backgroundColor: .red, cornerRadius: 4)
-					.padding([.leading, .trailing], 5)
+						.padding(.horizontal, 5)
 				}
 				
 				Button(action: {
@@ -65,7 +65,7 @@ struct NewWordView: View {
 					self.saveToServer()
 				}) {
 					WideButtonView(text: "Save", cornerRadius: 4)
-					.padding([.leading, .trailing], 5)
+						.padding(.horizontal, 5)
 				}
 			}
 		}
