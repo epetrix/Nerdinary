@@ -14,34 +14,59 @@ struct SettingsView: View {
 	
 	@State private var biometricToggle: Bool = false
 	@State private var darkMode: Bool = false
+	@State var showHelp: Bool = false
 	
 	var body: some View {
+		
 		VStack {
-			Text("Settings")
+			HStack {
+				Text("Settings")
 				.font(.largeTitle)
+					.bold()
+				
+				Spacer()
+			}
+			.padding(.leading)
 			
 			Spacer()
 			
-			Toggle(isOn: $biometricToggle) { //giving this a shadow breaks it
-				Text("Use Biometrics")
-			}
-			.padding(.leading, 5)
-			.toggleStyle(NerdToggleStyle())
-			.onAppear {
-				self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+			Form {
+				Section(header: Text("General Settings")) {
+					Toggle(isOn: $biometricToggle) { //giving this a shadow breaks it
+						Text("Use Biometrics")
+					}
+					.padding(.leading, 5)
+//					.toggleStyle(NerdToggleStyle())
+					.onAppear {
+						self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+						
+						if self.biometricToggle && UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
+							//self.authenticate()
+							//UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
+							return
+						}
+					}
+					
+					Toggle(isOn: $darkMode) {
+						Text("Dark Mode")
+					}
+					.padding(.leading, 5)
+//					.toggleStyle(NerdToggleStyle())
+				}
 				
-				if self.biometricToggle && UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
-					//self.authenticate()
-					//UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
-					return
+				Section(header: Text("Help")) {
+					Button(action: {
+						withAnimation {
+							self.showHelp.toggle()
+						}
+					}) {
+						Text("Help")
+					}
+					.sheet(isPresented: $showHelp) {
+						HelpView()
+					}
 				}
 			}
-			
-			Toggle(isOn: $darkMode) {
-				Text("Dark Mode")
-			}
-			.padding(.leading, 5)
-			.toggleStyle(NerdToggleStyle())
 			
 			Spacer()
 			
@@ -66,8 +91,36 @@ struct SettingsView: View {
 	}
 }
 
+struct HelpView: View {
+	
+	var body: some View {
+		VStack {
+			Text("How to use Nerdinary:")
+				.font(.largeTitle)
+				.bold()
+			
+			Spacer()
+			
+			Text("First, go to the \"Local\" page and select \"New Word\"")
+			
+			Text("Search for the word you are looking for, and if when the fields populate, you can add it to your nerdinary.")
+			
+			Text("If you want to see others' words, head to the \"Global\" Page")
+			
+			Text("If you want to be quizzed on some random nerdinary words, go to the \"Quiz\" page.")
+			
+			Spacer()
+			Text("If you have any questions, feel free to contact us at _____")
+		}
+		.padding()
+	}
+}
+
 struct Settings_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+		Group {
+			SettingsView()
+			HelpView()
+		}
     }
 }
