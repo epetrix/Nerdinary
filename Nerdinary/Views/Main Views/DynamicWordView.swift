@@ -11,7 +11,7 @@ import SwiftUI
 struct DynamicWordView: View {
 	
 	@State var showDetail: Bool = false
-	var entry: DBEntry
+	var entry: Entry
 	
 	var body: some View {
 		
@@ -52,7 +52,7 @@ struct DynamicWordView: View {
 
 
 struct DynamicWordView_Previews: PreviewProvider {
-	@State static var entry: DBEntry = DBEntry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)
+	@State static var entry: Entry = Entry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)
 	
     static var previews: some View {
         DynamicWordView(entry: entry)

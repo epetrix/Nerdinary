@@ -21,6 +21,4 @@ struct DBEntry {
 	var shortdef: String
 	var definitions: [String]
 	var functionalLabel: fl
-	
-	var fromGlobalNerdinary: Bool = false
 }

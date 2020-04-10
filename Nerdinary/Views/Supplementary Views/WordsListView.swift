@@ -10,7 +10,7 @@ import SwiftUI
 
 struct WordsListView: View {
 	
-	@Binding var entries: [DBEntry] //TODO: - Change this to DBEntry
+	@Binding var entries: [Entry]
 	var loadMethod: () -> ()
 	
 	var body: some View {
@@ -30,7 +30,7 @@ struct WordsListView: View {
 
 struct WordsListView_Previews: PreviewProvider {
 	
-	@State static var entries: [DBEntry] = [DBEntry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)]
+	@State static var entries: [Entry] = [Entry(headword: "Word", shortdef: "Definition", definitions: ["Def1", "Def2"], functionalLabel: fl.noun)]
 	
     static var previews: some View {
 		WordsListView(entries: $entries, loadMethod: testFunc)

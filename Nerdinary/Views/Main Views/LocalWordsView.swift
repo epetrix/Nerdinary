@@ -10,7 +10,7 @@ import SwiftUI
 
 struct LocalWordsView: View {
 	
-	@State private var entries: [DBEntry] = [DBEntry]()
+	@State private var entries: [Entry] = [Entry]()
 	
 //	@State private var entries: [DictEntry] = [
 //		DictEntry(meta: Metadata(uuid: "1", offensive: false), hwi: HWI(hw: "Mike"), fl: "Noun", shortdef: ["Mike is a cool human"]),
