@@ -13,7 +13,7 @@ struct SettingsView: View {
     @EnvironmentObject var viewRouter: ViewRouter
 	
 	@State private var biometricToggle: Bool = false
-	@State private var darkMode: Bool = false
+	@State private var darkMode: Int = 0
 	@State var showHelp: Bool = false
 	
 	var body: some View {
@@ -21,7 +21,7 @@ struct SettingsView: View {
 		VStack {
 			HStack {
 				Text("Settings")
-				.font(.largeTitle)
+					.font(.largeTitle)
 					.bold()
 				
 				Spacer()
@@ -40,12 +40,6 @@ struct SettingsView: View {
 					.onAppear {
 						self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
 					}
-					
-					Toggle(isOn: $darkMode) {
-						Text("Dark Mode")
-					}
-					.padding(.leading, 5)
-//					.toggleStyle(NerdToggleStyle())
 				}
 				
 				Section(header: Text("Help")) {
@@ -117,7 +111,7 @@ struct Settings_Previews: PreviewProvider {
     static var previews: some View {
 		Group {
 			SettingsView()
-			HelpView()
+			//HelpView()
 		}
     }
 }

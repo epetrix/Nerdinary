@@ -55,7 +55,7 @@ struct LoginView: View {
 			
 			RegisterButton(presenting: $presentingRegisterView)
 		}
-		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Gradient Purple"), Color("Gradient Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
 		.ableToEndEditing()
 		.onAppear {
