@@ -39,12 +39,6 @@ struct SettingsView: View {
 //					.toggleStyle(NerdToggleStyle())
 					.onAppear {
 						self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
-						
-						if self.biometricToggle && UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
-							//self.authenticate()
-							//UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
-							return
-						}
 					}
 					
 					Toggle(isOn: $darkMode) {
@@ -87,6 +81,9 @@ struct SettingsView: View {
 				}
 			}
 			.padding([.horizontal, .bottom])
+		}
+		.onDisappear {
+			UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
 		}
 	}
 }
