@@ -16,6 +16,7 @@ struct LoginView: View {
 	@State private var username = ""
 	@State private var password = ""
 	@State var presentingRegisterView: Bool = false
+	@State var failedToLogin: Bool = false
 	
     var body: some View {
 		VStack {
@@ -45,7 +46,10 @@ struct LoginView: View {
 					.UseNiceShadow()
 				}
 			}
-				.padding([.leading, .trailing], 30) //should refactor this for geometry reader at some point to make more modular
+			.padding([.leading, .trailing], 30) //should refactor this for geometry reader at some point to make more modular
+			.alert(isPresented: $failedToLogin) {
+				Alert(title: Text("Failed to login"), message: Text("Please try again."), dismissButton: .default(Text("Okay")))
+			}
 			
 			Spacer()
 			
@@ -54,6 +58,12 @@ struct LoginView: View {
 		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
 		.ableToEndEditing()
+		.onAppear {
+			let useBiometrics = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+			if useBiometrics {
+				self.loginWithBiometrics()
+			}
+		}
 		
     }
 	
@@ -63,18 +73,33 @@ struct LoginView: View {
 //			self.viewRouter.currentPage = .main
 //			return
 //		}
-		
-		//TODO: - update this with db check
-		var success: Bool = true
-		
-		if success {
+	
+		if authenticateDB() {
 			UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
 			self.viewRouter.currentPage = .main
+			return
+		}
+		else {
+			self.failedToLogin = true
 		}
 	}
 	
-	func authenticate() {
-		print("authenticating")
+	func loginWithBiometrics() {
+		authenticateBiometrics() { success in
+			if success && self.authenticateDB() {
+				UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
+				self.viewRouter.currentPage = .main
+				return
+			} else {
+				//self.failedToLogin = true
+				//don't need to use our own alert because Apple already provides one
+				return
+			}
+		}
+	}
+	
+	func authenticateBiometrics(_ completion: @escaping (Bool) -> ()) {
+		//print("authenticating")
 		let context = LAContext()
 		var error: NSError?
 
@@ -88,15 +113,20 @@ struct LoginView: View {
 				DispatchQueue.main.async {
 					if success {
 						// authenticated successfully
-						self.viewRouter.currentPage = .main
+						completion(true)
 					} else {
 						// there was a problem
+						completion(false)
 					}
 				}
 			}
 		} else {
 			// no biometrics
 		}
+	}
+	
+	func authenticateDB() -> Bool {
+		return true
 	}
 }
 
