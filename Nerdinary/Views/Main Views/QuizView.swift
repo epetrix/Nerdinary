@@ -23,6 +23,11 @@ struct QuizView: View {
 	@State var answerCorrect: Bool = false
 	@State var selectedAnswer: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	
+	@State var flipped0 = false
+	@State var flipped1 = false
+	@State var flipped2 = false
+	@State var flipped3 = false
+	
 	var alertTitle: String {
 		return quizword == selectedAnswer ? "Correct!": "Incorrect"
 	}
@@ -58,10 +63,10 @@ struct QuizView: View {
 			Spacer()
 			
 			VStack(spacing: 20) {
-				QuizWordView(entry: entries[0], correctFunc: checkCorrect)
-				QuizWordView(entry: entries[1], correctFunc: checkCorrect)
-				QuizWordView(entry: entries[2], correctFunc: checkCorrect)
-				QuizWordView(entry: entries[3], correctFunc: checkCorrect)
+				QuizWordView(entry: entries[0], correctFunc: checkCorrect, flipped: $flipped0)
+				QuizWordView(entry: entries[1], correctFunc: checkCorrect, flipped: $flipped1)
+				QuizWordView(entry: entries[2], correctFunc: checkCorrect, flipped: $flipped2)
+				QuizWordView(entry: entries[3], correctFunc: checkCorrect, flipped: $flipped3)
 				
 				if answerCorrect {
 					CorrectAnswerView(isPresented: $answerCorrect.animation(.easeInOut), replayFunc: loadFromDB)
@@ -98,6 +103,10 @@ struct QuizView: View {
 		//call loading code, load words into entries
 		let randomInt = Int.random(in: 0..<4)
 		quizword = entries[randomInt]
+		flipped0 = false
+		flipped1 = false
+		flipped2 = false
+		flipped3 = false
 	}
 }
 

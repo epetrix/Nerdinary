@@ -13,7 +13,8 @@ struct QuizWordView: View {
 	var entry: Entry
 	var correctFunc: (Entry) -> ()
 	
-	@State var flipped = false
+	@Binding var flipped: Bool
+	
 	
 	var body: some View {
 		
@@ -60,8 +61,10 @@ struct QuizWordView_Previews: PreviewProvider {
 	
 	static var entry: Entry = Entry(headword: "Castrametation", shortdef: "Def", definitions: ["The science of setting up a camp"], functionalLabel: .noun)
 	
+	@State static var flipped: Bool = false
+	
     static var previews: some View {
-		QuizWordView(entry: entry, correctFunc: testFunc)
+		QuizWordView(entry: entry, correctFunc: testFunc, flipped: $flipped)
     }
 	
 	static func testFunc(e: Entry) {
