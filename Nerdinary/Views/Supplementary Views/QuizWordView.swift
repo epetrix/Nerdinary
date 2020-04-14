@@ -13,19 +13,36 @@ struct QuizWordView: View {
 	var entry: Entry
 	var correctFunc: (Entry) -> ()
 	
+	@State var flipped = false
+	
 	var body: some View {
 		
 		Button(action: {
 			self.correctFunc(self.entry)
+			self.flipped.toggle()
 		}) {
 			
 			HStack {
 				Spacer()
 				
-				Text(entry.definitions.first!)
-				.foregroundColor(.white)
-				.bold()
-				.multilineTextAlignment(.center)
+				if flipped { //doing it this way instead of ternary inside text because it makes it look like the text is actually on the back
+					Text(entry.headword)
+					.foregroundColor(.white)
+					.bold()
+					.multilineTextAlignment(.center)
+					.rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(10), y: .zero, z: .zero))
+				} else {
+					Text(entry.definitions.first!)
+					.foregroundColor(.white)
+					.bold()
+					.multilineTextAlignment(.center)
+				}
+				
+//				Text(flipped ? entry.headword: entry.definitions.first!)
+//				.foregroundColor(.white)
+//				.bold()
+//				.multilineTextAlignment(.center)
+//				.rotation3DEffect(self.flipped ? Angle(degrees: 180): Angle(degrees: 0), axis: (x: CGFloat(10), y: CGFloat(0), z: CGFloat(0)))
 				
 				Spacer()
 			}
@@ -34,6 +51,8 @@ struct QuizWordView: View {
 			.cornerRadius(10)
 			.padding(.horizontal)
 		}
+		.rotation3DEffect(self.flipped ? Angle(degrees: 180): Angle(degrees: 0), axis: (x: CGFloat(10), y: CGFloat(0), z: CGFloat(0)))
+		.animation(.default) // implicitly applying animation
 	}
 }
 

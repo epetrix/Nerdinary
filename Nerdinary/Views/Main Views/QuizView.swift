@@ -20,6 +20,7 @@ struct QuizView: View {
 	//@State var entries: [Entry] = [Entry]()
 	@State var quizword: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	@State var showAlert: Bool = false
+	@State var answerCorrect: Bool = false
 	@State var selectedAnswer: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	
 	var alertTitle: String {
@@ -61,15 +62,21 @@ struct QuizView: View {
 				QuizWordView(entry: entries[1], correctFunc: checkCorrect)
 				QuizWordView(entry: entries[2], correctFunc: checkCorrect)
 				QuizWordView(entry: entries[3], correctFunc: checkCorrect)
+				
+				if answerCorrect {
+					CorrectAnswerView(isPresented: $answerCorrect.animation(.easeInOut), replayFunc: loadFromDB)
+				} else {
+					Spacer().frame(height: 50)
+				}
 			}
-			.alert(isPresented: $showAlert) {
-				Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(buttonTitle), action: {
-					if self.alertTitle == "Correct!" {
-						self.loadFromDB()
-					}
-					
-				}))
-			}
+//			.alert(isPresented: $showAlert) {
+//				Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(buttonTitle), action: {
+//					if self.alertTitle == "Correct!" {
+//						self.loadFromDB()
+//					}
+//
+//				}))
+//			}
 			
 			Spacer()
 		}
@@ -79,14 +86,48 @@ struct QuizView: View {
     }
 	
 	func checkCorrect(answer: Entry) {
-		self.selectedAnswer = answer
-		showAlert = true
+		if answer == quizword {
+			withAnimation(.easeInOut) {
+				answerCorrect = true
+			}
+		}
+		//showAlert = true
 	}
 	
 	func loadFromDB() {
 		//call loading code, load words into entries
 		let randomInt = Int.random(in: 0..<4)
 		quizword = entries[randomInt]
+	}
+}
+
+struct CorrectAnswerView: View {
+	
+	@Binding var isPresented: Bool
+	var replayFunc: () -> ()
+	
+	var body: some View {
+		
+		Button(action: {
+			self.isPresented = false
+			self.replayFunc()
+		}) {
+			
+			HStack {
+				Spacer()
+				
+				Text("Correct! Play Again?")
+				.bold()
+				.foregroundColor(.white)
+				
+				Spacer()
+			}
+			.frame(height: 50)
+			.background(Color.blue)
+			.cornerRadius(10)
+			.padding(.horizontal)
+		}
+		.transition(.opacity) //TODO: - Animation gets stuck halfway through for a tiny bit
 	}
 }
 
