@@ -90,35 +90,6 @@ struct QuizView: View {
 	}
 }
 
-struct QuizWordView: View {
-	
-	var entry: Entry
-	var correctFunc: (Entry) -> ()
-	
-	var body: some View {
-		
-		Button(action: {
-			self.correctFunc(self.entry)
-		}) {
-			
-			HStack {
-				Spacer()
-				
-				Text(entry.definitions.first!)
-				.foregroundColor(.white)
-				.bold()
-				.multilineTextAlignment(.center)
-				
-				Spacer()
-			}
-			.frame(height: 100)
-			.background(Color.green)
-			.cornerRadius(10)
-			.padding(.horizontal)
-		}
-	}
-}
-
 struct QuizView_Previews: PreviewProvider {
 	
 	static var entries: [Entry] = [
