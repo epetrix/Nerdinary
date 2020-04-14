@@ -88,7 +88,7 @@ struct QuizView: View {
 	func checkCorrect(answer: Entry) {
 		if answer == quizword {
 			withAnimation(.easeInOut) {
-				answerCorrect = true
+				answerCorrect = true //TODO: - Make any flipped cards unflip
 			}
 		}
 		//showAlert = true
