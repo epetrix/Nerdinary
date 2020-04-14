@@ -28,7 +28,7 @@ struct DashBoard: View {
 				Text("Global")
 			}.tag(1)
 			
-			SettingsView()
+			QuizView()
 			.tabItem {
 				Image(systemName: "3.circle")
 				Text("Quiz")

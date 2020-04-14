@@ -10,16 +10,30 @@ import SwiftUI
 
 struct QuizView: View {
 	
-	@State var entries: [Entry] = [Entry]()
+	@State var entries: [Entry] = [
+		Entry(headword: "Castrametation", shortdef: "Def", definitions: ["The science of setting up a camp"], functionalLabel: .noun),
+		Entry(headword: "Insectarium", shortdef: "Def", definitions: ["Museum of insects"], functionalLabel: .noun),
+		Entry(headword: "Entomologist", shortdef: "Def", definitions: ["Someone who studies insects"], functionalLabel: .noun),
+		Entry(headword: "Flutterby", shortdef: "Def", definitions: ["The opposite of a butterfly"], functionalLabel: .noun)
+	]
+	
+	//@State var entries: [Entry] = [Entry]()
 	@State var quizword: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	@State var showAlert: Bool = false
 	@State var selectedAnswer: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	
 	var alertTitle: String {
-		return quizword.headword == selectedAnswer.headword ? "Correct!": "Incorrect"
+		return quizword == selectedAnswer ? "Correct!": "Incorrect"
 	}
 	var alertMessage: String {
-		return quizword.headword == selectedAnswer.headword ? "": "Why don't you try again?"
+		if quizword != selectedAnswer {
+			return "\(selectedAnswer.definitions.first!) is the definition for \(selectedAnswer.headword)"
+		} else {
+			return ""
+		}
+	}
+	var buttonTitle: String {
+		return quizword == selectedAnswer ? "Play Again": "Try Again"
 	}
 	
     var body: some View {
@@ -49,7 +63,12 @@ struct QuizView: View {
 				QuizWordView(entry: entries[3], correctFunc: checkCorrect)
 			}
 			.alert(isPresented: $showAlert) {
-				Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("Play Again")))
+				Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(buttonTitle), action: {
+					if self.alertTitle == "Correct!" {
+						self.loadFromDB()
+					}
+					
+				}))
 			}
 			
 			Spacer()
