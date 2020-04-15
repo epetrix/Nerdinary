@@ -76,59 +76,77 @@ struct NewWordView: View {
 	}
 	
 	func loadData() {
-			guard let url = URL(string: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/\(wordToSearch)?key=2c2558a4-f416-4d40-aa92-8a77137391d7") else {
-				print("Invalid URL")
-				return
-			}
-			
-			let request = URLRequest(url: url)
-			
-			URLSession.shared.dataTask(with: request) { data, response, error in
-				// step 4
-				
-				if let data = data {
-					//print("JSON String: \(String(data: data, encoding: .utf8) ?? "error")")
-					
-					if let decodedResponse = try? JSONDecoder().decode([DictEntry].self, from: data) {
-						
-						// we have good data – go back to the main thread
-						DispatchQueue.main.async {
-	//						 update our UI
-							self.homographs = decodedResponse
-
-							self.headWord = self.homographs.first?.hwi.hw ?? "error"
-							
-							self.functionalLabel = self.homographs.first!.fl.uppercased()
-
-							self.definitions = []
-							for entry in self.homographs {
-								let firstShortDef = entry.shortdef.first ?? "error"
-//								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
-								self.definitions.append("\(firstShortDef)")
-							}
-							
-						}
-
-						// everything is good, so we can exit
-						return
-					} else {}
-				} else {}
-
-				// if we're still here it means there was a problem
-				print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-				self.wordDoesntExistAlert = true
-				
-			}.resume()
+		let group = DispatchGroup()
+		group.enter()
+		
+		guard let url = URL(string: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/\(wordToSearch)?key=2c2558a4-f416-4d40-aa92-8a77137391d7") else {
+			print("Invalid URL")
+			group.leave()
+			return
 		}
+		
+		let request = URLRequest(url: url)
+		
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			// step 4
+			
+			if let data = data {
+				//print("JSON String: \(String(data: data, encoding: .utf8) ?? "error")")
+				
+				if let decodedResponse = try? JSONDecoder().decode([DictEntry].self, from: data) {
+					
+					// we have good data – go back to the main thread
+					DispatchQueue.main.async {
+//						 update our UI
+						self.homographs = decodedResponse
+
+						self.headWord = self.homographs.first?.hwi.hw ?? "error"
+						
+						self.functionalLabel = self.homographs.first!.fl.uppercased()
+
+						self.definitions = []
+						for entry in self.homographs {
+							let firstShortDef = entry.shortdef.first ?? "error"
+//								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
+							self.definitions.append("\(firstShortDef)")
+						}
+						
+						group.leave()
+					}
+
+					// everything is good, so we can exit
+					return
+				} else {
+					group.leave()
+					print("problem here")
+				}
+			} else {
+				group.leave()
+				print("problem here")
+			}
+
+			// if we're still here it means there was a problem
+			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+			self.wordDoesntExistAlert = true
+			
+		}.resume()
+	}
 	
 	func saveToServer(completion: @escaping(Result<Data, APIError>) -> Void) {
+		let group = DispatchGroup()
+		group.enter()
+		
 		do {
 			guard let url = URL(string: "http://127.0.0.1:5000/user/user_word") else {
 				print("Invalid URL")
+				group.leave()
 				return
 			}
 			
-			guard !definitions.isEmpty else { return }
+			guard !definitions.isEmpty else {
+				group.leave()
+				return
+			}
 			
 			let entry = DBEntryOut(UID: "1002", WRD: headWord, PD: definitions.first!, SD: definitions[1], TYP: functionalLabel.uppercased())
 			
@@ -143,17 +161,20 @@ struct NewWordView: View {
 				
 				guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
 					completion(.failure(.responseProblem))
+					group.leave()
 					return
 				}
 				
 				DispatchQueue.main.async {
 					print(jsonData)
+					group.leave()
 					completion(.success(jsonData))
 				}
 				
 			}.resume()
 		} catch {
 			completion(.failure(.encodingProblem))
+			group.leave()
 		}
 		
 		self.loadFunc()

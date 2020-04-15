@@ -86,6 +86,9 @@ struct QuizView: View {
 	}
 	
 	func loadFromDB() {
+		let group = DispatchGroup()
+		group.enter()
+		
 		//call loading code, load words into entries
 		showingIndicator = true
 		
@@ -94,6 +97,7 @@ struct QuizView: View {
 		
 		guard let url = URL(string: "http://127.0.0.1:5000/non_user_rand_4_words/1002") else {
 			print("Invalid URL")
+			group.leave()
 			return
 		}
 				
@@ -128,13 +132,19 @@ struct QuizView: View {
 						self.quizword = self.entries[randomInt]
 						
 						self.showingIndicator = false
+						
+						group.leave()
 					}
 
 					// everything is good, so we can exit
 					return
-				} else {}
+				} else {
+					group.leave()
+				}
 				
-			} else {}
+			} else {
+				group.leave()
+			}
 
 			// if we're still here it means there was a problem
 			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")

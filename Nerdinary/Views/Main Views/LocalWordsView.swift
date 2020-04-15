@@ -49,11 +49,15 @@ struct LocalWordsView: View {
 	
 	func loadLocalWords() {
 		
+		let group = DispatchGroup()
+		group.enter()
+		
 		//TODO: - Remove transport key from info.plist, not safe for app store
 		print("Displaying local words")
 		
 		guard let url = URL(string: "http://127.0.0.1:5000/user_words/1002") else {
 			print("Invalid URL")
+			group.leave()
 			return
 		}
 				
@@ -80,16 +84,20 @@ struct LocalWordsView: View {
 							self.entries.append(Entry(e: entry))
 						}
 						
+						group.leave()
+						
 					}
 
 					// everything is good, so we can exit
 					return
 				} else {
 					print("problem with decoded response")
+					group.leave()
 				}
 				
 			} else {
 				print("problem with data")
+				group.leave()
 			}
 
 			// if we're still here it means there was a problem
