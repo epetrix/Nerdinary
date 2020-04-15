@@ -46,6 +46,11 @@ struct QuizView: View {
 				Text("Quiz")
 				.font(.system(size: 32, weight: .bold))
 				
+				if self.showingIndicator {
+					ActivityIndicator()
+					.frame(width: 32, height: 32)
+				}
+				
 				Spacer()
 			}
 			.padding()
@@ -63,15 +68,9 @@ struct QuizView: View {
 			VStack(spacing: 20) {
 				
 				ForEachWithIndex(self.entries, id: \.self) { index, item in
-					ZStack {
-						QuizWordView(entry: item, correctFunc: self.checkCorrect, flipped: self.$flipped[index])
-						
-						if self.showingIndicator {
-							ActivityIndicator()
-							.frame(width: 45, height: 45)
-						}
-					}
+					QuizWordView(entry: item, correctFunc: self.checkCorrect, flipped: self.$flipped[index])
 				}
+				.animation(.easeInOut)
 				
 				if answerCorrect {
 					CorrectAnswerView(isPresented: $answerCorrect.animation(.easeInOut), replayFunc: loadFromDB)

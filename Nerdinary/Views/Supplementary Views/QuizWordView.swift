@@ -32,11 +32,13 @@ struct QuizWordView: View {
 					.bold()
 					.multilineTextAlignment(.center)
 					.rotation3DEffect(Angle(degrees: 180), axis: (x: CGFloat(10), y: .zero, z: .zero))
+					.transition(.opacity)
 				} else {
 					Text(entry.definitions.first!)
 					.foregroundColor(.white)
 					.bold()
 					.multilineTextAlignment(.center)
+					.transition(.opacity)
 				}
 				
 //				Text(flipped ? entry.headword: entry.definitions.first!)
