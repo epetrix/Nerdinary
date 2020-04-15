@@ -34,7 +34,8 @@ struct CorrectAnswerView: View {
 			.cornerRadius(10)
 			.padding(.horizontal)
 		}
-		.transition(.opacity) //TODO: - Animation gets stuck halfway through for a tiny bit
+		.transition(.slide).animation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration: 1))
+		//TODO: - Animation gets stuck halfway through for a tiny bit
 	}
 }
 

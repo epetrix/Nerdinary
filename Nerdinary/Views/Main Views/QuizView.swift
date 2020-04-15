@@ -26,71 +26,53 @@ struct QuizView: View {
 	
 	@State private var flipped = [false, false, false, false]
 	
-	var alertTitle: String {
-		return quizword == selectedAnswer ? "Correct!": "Incorrect"
-	}
-	var alertMessage: String {
-		if quizword != selectedAnswer {
-			return "\(selectedAnswer.definitions.first!) is the definition for \(selectedAnswer.headword)"
-		} else {
-			return ""
-		}
-	}
-	var buttonTitle: String {
-		return quizword == selectedAnswer ? "Play Again": "Try Again"
-	}
-	
     var body: some View {
-		VStack {
-			HStack {
-				Text("Quiz")
-				.font(.system(size: 32, weight: .bold))
+		GeometryReader { geometry in
+			VStack {
+				HStack {
+					Text("Quiz")
+					.font(.system(size: 32, weight: .bold))
+					
+					if self.showingIndicator {
+						ActivityIndicator()
+						.frame(width: 32, height: 32)
+					}
+					
+					Spacer()
+				}
+				.padding()
 				
-				if self.showingIndicator {
-					ActivityIndicator()
-					.frame(width: 32, height: 32)
+				Spacer()
+				
+				Text("What is the definition for \(self.quizword.headword)?")
+					.frame(width: geometry.size.width)
+					.font(.system(size: 24))
+					.multilineTextAlignment(.center)
+					.padding(.vertical, 30)
+					.padding(.horizontal)
+					.animation(.easeInOut)
+				
+				Spacer()
+				
+				VStack(spacing: 20) {
+					
+					ForEachWithIndex(self.entries, id: \.self) { index, item in
+						QuizWordView(entry: item, correctFunc: self.checkCorrect, flipped: self.$flipped[index])
+					}
+					
+					if self.answerCorrect {
+						CorrectAnswerView(isPresented: self.$answerCorrect, replayFunc: self.loadFromDB)
+					} else {
+						Spacer().frame(height: 50)
+					}
 				}
 				
 				Spacer()
 			}
-			.padding()
-			
-			Spacer()
-			
-			Text("What is the definition for \(quizword.headword)?")
-				.font(.system(size: 24))
-				.multilineTextAlignment(.center)
-				.padding(.vertical, 30)
-				.padding(.horizontal)
-			
-			Spacer()
-			
-			VStack(spacing: 20) {
-				
-				ForEachWithIndex(self.entries, id: \.self) { index, item in
-					QuizWordView(entry: item, correctFunc: self.checkCorrect, flipped: self.$flipped[index])
-				}
-				.animation(.easeInOut)
-				
-				if answerCorrect {
-					CorrectAnswerView(isPresented: $answerCorrect.animation(.easeInOut), replayFunc: loadFromDB)
-				} else {
-					Spacer().frame(height: 50)
-				}
+			.animation(.easeInOut)
+			.onAppear {
+				self.loadFromDB()
 			}
-//			.alert(isPresented: $showAlert) {
-//				Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text(buttonTitle), action: {
-//					if self.alertTitle == "Correct!" {
-//						self.loadFromDB()
-//					}
-//
-//				}))
-//			}
-			
-			Spacer()
-		}
-		.onAppear {
-			self.loadFromDB()
 		}
     }
 	
