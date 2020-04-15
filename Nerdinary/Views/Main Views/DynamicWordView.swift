@@ -22,16 +22,14 @@ struct DynamicWordView: View {
 					.font(.largeTitle)
 				
 				if !showDetail {
-					Text(entry.shortdef)
+					Text(entry.definitions[0])
 				} else {
 					Text("Functional Label: \(entry.functionalLabel.rawValue)")
 					Spacer()
-					Text("Sense: Definition 1")
-					Text("Sense: Definition 2")
-					Text("Sense: Definition 3")
-					Text("Sense: Definition 4")
-					Spacer()
-					Text("Etymology: 14th Century Anglo Saxon")
+					Text("Definition 1: \(entry.definitions[0])")
+						.padding(.bottom)
+					Text("Definition 2: \(entry.definitions[1])")
+						.padding(.bottom)
 				}
 			}
 			

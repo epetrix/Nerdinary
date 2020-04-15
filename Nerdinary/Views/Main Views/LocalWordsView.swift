@@ -64,12 +64,15 @@ struct LocalWordsView: View {
 			
 			if let data = data {
 				
-				print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
+				//print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
 				
 				if let decodedResponse = try? JSONDecoder().decode([DBEntryIn].self, from: data) {
 					
 					// we have good data – go back to the main thread
 					DispatchQueue.main.async {
+						if decodedResponse.isEmpty {
+							print("Empty result")
+						}
 //						 update our UI
 						for entry in decodedResponse {
 							self.entries.append(Entry(e: entry))
