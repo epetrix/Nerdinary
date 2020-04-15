@@ -74,6 +74,8 @@ struct LocalWordsView: View {
 							print("Empty result")
 						}
 //						 update our UI
+						self.entries.removeAll()
+						
 						for entry in decodedResponse {
 							self.entries.append(Entry(e: entry))
 						}
@@ -82,9 +84,13 @@ struct LocalWordsView: View {
 
 					// everything is good, so we can exit
 					return
-				} else {}
+				} else {
+					print("problem with decoded response")
+				}
 				
-			} else {}
+			} else {
+				print("problem with data")
+			}
 
 			// if we're still here it means there was a problem
 			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
