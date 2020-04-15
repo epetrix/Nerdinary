@@ -52,10 +52,10 @@ struct LocalWordsView: View {
 		//TODO: - Remove transport key from info.plist, not safe for app store
 		print("Displaying local words")
 		
-		/*guard let url = URL(string: "http://127.0.0.1:5000/user/1001") else {
-					print("Invalid URL")
-					return
-				}
+		guard let url = URL(string: "http://127.0.0.1:5000/user_words/1002") else {
+			print("Invalid URL")
+			return
+		}
 				
 		let request = URLRequest(url: url)
 		
@@ -66,22 +66,13 @@ struct LocalWordsView: View {
 				
 				print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
 				
-				return
-				
-				/*if let decodedResponse = try? JSONDecoder().decode([DictEntry].self, from: data) {
+				if let decodedResponse = try? JSONDecoder().decode([DBEntryIn].self, from: data) {
 					
 					// we have good data – go back to the main thread
 					DispatchQueue.main.async {
 //						 update our UI
-						self.homographs = decodedResponse
-
-						self.headWord = self.homographs.first?.hwi.hw ?? "error"
-
-						self.definitions = []
-						for entry in self.homographs {
-							let partOfSpeech = entry.fl.uppercased()
-							let firstShortDef = entry.shortdef.first ?? "error"
-							self.definitions.append("\(partOfSpeech): \(firstShortDef)")
+						for entry in decodedResponse {
+							self.entries.append(Entry(e: entry))
 						}
 						
 					}
@@ -89,7 +80,7 @@ struct LocalWordsView: View {
 					// everything is good, so we can exit
 					return
 				} else {}
-				*/
+				
 			} else {}
 
 			// if we're still here it means there was a problem
@@ -97,7 +88,7 @@ struct LocalWordsView: View {
 			//self.wordDoesntExistAlert = true
 			print("Failed")
 			
-		}.resume()*/
+		}.resume()
 	}
 }
 

@@ -12,7 +12,7 @@ import SwiftUI
 
 struct DBProfile {
 	var userdata: UserData
-	var entries: [DBEntry]
+	var entries: [DBEntryOut]
 }
 
 struct UserData {
