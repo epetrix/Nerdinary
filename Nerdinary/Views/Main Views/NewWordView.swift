@@ -12,6 +12,7 @@ struct NewWordView: View {
 	
 	@State private var headWord: String = "Search for a New Word"
 	@State private var definitions = [String]()
+	@State private var functionalLabel: String = ""
 	@State private var wordToSearch: String = ""
 	@State private var homographs = [DictEntry]()
 	@State private var wordDoesntExistAlert: Bool = false
@@ -62,7 +63,9 @@ struct NewWordView: View {
 				
 				Button(action: {
 					self.presenting = false
-					self.saveToServer()
+					self.saveToServer() { success in
+						
+					}
 				}) {
 					WideButtonView(text: "Save", cornerRadius: 4)
 						.padding(.horizontal, 5)
@@ -94,12 +97,14 @@ struct NewWordView: View {
 							self.homographs = decodedResponse
 
 							self.headWord = self.homographs.first?.hwi.hw ?? "error"
+							
+							self.functionalLabel = self.homographs.first!.fl.uppercased()
 
 							self.definitions = []
 							for entry in self.homographs {
-								let partOfSpeech = entry.fl.uppercased()
 								let firstShortDef = entry.shortdef.first ?? "error"
-								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
+//								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
+								self.definitions.append("\(firstShortDef)")
 							}
 							
 						}
@@ -116,15 +121,55 @@ struct NewWordView: View {
 			}.resume()
 		}
 	
-	func saveToServer() {
+	func saveToServer(completion: @escaping(Result<Data, APIError>) -> Void) {
+		do {
+			guard let url = URL(string: "http://127.0.0.1:5000/user/user_word") else {
+				print("Invalid URL")
+				return
+			}
+			
+			guard !definitions.isEmpty else { return }
+			
+			let entry = DBEntryOut(UID: "1002", WRD: headWord, PD: definitions.first!, SD: definitions[1], TYP: functionalLabel.uppercased())
+			
+			var request = URLRequest(url: url)
+			request.httpMethod = "POST"
+			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = try JSONEncoder().encode(entry)
+			
+			print(request.description)
+			
+			URLSession.shared.dataTask(with: request) { data, response, error in
+				
+				guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
+					completion(.failure(.responseProblem))
+					return
+				}
+				
+				DispatchQueue.main.async {
+					print(jsonData)
+					completion(.success(jsonData))
+				}
+				
+			}.resume()
+		} catch {
+			completion(.failure(.encodingProblem))
+		}
+		
 		self.loadFunc()
 	}
+}
+
+enum APIError: Error {
+	case responseProblem
+	case decodingProblem
+	case encodingProblem
 }
 
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true
-	@State static var entries: [DBEntry] = []
+	@State static var entries: [DBEntryOut] = []
 	static func function() {}
 	
     static var previews: some View {
