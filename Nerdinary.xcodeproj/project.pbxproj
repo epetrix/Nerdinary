@@ -31,6 +31,7 @@
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
 		39A0E90E241F238500248D73 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E90D241F238500248D73 /* SettingsView.swift */; };
 		39A0E911241F259400248D73 /* WordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E910241F259400248D73 /* WordsListView.swift */; };
+		39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */; };
 		39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB31EC24451ACB009832F2 /* QuizView.swift */; };
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
 		39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F98624461EEB00823892 /* QuizWordView.swift */; };
@@ -88,6 +89,7 @@
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
 		39A0E90D241F238500248D73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		39A0E910241F259400248D73 /* WordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListView.swift; sourceTree = "<group>"; };
+		39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
 		39BB31EC24451ACB009832F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		39C7F98624461EEB00823892 /* QuizWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWordView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				3993306E2432747800B087C0 /* WideButtonView.swift */,
 				39933070243274AF00B087C0 /* RegisterButton.swift */,
 				39C7F98624461EEB00823892 /* QuizWordView.swift */,
+				39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */,
 			);
 			path = "Supplementary Views";
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */,
 				396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */,
 				39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */,
+				39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */,
 				39933071243274AF00B087C0 /* RegisterButton.swift in Sources */,
 				3993306F2432747800B087C0 /* WideButtonView.swift in Sources */,
 				39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */,
