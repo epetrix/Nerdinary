@@ -147,7 +147,6 @@ struct NewWordView: View {
 				return
 			}
 			
-			//print(UserDefaults.standard.integer(forKey: "userID")) //is 0 if not set
 			let uid = UserDefaults.standard.integer(forKey: "userID")
 			if uid == 0 {
 				print("Invalid User ID")

@@ -34,7 +34,14 @@ struct GlobalWordsView: View {
 		//TODO: - Remove transport key from info.plist, not safe for app store
 		print("Displaying global words")
 		
-		guard let url = URL(string: "http://127.0.0.1:5000/non_user_words/1002") else {
+		let uid = UserDefaults.standard.integer(forKey: "userID")
+		if uid == 0 {
+			print("Invalid User ID")
+			group.leave()
+			return
+		}
+		
+		guard let url = URL(string: "http://127.0.0.1:5000/non_user_words/\(uid)") else {
 			print("Invalid URL")
 			group.leave()
 			return
