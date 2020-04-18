@@ -74,7 +74,7 @@ struct LoginView: View {
 //			return
 //		}
 	
-		authenticateDB() { success in
+		authenticateDB(usingBiometrics: false) { success in
 			if success {
 				UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
 				self.viewRouter.currentPage = .main
@@ -89,7 +89,7 @@ struct LoginView: View {
 	func loginWithBiometrics() {
 		authenticateBiometrics() { successBio in
 			if successBio {
-				self.authenticateDB() { successDB in
+				self.authenticateDB(usingBiometrics: true) { successDB in
 					if successDB {
 						UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
 						self.viewRouter.currentPage = .main
@@ -134,20 +134,13 @@ struct LoginView: View {
 		}
 	}
 	
-	func authenticateDB(_ completion: @escaping(Bool) -> Void) {
+	func authenticateDB(usingBiometrics: Bool, _ completion: @escaping(Bool) -> Void) {
 		let group = DispatchGroup()
 		group.enter()
 		
-		do {
-			guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
+		if usingBiometrics {
+			guard let url = URL(string: "http://127.0.0.1:5000/user") else {
 				print("Invalid URL")
-				group.leave()
-				completion(false)
-				return
-			}
-			
-			guard email != "" && password != "" else {
-				print("Empty fields")
 				group.leave()
 				completion(false)
 				return
@@ -160,12 +153,7 @@ struct LoginView: View {
 				completion(false)
 			}
 			
-			let profile = AuthProfile(EA: self.email, PW: self.password)
-			
-			var request = URLRequest(url: url)
-			request.httpMethod = "POST"
-			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-			request.httpBody = try JSONEncoder().encode(profile)
+			let request = URLRequest(url: url)
 			
 			//print(String(data: request.httpBody!, encoding: .utf8)!)
 			
@@ -180,7 +168,7 @@ struct LoginView: View {
 					}
 
 					else {
-						if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data) {
+						if let decodedResponse = try? JSONDecoder().decode([DBProfile].self, from: data) {
 							
 							// we have good data – go back to the main thread
 							DispatchQueue.main.async {
@@ -190,8 +178,6 @@ struct LoginView: View {
 									completion(false)
 								}
 								
-								UserDefaults.standard.set(decodedResponse.first!.user_id, forKey: "userID")
-								
 								group.leave()
 								completion(true)
 							}
@@ -199,8 +185,64 @@ struct LoginView: View {
 					}
 				}
 			}.resume()
-		} catch {
-			group.leave()
+		} else {
+			do {
+				guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
+					print("Invalid URL")
+					group.leave()
+					completion(false)
+					return
+				}
+				
+				guard email != "" && password != "" else {
+					print("Empty fields")
+					group.leave()
+					completion(false)
+					return
+				}
+				
+				let profile = AuthProfile(EA: self.email, PW: self.password)
+				
+				var request = URLRequest(url: url)
+				request.httpMethod = "POST"
+				request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+				request.httpBody = try JSONEncoder().encode(profile)
+				
+				//print(String(data: request.httpBody!, encoding: .utf8)!)
+				
+				URLSession.shared.dataTask(with: request) { (data, response, error) in
+					//result is get
+					if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+						if httpResponse.statusCode != 200 {
+							print("Error code: \(httpResponse.statusCode)")
+							print("Response:\n\(dataString)")
+							group.leave()
+							return
+						}
+
+						else {
+							if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data) {
+								
+								// we have good data – go back to the main thread
+								DispatchQueue.main.async {
+									if decodedResponse.isEmpty {
+										print("Empty result")
+										group.leave()
+										completion(false)
+									}
+									
+									UserDefaults.standard.set(decodedResponse.first!.user_id, forKey: "userID")
+									
+									group.leave()
+									completion(true)
+								}
+							}
+						}
+					}
+				}.resume()
+			} catch {
+				group.leave()
+			}
 		}
 	}
 }
