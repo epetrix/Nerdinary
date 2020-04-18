@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		392887C2244BAC0000308BBC /* AuthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C1244BAC0000308BBC /* AuthProfile.swift */; };
 		392887C4244BAE9B00308BBC /* DBUserIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C3244BAE9B00308BBC /* DBUserIn.swift */; };
+		392887C6244BCAB300308BBC /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C5244BCAB300308BBC /* HelpView.swift */; };
 		396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFA82411BC8000C1FC41 /* AppDelegate.swift */; };
 		396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */; };
 		396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAC2411BC8000C1FC41 /* Nerdinary.xcdatamodeld */; };
@@ -63,6 +64,7 @@
 /* Begin PBXFileReference section */
 		392887C1244BAC0000308BBC /* AuthProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfile.swift; sourceTree = "<group>"; };
 		392887C3244BAE9B00308BBC /* DBUserIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserIn.swift; sourceTree = "<group>"; };
+		392887C5244BCAB300308BBC /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		396CEFA52411BC8000C1FC41 /* Nerdinary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdinary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396CEFA82411BC8000C1FC41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				39933070243274AF00B087C0 /* RegisterButton.swift */,
 				39C7F98624461EEB00823892 /* QuizWordView.swift */,
 				39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */,
+				392887C5244BCAB300308BBC /* HelpView.swift */,
 			);
 			path = "Supplementary Views";
 			sourceTree = "<group>";
@@ -418,6 +421,7 @@
 				3993306D2432745900B087C0 /* InputTextField.swift in Sources */,
 				39A0E911241F259400248D73 /* WordsListView.swift in Sources */,
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
+				392887C6244BCAB300308BBC /* HelpView.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
 				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
