@@ -11,11 +11,9 @@
 import SwiftUI
 
 struct DBProfile {
-	var userdata: UserData
-	var entries: [DBEntryOut]
-}
-
-struct UserData {
-	var username: String
-	var password: String
+	var UID: Int
+	var FN: String
+	var LN: String
+	var EA: String
+	var PW: String
 }
