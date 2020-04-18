@@ -74,22 +74,31 @@ struct LoginView: View {
 //			return
 //		}
 	
-		if authenticateDB() {
-			UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
-			self.viewRouter.currentPage = .main
-			return
-		}
-		else {
-			self.failedToLogin = true
+		authenticateDB() { success in
+			if success {
+				UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
+				self.viewRouter.currentPage = .main
+				return
+			}
+			else {
+				self.failedToLogin = true
+			}
 		}
 	}
 	
 	func loginWithBiometrics() {
-		authenticateBiometrics() { success in
-			if success && self.authenticateDB() {
-				UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
-				self.viewRouter.currentPage = .main
-				return
+		authenticateBiometrics() { successBio in
+			if successBio {
+				self.authenticateDB() { successDB in
+					if successDB {
+						UserDefaults.standard.set(true, forKey: "UserIsLoggedIn")
+						self.viewRouter.currentPage = .main
+						return
+					}
+					else {
+						// print error
+					}
+				}
 			} else {
 				//self.failedToLogin = true
 				//don't need to use our own alert because Apple already provides one
@@ -125,8 +134,74 @@ struct LoginView: View {
 		}
 	}
 	
-	func authenticateDB() -> Bool {
-		return true
+	func authenticateDB(_ completion: @escaping(Bool) -> Void) {
+		let group = DispatchGroup()
+		group.enter()
+		
+		do {
+			guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
+				print("Invalid URL")
+				group.leave()
+				completion(false)
+				return
+			}
+			
+			guard email != "" && password != "" else {
+				print("Empty fields")
+				group.leave()
+				completion(false)
+				return
+			}
+			
+			let uid = UserDefaults.standard.integer(forKey: "userID")
+			if uid == 0 {
+				print("Invalid User ID")
+				group.leave()
+				completion(false)
+			}
+			
+			let profile = AuthProfile(EA: self.email, PW: self.password)
+			
+			var request = URLRequest(url: url)
+			request.httpMethod = "POST"
+			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = try JSONEncoder().encode(profile)
+			
+			//print(String(data: request.httpBody!, encoding: .utf8)!)
+			
+			URLSession.shared.dataTask(with: request) { (data, response, error) in
+				//result is get
+				if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+					if httpResponse.statusCode != 200 {
+						print("Error code: \(httpResponse.statusCode)")
+						print("Response:\n\(dataString)")
+						group.leave()
+						return
+					}
+
+					else {
+						if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data) {
+							
+							// we have good data – go back to the main thread
+							DispatchQueue.main.async {
+								if decodedResponse.isEmpty {
+									print("Empty result")
+									group.leave()
+									completion(false)
+								}
+								
+								UserDefaults.standard.set(decodedResponse.first!.user_id, forKey: "userID")
+								
+								group.leave()
+								completion(true)
+							}
+						}
+					}
+				}
+			}.resume()
+		} catch {
+			group.leave()
+		}
 	}
 }
 
