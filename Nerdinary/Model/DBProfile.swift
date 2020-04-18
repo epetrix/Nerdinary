@@ -10,7 +10,7 @@
 
 import SwiftUI
 
-struct DBProfile {
+struct DBProfile: Codable {
 	var UID: Int
 	var FN: String
 	var LN: String
