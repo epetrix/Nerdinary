@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		392887C2244BAC0000308BBC /* AuthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C1244BAC0000308BBC /* AuthProfile.swift */; };
+		392887C4244BAE9B00308BBC /* DBUserIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C3244BAE9B00308BBC /* DBUserIn.swift */; };
 		396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFA82411BC8000C1FC41 /* AppDelegate.swift */; };
 		396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */; };
 		396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAC2411BC8000C1FC41 /* Nerdinary.xcdatamodeld */; };
@@ -59,6 +61,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		392887C1244BAC0000308BBC /* AuthProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfile.swift; sourceTree = "<group>"; };
+		392887C3244BAE9B00308BBC /* DBUserIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserIn.swift; sourceTree = "<group>"; };
 		396CEFA52411BC8000C1FC41 /* Nerdinary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdinary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396CEFA82411BC8000C1FC41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 				399330742432C52000B087C0 /* DBEntryOut.swift */,
 				39C7F9882446AC9200823892 /* DBEntryIn.swift */,
 				39C6F1D024411D540010D712 /* Entry.swift */,
+				392887C1244BAC0000308BBC /* AuthProfile.swift */,
+				392887C3244BAE9B00308BBC /* DBUserIn.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -402,6 +408,7 @@
 				39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */,
 				396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */,
 				396CEFAE2411BC8000C1FC41 /* Nerdinary.xcdatamodeld in Sources */,
+				392887C2244BAC0000308BBC /* AuthProfile.swift in Sources */,
 				39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */,
 				39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */,
 				39933071243274AF00B087C0 /* RegisterButton.swift in Sources */,
@@ -421,6 +428,7 @@
 				39C6F1D124411D540010D712 /* Entry.swift in Sources */,
 				396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */,
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
+				392887C4244BAE9B00308BBC /* DBUserIn.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
 				39C7F9892446AC9200823892 /* DBEntryIn.swift in Sources */,
