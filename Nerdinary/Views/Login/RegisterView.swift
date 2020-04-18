@@ -10,8 +10,10 @@ import SwiftUI
 
 struct RegisterView: View {
 	
-	@State var username = ""
+	@State var email = ""
 	@State var password = ""
+	@State var firstName = ""
+	@State var lastName = ""
 	@State var showingIndicator: Bool = false
 	@State var disableRegisterButton: Bool = false
 	
@@ -29,9 +31,17 @@ struct RegisterView: View {
 			
 			Spacer()
 			
-			InputTextField(title: "Username", text: $username)
+			InputTextField(title: "First Name", text: $firstName)
+				.keyboardType(.default)
+			
+			InputTextField(title: "Last Name", text: $lastName)
+				.keyboardType(.default)
+			
+			InputTextField(title: "Email", text: $email)
+				.keyboardType(.emailAddress)
 			
 			InputTextField(title: "Password", text: $password)
+				.keyboardType(.default)
 			
 			ZStack {
 				Button(action: {
@@ -58,7 +68,7 @@ struct RegisterView: View {
 			}
 		}
 		.padding([.leading, .trailing], 30)
-		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Purple"), Color("Color Scheme Blue")]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Gradient Purple"), Color("Gradient Blue")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
     }
 	

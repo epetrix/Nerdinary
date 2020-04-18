@@ -13,7 +13,7 @@ struct LoginView: View {
 	
 	@EnvironmentObject var viewRouter: ViewRouter
 	
-	@State private var username = ""
+	@State private var email = ""
 	@State private var password = ""
 	@State var presentingRegisterView: Bool = false
 	@State var failedToLogin: Bool = false
@@ -32,7 +32,7 @@ struct LoginView: View {
 			
 			VStack(spacing: 20) {
 				
-				InputTextField(title: "Username", text: $username)
+				InputTextField(title: "Email", text: $email)
 				
 				InputTextField(title: "Password", text: $password, secure: true)
 				
