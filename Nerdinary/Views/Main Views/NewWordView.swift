@@ -62,14 +62,12 @@ struct NewWordView: View {
 				}
 				
 				Button(action: {
-					self.presenting = false
-					self.saveToServer() { success in
-						
-					}
+					self.saveToServer()
 				}) {
 					WideButtonView(text: "Save", cornerRadius: 4)
 						.padding(.horizontal, 5)
 				}
+				.disabled(definitions.isEmpty)
 			}
 		}
 		.ableToEndEditing()
@@ -132,52 +130,70 @@ struct NewWordView: View {
 		}.resume()
 	}
 	
-	func saveToServer(completion: @escaping(Result<Data, APIError>) -> Void) {
+	func saveToServer() {
 		let group = DispatchGroup()
 		group.enter()
 		
 		do {
-			guard let url = URL(string: "http://127.0.0.1:5000/user/user_word") else {
+			guard let url = URL(string: "http://127.0.0.1:5000/user_word") else {
 				print("Invalid URL")
 				group.leave()
 				return
 			}
 			
 			guard !definitions.isEmpty else {
+				print("Definitions are empty")
 				group.leave()
 				return
 			}
 			
-			let entry = DBEntryOut(UID: "1002", WRD: headWord, PD: definitions.first!, SD: definitions[1], TYP: functionalLabel.uppercased())
+			//print(UserDefaults.standard.integer(forKey: "userID")) //is 0 if not set
+			let uid = UserDefaults.standard.integer(forKey: "userID")
+			if uid == 0 {
+				print("Invalid User ID")
+				group.leave()
+				return
+			}
+			
+			let entry = DBEntryOut(UID: 1002/*uid*/, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
 			
 			var request = URLRequest(url: url)
 			request.httpMethod = "POST"
 			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 			request.httpBody = try JSONEncoder().encode(entry)
 			
-			print(request.description)
+			//print(String(data: request.httpBody!, encoding: .utf8)!)
 			
-			URLSession.shared.dataTask(with: request) { data, response, error in
+			URLSession.shared.dataTask(with: request) { (data, response, error) in
 				
-				guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200, let jsonData = data else {
-					completion(.failure(.responseProblem))
+				if let error = error {
+					print("Error occurred: \(error)")
 					group.leave()
 					return
 				}
 				
-				DispatchQueue.main.async {
-					print(jsonData)
-					group.leave()
-					completion(.success(jsonData))
+				if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+					if httpResponse.statusCode != 201 {
+						print("Error code: \(httpResponse.statusCode)")
+						print("Response:\n\(dataString)")
+						group.leave()
+						return
+					}
+					
+					else {
+						DispatchQueue.main.async {
+							print("Response:\n\(dataString)")
+							self.presenting = false
+							self.loadFunc()
+							group.leave()
+						}
+					}
 				}
 				
 			}.resume()
 		} catch {
-			completion(.failure(.encodingProblem))
 			group.leave()
 		}
-		
-		self.loadFunc()
 	}
 }
 

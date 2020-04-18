@@ -16,7 +16,7 @@ enum fl: String {
 
 struct DBEntryOut: Codable {
 	
-	var UID = "1002" //uuid
+	var UID: Int //uuid
 	var WRD: String //headword
 //	var shortdef: String
 	var PD: String //primary definition
