@@ -69,6 +69,7 @@ struct SettingsView: View {
 				Button(action: {
 					UserDefaults.standard.set(false, forKey: "UserIsLoggedIn")
 					UserDefaults.standard.set(false, forKey: "UseBiometricsToLogin")
+					UserDefaults.standard.set(0, forKey: "userID")
 					self.viewRouter.currentPage = .login
 				}) {
 					WideButtonView(text: "Logout", backgroundColor: .blue, cornerRadius: 4, systemFontSize: 24)
