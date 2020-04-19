@@ -103,10 +103,10 @@ struct NewWordView: View {
 						
 						self.functionalLabel = self.homographs.first!.fl.uppercased()
 
-						self.definitions = []
+						self.definitions.removeAll()
+						
 						for entry in self.homographs {
 							let firstShortDef = entry.shortdef.first ?? "error"
-//								self.definitions.append("\(partOfSpeech): \(firstShortDef)")
 							self.definitions.append("\(firstShortDef)")
 						}
 						

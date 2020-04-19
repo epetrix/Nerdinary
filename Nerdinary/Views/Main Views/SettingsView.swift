@@ -61,7 +61,7 @@ struct SettingsView: View {
 			HStack(spacing: 10) {
 			
 				Button(action: {
-					//
+					self.deleteUser()
 				}) {
 					WideButtonView(text: "Delete Account", backgroundColor: Color("Color Scheme Red"), cornerRadius: 4, systemFontSize: 24)
 				}
@@ -80,6 +80,60 @@ struct SettingsView: View {
 		.onDisappear {
 			UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
 		}
+	}
+	
+	func deleteUser() {
+		let group = DispatchGroup()
+		group.enter()
+		
+		print("Deleting user...")
+		
+		let uid = UserDefaults.standard.integer(forKey: "userID")
+		if uid == 0 {
+			print("Invalid User ID")
+			group.leave()
+			return
+		}
+		
+		guard let url = URL(string: "http://127.0.0.1:5000/user/\(uid)") else {
+			print("Invalid URL")
+			group.leave()
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "DELETE"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		
+		//print(String(data: request.httpBody!, encoding: .utf8)!)
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			
+			if let error = error {
+				print("Error occurred: \(error)")
+				group.leave()
+				return
+			}
+			
+			if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+				if httpResponse.statusCode != 202 {
+					print("Error code: \(httpResponse.statusCode)")
+					print("Response:\n\(dataString)")
+					//TODO: - make alert here
+					group.leave()
+					return
+				}
+				
+				else {
+					DispatchQueue.main.async {
+						print("Response:\n\(dataString)")
+						self.viewRouter.currentPage = .login
+						group.leave()
+					}
+				}
+			}
+			
+		}.resume()
 	}
 }
 

@@ -39,7 +39,7 @@ struct DynamicWordView: View {
 			
 			Spacer()
 			
-			VStack(spacing: 10) {
+			VStack(spacing: 15) {
 				Button(action: {
 					self.showDetail.toggle()
 				}) {
