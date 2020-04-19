@@ -26,7 +26,7 @@ struct GlobalWordsView: View {
 				}
 				.padding([.leading, .top])
 				
-				WordsListView(entries: self.$entries, loadMethod: self.loadGlobalWords)
+				WordsListView(entries: self.$entries, loadMethod: self.loadGlobalWords, isGlobal: true)
 			}
 			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
 		}

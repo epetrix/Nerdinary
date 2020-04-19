@@ -12,12 +12,13 @@ struct WordsListView: View {
 	
 	@Binding var entries: [Entry]
 	var loadMethod: () -> ()
+	var isGlobal: Bool = false
 	
 	var body: some View {
 		GeometryReader { geometry in
 			ScrollView(.vertical, showsIndicators: false) {
 				ForEach(self.entries, id: \.id) { entry in
-					DynamicWordView(entry: entry)
+					DynamicWordView(isGlobal: self.isGlobal, entry: entry, deleteFunc: self.deleteEntry)
 					.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
 					//scroll down if area becomes larger when opening a word
@@ -27,6 +28,10 @@ struct WordsListView: View {
 //			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom))
 			.onAppear(perform: self.loadMethod)
 		}
+	}
+	
+	func deleteEntry(entry: Entry) {
+		print("Deleting entry: \(entry.headword)")
 	}
 }
 
