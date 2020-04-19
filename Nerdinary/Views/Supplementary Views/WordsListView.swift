@@ -31,7 +31,64 @@ struct WordsListView: View {
 	}
 	
 	func deleteEntry(entry: Entry) {
+		let group = DispatchGroup()
+		group.enter()
+		
 		print("Deleting entry: \(entry.headword)")
+		
+		guard let url = URL(string: "http://127.0.0.1:5000/user_word") else {
+			print("Invalid URL")
+			group.leave()
+			return
+		}
+		
+		let uid = UserDefaults.standard.integer(forKey: "userID")
+		if uid == 0 {
+			print("Invalid User ID")
+			group.leave()
+			return
+		}
+		
+		let wordToDelete = DBDeleteWord(UID: uid, WRD: entry.headword)
+		guard let encodedEntry = try? JSONEncoder().encode(wordToDelete) else {
+			print("Failed to encode word to delete")
+			group.leave()
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "PUT"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.httpBody = encodedEntry
+		
+		//print(String(data: request.httpBody!, encoding: .utf8)!)
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			
+			if let error = error {
+				print("Error occurred: \(error)")
+				group.leave()
+				return
+			}
+			
+			if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+				if httpResponse.statusCode != 202 {
+					print("Error code: \(httpResponse.statusCode)")
+					print("Response:\n\(dataString)")
+					group.leave()
+					return
+				}
+				
+				else {
+					DispatchQueue.main.async {
+						print("Response:\n\(dataString)")
+						self.loadMethod()
+						group.leave()
+					}
+				}
+			}
+			
+		}.resume()
 	}
 }
 

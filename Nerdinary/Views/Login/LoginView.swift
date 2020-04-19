@@ -68,11 +68,6 @@ struct LoginView: View {
     }
 	
 	func login() {
-		
-//		if UserDefaults.standard.bool(forKey: "UserIsLoggedIn") {
-//			self.viewRouter.currentPage = .main
-//			return
-//		}
 	
 		authenticateDB(usingBiometrics: false) { success in
 			if success {

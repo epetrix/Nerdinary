@@ -35,7 +35,7 @@ struct NewWordView: View {
 				
 				Button(action: {
 					UIApplication.shared.endEditing()
-					self.loadData()
+					self.loadDataFromDictionary()
 				}) {
 					WideButtonView(text: "Search", backgroundColor: Color("Color Scheme Orange"), foregroundColor: .white, cornerRadius: 4, systemFontSize: 20)
 					.frame(width: 100)
@@ -74,7 +74,7 @@ struct NewWordView: View {
 		.ableToEndEditing()
 	}
 	
-	func loadData() {
+	func loadDataFromDictionary() {
 		let group = DispatchGroup()
 		group.enter()
 		
@@ -155,7 +155,7 @@ struct NewWordView: View {
 				return
 			}
 			
-			let entry = DBEntryOut(UID: 1002/*uid*/, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
+			let entry = DBEntryOut(UID: uid, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
 			
 			var request = URLRequest(url: url)
 			request.httpMethod = "POST"
@@ -182,7 +182,7 @@ struct NewWordView: View {
 					
 					else {
 						DispatchQueue.main.async {
-							print("Response:\n\(dataString)")
+							print("Success: Response:\n\(dataString)")
 							self.presenting = false
 							self.loadFunc()
 							group.leave()

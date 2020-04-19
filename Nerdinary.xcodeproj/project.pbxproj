@@ -22,6 +22,7 @@
 		396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */; };
 		396CEFDE2411BF6900C1FC41 /* DictEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFDD2411BF6900C1FC41 /* DictEntry.swift */; };
 		396CEFE22411C3C500C1FC41 /* NewWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFE12411C3C500C1FC41 /* NewWordView.swift */; };
+		396F7B1D244CFB3900E0952E /* DBDeleteWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */; };
 		3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306A243273E000B087C0 /* ActivityIndicator.swift */; };
 		3993306D2432745900B087C0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306C2432745900B087C0 /* InputTextField.swift */; };
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
@@ -83,6 +84,7 @@
 		396CEFDB2411BEB800C1FC41 /* LocalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWordsView.swift; sourceTree = "<group>"; };
 		396CEFDD2411BF6900C1FC41 /* DictEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictEntry.swift; sourceTree = "<group>"; };
 		396CEFE12411C3C500C1FC41 /* NewWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordView.swift; sourceTree = "<group>"; };
+		396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBDeleteWord.swift; sourceTree = "<group>"; };
 		3993306A243273E000B087C0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3993306C2432745900B087C0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				39C6F1D024411D540010D712 /* Entry.swift */,
 				392887C1244BAC0000308BBC /* AuthProfile.swift */,
 				392887C3244BAE9B00308BBC /* DBUserIn.swift */,
+				396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				392887C6244BCAB300308BBC /* HelpView.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
+				396F7B1D244CFB3900E0952E /* DBDeleteWord.swift in Sources */,
 				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
