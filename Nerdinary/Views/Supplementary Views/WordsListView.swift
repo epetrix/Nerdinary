@@ -20,9 +20,11 @@ struct WordsListView: View {
 					DynamicWordView(entry: entry)
 					.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
+					//scroll down if area becomes larger when opening a word
 				}
 				.frame(width: geometry.size.width)
 			}
+//			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom))
 			.onAppear(perform: self.loadMethod)
 		}
 	}

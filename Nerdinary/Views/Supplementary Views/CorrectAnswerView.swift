@@ -30,9 +30,10 @@ struct CorrectAnswerView: View {
 				Spacer()
 			}
 			.frame(height: 50)
-			.background(Color.blue)
+			.background(Color("Color Scheme Green"))
 			.cornerRadius(10)
 			.padding(.horizontal)
+			.UseNiceShadow()
 		}
 		.transition(.slide).animation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration: 1))
 		//TODO: - Animation gets stuck halfway through for a tiny bit

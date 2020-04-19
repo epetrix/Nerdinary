@@ -28,6 +28,7 @@ struct QuizWordView: View {
 				
 				if flipped { //doing it this way instead of ternary inside text because it makes it look like the text is actually on the back
 					Text(entry.headword)
+					.font(.system(size: 16))
 					.foregroundColor(.white)
 					.bold()
 					.multilineTextAlignment(.center)
@@ -35,6 +36,7 @@ struct QuizWordView: View {
 					//.transition(.opacity)
 				} else {
 					Text(entry.definitions.first!)
+					.font(.system(size: 16))
 					.foregroundColor(.white)
 					.bold()
 					.multilineTextAlignment(.center)
@@ -50,7 +52,7 @@ struct QuizWordView: View {
 				Spacer()
 			}
 			.frame(height: 100)
-			.background(Color.green)
+			.background(Color("Color Scheme Purple"))
 			.cornerRadius(10)
 			.padding(.horizontal)
 		}

@@ -25,7 +25,9 @@ struct DynamicWordView: View {
 					Text(entry.definitions[0])
 				} else {
 					Text("Functional Label: \(entry.functionalLabel.rawValue)")
+					
 					Spacer()
+					
 					Text("Definition 1: \(entry.definitions[0])")
 						.padding(.bottom)
 					Text("Definition 2: \(entry.definitions[1])")

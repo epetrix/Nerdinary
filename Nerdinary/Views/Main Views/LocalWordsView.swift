@@ -23,27 +23,32 @@ struct LocalWordsView: View {
 	
     var body: some View {
         
-		VStack {
-			HStack {
-				Text("My Nerdinary")
-					.font(.largeTitle)
-					.bold()
+		GeometryReader { geometry in
+			VStack {
 				
-				Spacer()
+				HStack {
+					Text("My Nerdinary")
+						.font(.largeTitle)
+						.bold()
+						.foregroundColor(.white)
+					
+					Spacer()
+				}
+				.padding([.leading, .top])
+				
+				WordsListView(entries: self.$entries, loadMethod: self.loadLocalWords)
+				
+				Button(action: {
+					self.presentNewWordView = true
+				}) {
+					WideButtonView(text: "Add Word", backgroundColor: Color("Color Scheme Yellow"), foregroundColor: .black, cornerRadius: 4)
+					.padding([.leading, .trailing, .bottom])
+				}
+				.sheet(isPresented: self.$presentNewWordView) {
+					NewWordView(loadFunc: self.loadLocalWords, presenting: self.$presentNewWordView)
+				}
 			}
-			.padding([.leading, .top])
-			
-			WordsListView(entries: $entries, loadMethod: loadLocalWords)
-			
-			Button(action: {
-				self.presentNewWordView = true
-			}) {
-				WideButtonView(text: "Add Word", backgroundColor: .blue, cornerRadius: 4)
-				.padding([.leading, .trailing, .bottom])
-			}
-			.sheet(isPresented: self.$presentNewWordView) {
-				NewWordView(loadFunc: self.loadLocalWords, presenting: self.$presentNewWordView)
-			}
+			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
 		}
     }
 	

@@ -31,7 +31,9 @@ struct QuizView: View {
 			VStack {
 				HStack {
 					Text("Quiz")
-					.font(.system(size: 32, weight: .bold))
+					.font(.largeTitle)
+					.bold()
+					.foregroundColor(.white)
 					
 					if self.showingIndicator {
 						ActivityIndicator()
@@ -58,6 +60,7 @@ struct QuizView: View {
 					
 					ForEachWithIndex(self.entries, id: \.self) { index, item in
 						QuizWordView(entry: item, correctFunc: self.checkCorrect, flipped: self.$flipped[index])
+						.UseNiceShadow()
 					}
 					
 					if self.answerCorrect {
@@ -69,6 +72,7 @@ struct QuizView: View {
 				
 				Spacer()
 			}
+			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
 			.animation(.easeInOut)
 			.onAppear {
 				self.loadFromDB()

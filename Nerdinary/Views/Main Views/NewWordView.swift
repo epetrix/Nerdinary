@@ -37,7 +37,7 @@ struct NewWordView: View {
 					UIApplication.shared.endEditing()
 					self.loadData()
 				}) {
-					WideButtonView(text: "Search", backgroundColor: .blue, cornerRadius: 4, systemFontSize: 20)
+					WideButtonView(text: "Search", backgroundColor: Color("Color Scheme Orange"), foregroundColor: .white, cornerRadius: 4, systemFontSize: 20)
 					.frame(width: 100)
 				}
 			}
@@ -57,18 +57,19 @@ struct NewWordView: View {
 				Button(action: {
 					self.presenting = false
 				}) {
-					WideButtonView(text: "Cancel", backgroundColor: .red, cornerRadius: 4)
+					WideButtonView(text: "Cancel", backgroundColor: Color("Color Scheme Red"), foregroundColor: .white, cornerRadius: 4)
 						.padding(.horizontal, 5)
 				}
 				
 				Button(action: {
 					self.saveToServer()
 				}) {
-					WideButtonView(text: "Save", cornerRadius: 4)
+					WideButtonView(text: "Save", backgroundColor: Color("Color Scheme Green"), foregroundColor: .white, cornerRadius: 4)
 						.padding(.horizontal, 5)
 				}
 				.disabled(definitions.isEmpty)
 			}
+			.padding(.bottom)
 		}
 		.ableToEndEditing()
 	}

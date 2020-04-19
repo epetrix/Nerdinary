@@ -48,7 +48,7 @@ struct RegisterView: View {
 					print("Hello")
 					self.register()
 				}) {
-					WideButtonView(text: "Register")
+					WideButtonView(text: "Register", backgroundColor: Color("Color Scheme Yellow"), foregroundColor: .black)
 						.UseNiceShadow()
 				}.disabled(disableRegisterButton)
 				
@@ -68,7 +68,7 @@ struct RegisterView: View {
 			}
 		}
 		.padding([.leading, .trailing], 30)
-		.background(LinearGradient(gradient: Gradient(colors: [Color("Gradient Purple"), Color("Gradient Blue")]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
 		.ableToEndEditing()
     }

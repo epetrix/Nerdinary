@@ -63,7 +63,7 @@ struct SettingsView: View {
 				Button(action: {
 					//
 				}) {
-					WideButtonView(text: "Delete Account", backgroundColor: .red, cornerRadius: 4, systemFontSize: 24)
+					WideButtonView(text: "Delete Account", backgroundColor: Color("Color Scheme Red"), cornerRadius: 4, systemFontSize: 24)
 				}
 				
 				Button(action: {
@@ -72,7 +72,7 @@ struct SettingsView: View {
 					UserDefaults.standard.set(0, forKey: "userID")
 					self.viewRouter.currentPage = .login
 				}) {
-					WideButtonView(text: "Logout", backgroundColor: .blue, cornerRadius: 4, systemFontSize: 24)
+					WideButtonView(text: "Logout", backgroundColor: Color("Color Scheme Green"), cornerRadius: 4, systemFontSize: 24)
 				}
 			}
 			.padding([.horizontal, .bottom])

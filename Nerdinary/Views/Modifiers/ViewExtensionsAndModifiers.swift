@@ -20,6 +20,13 @@ extension View {
 	}
 }
 
+struct CoolGradient: ViewModifier {
+	func body(content: Content) -> some View {
+		content
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom))
+	}
+}
+
 struct NiceShadow: ViewModifier {
 	func body(content: Content) -> some View {
 		content

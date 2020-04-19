@@ -12,6 +12,7 @@ struct WideButtonView: View {
 	
 	var text: String = "Custom Text"
 	var backgroundColor: Color = .green
+	var foregroundColor: Color = .white
 	var cornerRadius: CGFloat = 15
 	var systemFontSize: CGFloat = 24
 	
@@ -20,7 +21,7 @@ struct WideButtonView: View {
 			Spacer()
 
 			Text(text)
-			.foregroundColor(.white)
+				.foregroundColor(self.foregroundColor)
 			.font(.system(size: self.systemFontSize))
 			.padding([.top, .bottom], 5)
 

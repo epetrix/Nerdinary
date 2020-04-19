@@ -13,17 +13,22 @@ struct GlobalWordsView: View {
 	@State private var entries: [Entry] = [Entry]()
 	
     var body: some View {
-		VStack {
-			HStack {
-				Text("Global Nerdinary")
-					.font(.largeTitle)
-					.bold()
+		GeometryReader { geometry in
+			VStack {
 				
-				Spacer()
+				HStack {
+					Text("Global Nerdinary")
+						.font(.largeTitle)
+						.bold()
+						.foregroundColor(.white)
+					
+					Spacer()
+				}
+				.padding([.leading, .top])
+				
+				WordsListView(entries: self.$entries, loadMethod: self.loadGlobalWords)
 			}
-			.padding([.leading, .top])
-			
-			WordsListView(entries: $entries, loadMethod: loadGlobalWords)
+			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))
 		}
     }
 	

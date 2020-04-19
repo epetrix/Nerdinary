@@ -42,7 +42,7 @@ struct LoginView: View {
 					UIApplication.shared.endEditing()
 					self.login()
 				}) {
-					WideButtonView(text: "Login")
+					WideButtonView(text: "Login", backgroundColor: Color("Color Scheme Yellow"), foregroundColor: .black)
 					.UseNiceShadow()
 				}
 			}
@@ -55,7 +55,7 @@ struct LoginView: View {
 			
 			RegisterButton(presenting: $presentingRegisterView)
 		}
-		.background(LinearGradient(gradient: Gradient(colors: [Color("Gradient Purple"), Color("Gradient Blue")]), startPoint: .top, endPoint: .bottom)
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))
 		.ableToEndEditing()
 		.onAppear {
