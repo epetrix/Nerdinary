@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Entry: Equatable, Hashable {
+struct Entry: Equatable, Hashable { //Entry model for use in the app
 	var id = UUID()
 	var headword: String
 	var shortdef: String
