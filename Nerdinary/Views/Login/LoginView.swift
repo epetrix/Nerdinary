@@ -33,6 +33,7 @@ struct LoginView: View {
 			VStack(spacing: 20) {
 				
 				InputTextField(title: "Email", text: $email)
+					.keyboardType(.emailAddress)
 				
 				InputTextField(title: "Password", text: $password, secure: true)
 				

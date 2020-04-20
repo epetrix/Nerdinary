@@ -10,6 +10,8 @@ import SwiftUI
 
 struct RegisterView: View {
 	
+	@ObservedObject private var kGuardian = KeyboardGuardian(textFieldCount: 1)
+	
 	@State var email = ""
 	@State var password = ""
 	@State var firstName = ""
@@ -31,17 +33,31 @@ struct RegisterView: View {
 			
 			Spacer()
 			
-			InputTextField(title: "First Name", text: $firstName)
-				.keyboardType(.default)
-			
-			InputTextField(title: "Last Name", text: $lastName)
-				.keyboardType(.default)
-			
-			InputTextField(title: "Email", text: $email)
-				.keyboardType(.emailAddress)
-			
-			InputTextField(title: "Password", text: $password)
-				.keyboardType(.default)
+			VStack(spacing: 20) {
+				InputTextField(title: "First Name", text: $firstName)
+					.keyboardType(.default)
+					.unableToEndEditing()
+				
+				InputTextField(title: "Last Name", text: $lastName)
+					.keyboardType(.default)
+				.unableToEndEditing()
+				
+				InputTextField(title: "Email", text: $email)
+					.keyboardType(.emailAddress)
+				.unableToEndEditing()
+				
+				InputTextField(title: "Password", text: $password)
+					.keyboardType(.default)
+					.unableToEndEditing()
+				.background(GeometryGetter(rect: $kGuardian.rects[0]))
+			}
+			.offset(y: kGuardian.slide).animation(.easeInOut(duration: 0.25))
+			.onAppear {
+				self.kGuardian.addObserver()
+			}
+			.onDisappear {
+				self.kGuardian.removeObserver()
+			}
 			
 			ZStack {
 				Button(action: {
