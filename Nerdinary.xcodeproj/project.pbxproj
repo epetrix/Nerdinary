@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		392887C2244BAC0000308BBC /* AuthProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C1244BAC0000308BBC /* AuthProfile.swift */; };
-		392887C4244BAE9B00308BBC /* DBUserIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C3244BAE9B00308BBC /* DBUserIn.swift */; };
 		392887C6244BCAB300308BBC /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392887C5244BCAB300308BBC /* HelpView.swift */; };
 		396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFA82411BC8000C1FC41 /* AppDelegate.swift */; };
 		396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */; };
@@ -64,7 +63,6 @@
 
 /* Begin PBXFileReference section */
 		392887C1244BAC0000308BBC /* AuthProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthProfile.swift; sourceTree = "<group>"; };
-		392887C3244BAE9B00308BBC /* DBUserIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBUserIn.swift; sourceTree = "<group>"; };
 		392887C5244BCAB300308BBC /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		396CEFA52411BC8000C1FC41 /* Nerdinary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nerdinary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		396CEFA82411BC8000C1FC41 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -215,7 +213,6 @@
 				39C7F9882446AC9200823892 /* DBEntryIn.swift */,
 				39C6F1D024411D540010D712 /* Entry.swift */,
 				392887C1244BAC0000308BBC /* AuthProfile.swift */,
-				392887C3244BAE9B00308BBC /* DBUserIn.swift */,
 				396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */,
 			);
 			path = Model;
@@ -436,7 +433,6 @@
 				39C6F1D124411D540010D712 /* Entry.swift in Sources */,
 				396CEFAB2411BC8000C1FC41 /* SceneDelegate.swift in Sources */,
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
-				392887C4244BAE9B00308BBC /* DBUserIn.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
 				39C7F9892446AC9200823892 /* DBEntryIn.swift in Sources */,

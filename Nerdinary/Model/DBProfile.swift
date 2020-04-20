@@ -17,3 +17,22 @@ struct DBProfile: Codable {
 	var EA: String
 	var PW: String
 }
+
+extension DBProfile {
+	private enum CodingKeys: String, CodingKey{
+        case UID
+        case FN
+        case LN
+        case EA
+		case PW
+    }
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		UID = try container.decode(Int.self, forKey: .UID)
+		FN = (try container.decodeIfPresent(String.self, forKey: .FN)) ?? ""
+		LN = (try container.decodeIfPresent(String.self, forKey: .LN)) ?? ""
+		EA = (try container.decodeIfPresent(String.self, forKey: .EA)) ?? ""
+		PW = (try container.decodeIfPresent(String.self, forKey: .PW)) ?? ""
+	}
+}

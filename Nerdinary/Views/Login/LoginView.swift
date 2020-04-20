@@ -222,7 +222,7 @@ struct LoginView: View {
 					}
 
 					else {
-						if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data), let user = decodedResponse.first {
+						if let decodedResponse = try? JSONDecoder().decode([DBProfile].self, from: data), let user = decodedResponse.first {
 							DispatchQueue.main.async {
 								UserDefaults.standard.set(user.UID, forKey: "userID")
 								group.leave()
