@@ -181,63 +181,61 @@ struct LoginView: View {
 				}
 			}.resume()
 		} else {
-			do {
-				guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
-					print("Invalid URL")
-					group.leave()
-					completion(false)
-					return
-				}
-				
-				guard email != "" && password != "" else {
-					print("Empty fields")
-					group.leave()
-					completion(false)
-					return
-				}
-				
-				let profile = AuthProfile(EA: self.email, PW: self.password)
-				
-				var request = URLRequest(url: url)
-				request.httpMethod = "POST"
-				request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-				request.httpBody = try JSONEncoder().encode(profile)
-				
-				//print(String(data: request.httpBody!, encoding: .utf8)!)
-				
-				URLSession.shared.dataTask(with: request) { (data, response, error) in
-					//result is get
-					if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
-						if httpResponse.statusCode != 200 {
-							print("Error code: \(httpResponse.statusCode)")
-							print("Response:\n\(dataString)")
-							group.leave()
-							return
-						}
+			guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
+				print("Invalid URL")
+				group.leave()
+				completion(false)
+				return
+			}
+			
+			guard email != "" && password != "" else {
+				print("Empty fields")
+				group.leave()
+				completion(false)
+				return
+			}
+			
+			let profile = AuthProfile(EA: self.email, PW: self.password)
+			guard let encodedEntry = try? JSONEncoder().encode(profile) else {
+				print("Failed to encode word to delete")
+				group.leave()
+				return
+			}
+			
+			var request = URLRequest(url: url)
+			request.httpMethod = "POST"
+			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+			request.httpBody = encodedEntry
+			
+			//print(String(data: request.httpBody!, encoding: .utf8)!)
+			
+			URLSession.shared.dataTask(with: request) { (data, response, error) in
+				//result is get
+				if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+					if httpResponse.statusCode != 200 {
+						print("Error code: \(httpResponse.statusCode)")
+						print("Response:\n\(dataString)")
+						group.leave()
+						completion(false)
+						return
+					}
 
-						else {
-							if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data) {
-								
-								// we have good data – go back to the main thread
-								DispatchQueue.main.async {
-									if decodedResponse.isEmpty {
-										print("Empty result")
-										group.leave()
-										completion(false)
-									}
-									
-									UserDefaults.standard.set(decodedResponse.first!.user_id, forKey: "userID")
-									
-									group.leave()
-									completion(true)
-								}
+					else {
+						if let decodedResponse = try? JSONDecoder().decode([DBUserIn].self, from: data), let user = decodedResponse.first {
+							DispatchQueue.main.async {
+								UserDefaults.standard.set(user.UID, forKey: "userID")
+								group.leave()
+								completion(true)
 							}
 						}
+						else {
+							print(dataString)
+							group.leave()
+							completion(false)
+						}
 					}
-				}.resume()
-			} catch {
-				group.leave()
-			}
+				}
+			}.resume()
 		}
 	}
 }

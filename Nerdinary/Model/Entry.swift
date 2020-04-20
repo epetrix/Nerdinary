@@ -22,10 +22,10 @@ extension Entry {
 	init(e: DBEntryIn) {
 		self.headword = e.word
 		self.shortdef = "shortdef missing"
-		self.definitions.append(e.primary_def)
-		self.definitions.append(e.secondary_def)
+		self.definitions.append(e.PD)
+		self.definitions.append(e.SD)
 		self.functionalLabel = { () -> fl in
-			switch e.type {
+			switch e.TYP {
 			case "Noun":
 				return fl.noun
 			case "Verb":

@@ -9,5 +9,5 @@
 import SwiftUI
 
 struct DBUserIn: Codable {
-	var user_id: Int
+	var UID: Int
 }

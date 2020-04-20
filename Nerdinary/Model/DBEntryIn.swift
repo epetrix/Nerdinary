@@ -10,7 +10,7 @@ import SwiftUI
 
 struct DBEntryIn: Codable {
 	var word: String
-	var type: String
-	var primary_def: String
-	var secondary_def: String
+	var TYP: String
+	var PD: String
+	var SD: String
 }
