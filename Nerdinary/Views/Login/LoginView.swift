@@ -134,18 +134,18 @@ struct LoginView: View {
 		group.enter()
 		
 		if usingBiometrics {
-			guard let url = URL(string: "http://127.0.0.1:5000/user") else {
-				print("Invalid URL")
-				group.leave()
-				completion(false)
-				return
-			}
-			
 			let uid = UserDefaults.standard.integer(forKey: "userID")
 			if uid == 0 {
 				print("Invalid User ID")
 				group.leave()
 				completion(false)
+			}
+			
+			guard let url = URL(string: "http://127.0.0.1:5000/user/\(uid)") else {
+				print("Invalid URL")
+				group.leave()
+				completion(false)
+				return
 			}
 			
 			let request = URLRequest(url: url)
@@ -180,7 +180,8 @@ struct LoginView: View {
 					}
 				}
 			}.resume()
-		} else {
+		}
+		else {
 			guard let url = URL(string: "http://127.0.0.1:5000/authenticate_user") else {
 				print("Invalid URL")
 				group.leave()
