@@ -27,7 +27,7 @@
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
 		39933071243274AF00B087C0 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39933070243274AF00B087C0 /* RegisterButton.swift */; };
 		399330732432C3EC00B087C0 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330722432C3EC00B087C0 /* DBProfile.swift */; };
-		399330752432C52000B087C0 /* DBEntryOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330742432C52000B087C0 /* DBEntryOut.swift */; };
+		399330752432C52000B087C0 /* DBEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330742432C52000B087C0 /* DBEntry.swift */; };
 		399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330762432EA2300B087C0 /* DynamicWordView.swift */; };
 		39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E901241ACCC000248D73 /* RegisterView.swift */; };
 		39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */; };
@@ -38,7 +38,6 @@
 		39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB31EC24451ACB009832F2 /* QuizView.swift */; };
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
 		39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F98624461EEB00823892 /* QuizWordView.swift */; };
-		39C7F9892446AC9200823892 /* DBEntryIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F9882446AC9200823892 /* DBEntryIn.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -88,7 +87,7 @@
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
 		39933070243274AF00B087C0 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		399330722432C3EC00B087C0 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
-		399330742432C52000B087C0 /* DBEntryOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntryOut.swift; sourceTree = "<group>"; };
+		399330742432C52000B087C0 /* DBEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntry.swift; sourceTree = "<group>"; };
 		399330762432EA2300B087C0 /* DynamicWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicWordView.swift; sourceTree = "<group>"; };
 		39A0E901241ACCC000248D73 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		39A0E903241BDACD00248D73 /* ViewExtensionsAndModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtensionsAndModifiers.swift; sourceTree = "<group>"; };
@@ -99,7 +98,6 @@
 		39BB31EC24451ACB009832F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		39C7F98624461EEB00823892 /* QuizWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWordView.swift; sourceTree = "<group>"; };
-		39C7F9882446AC9200823892 /* DBEntryIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntryIn.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -209,8 +207,7 @@
 			children = (
 				396CEFDD2411BF6900C1FC41 /* DictEntry.swift */,
 				399330722432C3EC00B087C0 /* DBProfile.swift */,
-				399330742432C52000B087C0 /* DBEntryOut.swift */,
-				39C7F9882446AC9200823892 /* DBEntryIn.swift */,
+				399330742432C52000B087C0 /* DBEntry.swift */,
 				39C6F1D024411D540010D712 /* Entry.swift */,
 				392887C1244BAC0000308BBC /* AuthProfile.swift */,
 				396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */,
@@ -435,8 +432,7 @@
 				39EDE89F241849F8008A75EE /* LoginView.swift in Sources */,
 				3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */,
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
-				39C7F9892446AC9200823892 /* DBEntryIn.swift in Sources */,
-				399330752432C52000B087C0 /* DBEntryOut.swift in Sources */,
+				399330752432C52000B087C0 /* DBEntry.swift in Sources */,
 				399330732432C3EC00B087C0 /* DBProfile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

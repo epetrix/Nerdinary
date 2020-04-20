@@ -155,7 +155,7 @@ struct NewWordView: View {
 				return
 			}
 			
-			let entry = DBEntryOut(UID: uid, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
+			let entry = DBEntry(UID: uid, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
 			
 			var request = URLRequest(url: url)
 			request.httpMethod = "POST"
@@ -206,7 +206,7 @@ enum APIError: Error {
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true
-	@State static var entries: [DBEntryOut] = []
+	@State static var entries: [DBEntry] = []
 	static func function() {}
 	
     static var previews: some View {

@@ -14,7 +14,7 @@ enum fl: String {
 	case noun, adjective, adverb, verb
 }
 
-struct DBEntryOut: Codable { //used to add word to db
+struct DBEntry: Codable { //used to add word to db
 	
 	var UID: Int //uuid
 	var WRD: String //headword
@@ -25,7 +25,7 @@ struct DBEntryOut: Codable { //used to add word to db
 	var SCP: String = "GLOBAL"
 }
 
-extension DBEntryOut {
+extension DBEntry {
 	private enum CodingKeys: String, CodingKey{
         case UID
         case WRD = "word"

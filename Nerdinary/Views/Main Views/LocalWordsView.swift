@@ -82,7 +82,7 @@ struct LocalWordsView: View {
 				
 				//print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
 				
-				if let decodedResponse = try? JSONDecoder().decode([DBEntryOut].self, from: data) {
+				if let decodedResponse = try? JSONDecoder().decode([DBEntry].self, from: data) {
 					
 					// we have good data – go back to the main thread
 					DispatchQueue.main.async {

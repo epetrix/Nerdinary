@@ -19,7 +19,7 @@ struct Entry: Equatable, Hashable {
 }
 
 extension Entry {
-	init(e: DBEntryOut) {
+	init(e: DBEntry) {
 		self.headword = e.WRD
 		self.shortdef = "shortdef missing"
 		self.definitions.append(e.PD)
