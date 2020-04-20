@@ -19,8 +19,8 @@ struct Entry: Equatable, Hashable {
 }
 
 extension Entry {
-	init(e: DBEntryIn) {
-		self.headword = e.word
+	init(e: DBEntryOut) {
+		self.headword = e.WRD
 		self.shortdef = "shortdef missing"
 		self.definitions.append(e.PD)
 		self.definitions.append(e.SD)
@@ -38,5 +38,6 @@ extension Entry {
 				return fl.noun
 			}
 		}()
+		self.fromGlobalNerdinary = e.SCP == "GLOBAL"
 	}
 }

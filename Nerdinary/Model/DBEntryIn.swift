@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DBEntryIn: Codable {
+struct DBEntryIn: Codable { //used in loading words from DB
 	var word: String
 	var TYP: String
 	var PD: String

@@ -14,7 +14,7 @@ enum fl: String {
 	case noun, adjective, adverb, verb
 }
 
-struct DBEntryOut: Codable {
+struct DBEntryOut: Codable { //used to add word to db
 	
 	var UID: Int //uuid
 	var WRD: String //headword
@@ -23,4 +23,25 @@ struct DBEntryOut: Codable {
 	var SD: String //secondary definition
 	var TYP: String //functional label
 	var SCP: String = "GLOBAL"
+}
+
+extension DBEntryOut {
+	private enum CodingKeys: String, CodingKey{
+        case UID
+        case WRD = "word"
+        case PD
+        case SD
+		case TYP
+		case SCP
+    }
+	
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		UID = (try container.decodeIfPresent(Int.self, forKey: .UID)) ?? 0
+		WRD = try container.decode(String.self, forKey: .WRD)
+		PD = try container.decode(String.self, forKey: .PD)
+		SD = try container.decode(String.self, forKey: .SD)
+		TYP = try container.decode(String.self, forKey: .TYP)
+		SCP = (try container.decodeIfPresent(String.self, forKey: .SCP)) ?? "GLOBAL"
+	}
 }
