@@ -28,7 +28,14 @@ struct LoginView: View {
 				.UseNiceShadow()
 				.padding(.top)
 			
-			Spacer()
+			Image("icon")
+				.resizable()
+				.clipShape(Circle())
+				.frame(width: 200, height: 200, alignment: .center)
+				.padding(.bottom)
+				.UseNiceShadow()
+			
+			//Spacer()
 			
 			VStack(spacing: 20) {
 				
