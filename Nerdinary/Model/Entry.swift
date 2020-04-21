@@ -26,13 +26,13 @@ extension Entry {
 		self.definitions.append(e.SD)
 		self.functionalLabel = { () -> fl in
 			switch e.TYP {
-			case "Noun":
+			case "Noun", "NOUN":
 				return fl.noun
-			case "Verb":
+			case "Verb", "VERB":
 				return fl.verb
-			case "Adjective":
+			case "Adjective", "ADJECTIVE":
 				return fl.adjective
-			case "Adverb":
+			case "Adverb", "ADVERB":
 				return fl.adverb
 			default:
 				return fl.noun

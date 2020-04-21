@@ -26,9 +26,9 @@ struct DBEntry: Codable { //used to add word to db
 }
 
 extension DBEntry {
-	private enum CodingKeys: String, CodingKey{
+	private enum CodingKeys: String, CodingKey{ //used by both encode and decode, even if it's implicit
         case UID
-        case WRD = "word"
+        case WRD
         case PD
         case SD
 		case TYP

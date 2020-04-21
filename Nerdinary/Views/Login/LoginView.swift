@@ -34,8 +34,10 @@ struct LoginView: View {
 				
 				InputTextField(title: "Email", text: $email)
 					.keyboardType(.emailAddress)
+					.autocapitalization(.none)
 				
 				InputTextField(title: "Password", text: $password, secure: true)
+					.autocapitalization(.none)
 				
 				Spacer().frame(height: 40)
 				
@@ -197,7 +199,7 @@ struct LoginView: View {
 				return
 			}
 			
-			let profile = AuthProfile(EA: self.email, PW: self.password)
+			let profile = AuthProfile(EA: self.email.lowercased(), PW: self.password)
 			guard let encodedEntry = try? JSONEncoder().encode(profile) else {
 				print("Failed to encode word to delete")
 				group.leave()

@@ -16,6 +16,7 @@ struct NewWordView: View {
 	@State private var wordToSearch: String = ""
 	@State private var homographs = [DictEntry]()
 	@State private var wordDoesntExistAlert: Bool = false
+	@State var showingIndicator: Bool = false
 	
 	var loadFunc: () -> ()
 	
@@ -61,13 +62,20 @@ struct NewWordView: View {
 						.padding(.horizontal, 5)
 				}
 				
-				Button(action: {
-					self.saveToServer()
-				}) {
-					WideButtonView(text: "Save", backgroundColor: Color("Color Scheme Green"), foregroundColor: .white, cornerRadius: 4)
-						.padding(.horizontal, 5)
+				ZStack {
+					Button(action: {
+						self.saveToServer()
+					}) {
+						WideButtonView(text: "Save", backgroundColor: Color("Color Scheme Green"), foregroundColor: .white, cornerRadius: 4)
+							.padding(.horizontal, 5)
+					}
+					.disabled(definitions.isEmpty)
+					
+					if self.showingIndicator {
+						ActivityIndicator()
+						.frame(width: 36, height: 36)
+					}
 				}
-				.disabled(definitions.isEmpty)
 			}
 			.padding(.bottom)
 		}
@@ -78,7 +86,9 @@ struct NewWordView: View {
 		let group = DispatchGroup()
 		group.enter()
 		
-		guard let url = URL(string: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/\(wordToSearch)?key=2c2558a4-f416-4d40-aa92-8a77137391d7") else {
+		let word = wordToSearch.trimmingCharacters(in: .whitespaces)
+		
+		guard word != "", let url = URL(string: "https://www.dictionaryapi.com/api/v3/references/collegiate/json/\(word)?key=2c2558a4-f416-4d40-aa92-8a77137391d7") else {
 			print("Invalid URL")
 			group.leave()
 			return
@@ -135,72 +145,71 @@ struct NewWordView: View {
 		let group = DispatchGroup()
 		group.enter()
 		
-		do {
-			guard let url = URL(string: "http://127.0.0.1:5000/user_word") else {
-				print("Invalid URL")
+		showingIndicator = true
+		
+		guard let url = URL(string: "http://127.0.0.1:5000/user_word") else {
+			print("Invalid URL")
+			group.leave()
+			return
+		}
+		
+		guard !definitions.isEmpty else {
+			print("Definitions are empty")
+			group.leave()
+			return
+		}
+		
+		let uid = UserDefaults.standard.integer(forKey: "userID")
+		if uid == 0 {
+			print("Invalid User ID")
+			group.leave()
+			return
+		}
+		
+		let entry = DBEntry(UID: uid, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!.firstUppercased, SD: definitions.count == 1 ? "" : definitions[1].firstUppercased, TYP: functionalLabel.uppercased())
+		guard let encodedEntry = try? JSONEncoder().encode(entry) else {
+			print("Failed to encode word to delete")
+			group.leave()
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "POST"
+		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+		request.httpBody = encodedEntry
+		
+		print(String(data: request.httpBody!, encoding: .utf8)!)
+		
+		URLSession.shared.dataTask(with: request) { (data, response, error) in
+			
+			if let error = error {
+				print("Error occurred: \(error)")
 				group.leave()
 				return
 			}
 			
-			guard !definitions.isEmpty else {
-				print("Definitions are empty")
-				group.leave()
-				return
-			}
-			
-			let uid = UserDefaults.standard.integer(forKey: "userID")
-			if uid == 0 {
-				print("Invalid User ID")
-				group.leave()
-				return
-			}
-			
-			let entry = DBEntry(UID: uid, WRD: self.wordToSearch.firstUppercased, PD: definitions.first!, SD: definitions.count == 1 ? "" : definitions[1], TYP: functionalLabel.uppercased())
-			
-			var request = URLRequest(url: url)
-			request.httpMethod = "POST"
-			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-			request.httpBody = try JSONEncoder().encode(entry)
-			
-			//print(String(data: request.httpBody!, encoding: .utf8)!)
-			
-			URLSession.shared.dataTask(with: request) { (data, response, error) in
-				
-				if let error = error {
-					print("Error occurred: \(error)")
+			if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+				if httpResponse.statusCode != 201 {
+					print("Error code: \(httpResponse.statusCode)")
+					print("Response:\n\(dataString)")
 					group.leave()
+					self.showingIndicator = false
 					return
 				}
 				
-				if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
-					if httpResponse.statusCode != 201 {
-						print("Error code: \(httpResponse.statusCode)")
-						print("Response:\n\(dataString)")
+				else {
+					DispatchQueue.main.async {
+						//print("Success: Response:\n\(dataString)")
+						self.presenting = false
+						self.loadFunc()
+						self.showingIndicator = false
 						group.leave()
-						return
-					}
-					
-					else {
-						DispatchQueue.main.async {
-							print("Success: Response:\n\(dataString)")
-							self.presenting = false
-							self.loadFunc()
-							group.leave()
-						}
 					}
 				}
-				
-			}.resume()
-		} catch {
-			group.leave()
-		}
+			}
+			
+		}.resume()
 	}
-}
-
-enum APIError: Error {
-	case responseProblem
-	case decodingProblem
-	case encodingProblem
 }
 
 struct NewWordView_Previews: PreviewProvider {
