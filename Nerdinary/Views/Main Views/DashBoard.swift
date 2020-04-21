@@ -17,29 +17,38 @@ struct DashBoard: View {
     var body: some View {
 		TabView(selection: $selectedView) {
 			LocalWordsView()
-				.tabItem {
-					Image(systemName: "1.circle")
-					Text("Local")
-				}.tag(0)
+			.tabItem {
+				Image(systemName: "book.circle")
+					.font(.system(size: 26))
+				Text("Local")
+					.font(.system(size: 26))
+			}.tag(0)
 			
 			GlobalWordsView()
 			.tabItem {
-				Image(systemName: "2.circle")
+				Image(systemName: "globe")
+					.font(.system(size: 26))
 				Text("Global")
+					.font(.system(size: 26))
 			}.tag(1)
 			
 			QuizView()
 			.tabItem {
-				Image(systemName: "3.circle")
+				Image(systemName: "pencil.circle")
+					.font(.system(size: 26))
 				Text("Quiz")
+					.font(.system(size: 26))
 			}.tag(2)
 			
 			SettingsView()
 			.tabItem {
-				Image(systemName: "4.circle")
+				Image(systemName: "gear")
+					.font(.system(size: 26))
 				Text("Settings")
+					.font(.system(size: 26))
 			}.tag(3)
 		}
+		.accentColor(Color("TabViewIconColor"))
     }
 }
 

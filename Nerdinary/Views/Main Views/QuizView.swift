@@ -119,7 +119,7 @@ struct QuizView: View {
 			
 			if let data = data {
 				
-				print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
+				//print("JSON String:\n \(String(data: data, encoding: .utf8) ?? "error")")
 				
 				if let decodedResponse = try? JSONDecoder().decode([DBEntry].self, from: data) {
 					
