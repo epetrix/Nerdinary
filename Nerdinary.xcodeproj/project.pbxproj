@@ -34,6 +34,7 @@
 		39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */; };
 		39A0E90E241F238500248D73 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E90D241F238500248D73 /* SettingsView.swift */; };
 		39A0E911241F259400248D73 /* WordsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A0E910241F259400248D73 /* WordsListView.swift */; };
+		39A9329F2450B0860075EF6B /* DictEntryOx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9329E2450B0860075EF6B /* DictEntryOx.swift */; };
 		39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */; };
 		39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB31EC24451ACB009832F2 /* QuizView.swift */; };
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
@@ -94,6 +95,7 @@
 		39A0E909241BDBAA00248D73 /* GlobalWordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsView.swift; sourceTree = "<group>"; };
 		39A0E90D241F238500248D73 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		39A0E910241F259400248D73 /* WordsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListView.swift; sourceTree = "<group>"; };
+		39A9329E2450B0860075EF6B /* DictEntryOx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictEntryOx.swift; sourceTree = "<group>"; };
 		39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
 		39BB31EC24451ACB009832F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				39C6F1D024411D540010D712 /* Entry.swift */,
 				392887C1244BAC0000308BBC /* AuthProfile.swift */,
 				396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */,
+				39A9329E2450B0860075EF6B /* DictEntryOx.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				396CEFDC2411BEB800C1FC41 /* LocalWordsView.swift in Sources */,
 				399330752432C52000B087C0 /* DBEntry.swift in Sources */,
 				399330732432C3EC00B087C0 /* DBProfile.swift in Sources */,
+				39A9329F2450B0860075EF6B /* DictEntryOx.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -141,6 +141,71 @@ struct NewWordView: View {
 		}.resume()
 	}
 	
+	func loadFromNewDictionary() {
+		let group = DispatchGroup()
+		group.enter()
+		
+		let word = wordToSearch.trimmingCharacters(in: .whitespaces).lowercased()
+		
+		let endpoint = "entries"
+		let language = "en-us"
+		
+		guard word != "", let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v2/\(endpoint)/\(language)/\(word)") else {
+			print("Invalid URL")
+			group.leave()
+			return
+		}
+		
+		var request = URLRequest(url: url)
+		request.httpMethod = "GET"
+		request.addValue("50fd04cc", forHTTPHeaderField: "app_id")
+		request.addValue("07ede523c1fee0e72b747455c3d89faa", forHTTPHeaderField: "app_key")
+		
+		URLSession.shared.dataTask(with: request) { data, response, error in
+			// step 4
+			
+			if let data = data {
+				//print("JSON String: \(String(data: data, encoding: .utf8) ?? "error")")
+				
+				if let decodedResponse = try? JSONDecoder().decode([DictEntry].self, from: data) {
+					
+					// we have good data – go back to the main thread
+					DispatchQueue.main.async {
+//						 update our UI
+						self.homographs = decodedResponse
+
+						self.headWord = self.homographs.first?.hwi.hw ?? "error"
+						
+						self.functionalLabel = self.homographs.first!.fl.uppercased()
+
+						self.definitions.removeAll()
+						
+						for entry in self.homographs {
+							let firstShortDef = entry.shortdef.first ?? "error"
+							self.definitions.append("\(firstShortDef)")
+						}
+						
+						group.leave()
+					}
+
+					// everything is good, so we can exit
+					return
+				} else {
+					group.leave()
+					print("problem here")
+				}
+			} else {
+				group.leave()
+				print("problem here")
+			}
+
+			// if we're still here it means there was a problem
+			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+			self.wordDoesntExistAlert = true
+			
+		}.resume()
+	}
+	
 	func saveToServer() {
 		let group = DispatchGroup()
 		group.enter()
