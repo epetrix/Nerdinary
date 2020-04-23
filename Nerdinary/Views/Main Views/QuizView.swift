@@ -47,7 +47,6 @@ struct QuizView: View {
 				Spacer()
 				
 				Text("What is the definition for \(self.quizword.headword)?")
-					.frame(width: geometry.size.width)
 					.font(.system(size: 24))
 					.multilineTextAlignment(.center)
 					.padding(.vertical, 30)
