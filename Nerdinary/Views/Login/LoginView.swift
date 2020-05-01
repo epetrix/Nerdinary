@@ -9,73 +9,14 @@
 import SwiftUI
 import LocalAuthentication
 
-struct LoginView: View {
+class LoginVM: ObservableObject {
 	
 	@EnvironmentObject var viewRouter: ViewRouter
 	
-	@State private var email = ""
-	@State private var password = ""
-	@State var presentingRegisterView: Bool = false
-	@State var failedToLogin: Bool = false
-	
-    var body: some View {
-		VStack {
-			
-			Text("Nerdinary")
-				.foregroundColor(.white)
-				.font(.system(size: 48))
-				.bold()
-				.UseNiceShadow()
-				.padding(.top)
-			
-			Image("icon")
-				.resizable()
-				.clipShape(Circle())
-				.frame(width: 200, height: 200, alignment: .center)
-				.padding(.bottom)
-				.UseNiceShadow()
-			
-			//Spacer()
-			
-			VStack(spacing: 20) {
-				
-				InputTextField(title: "Email", text: $email)
-					.keyboardType(.emailAddress)
-					.autocapitalization(.none)
-				
-				InputTextField(title: "Password", text: $password, secure: true)
-					.autocapitalization(.none)
-				
-				Spacer().frame(height: 40)
-				
-				Button(action: {
-					UIApplication.shared.endEditing()
-					self.login()
-				}) {
-					WideButtonView(text: "Login", backgroundColor: Color("Color Scheme Yellow"), foregroundColor: .black)
-					.UseNiceShadow()
-				}
-			}
-			.padding([.leading, .trailing], 30) //should refactor this for geometry reader at some point to make more modular
-			.alert(isPresented: $failedToLogin) {
-				Alert(title: Text("Failed to login"), message: Text("Please try again."), dismissButton: .default(Text("Okay")))
-			}
-			
-			Spacer()
-			
-			RegisterButton(presenting: $presentingRegisterView)
-		}
-		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)
-		.edgesIgnoringSafeArea(.all))
-		.ableToEndEditing()
-		.onAppear {
-			let useBiometrics = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
-			if useBiometrics {
-				self.loginWithBiometrics()
-			}
-		}
-		
-    }
+	@Published var email = ""
+	@Published var password = ""
+	@Published var presentingRegisterView: Bool = false
+	@Published var failedToLogin: Bool = false
 	
 	func login() {
 	
@@ -249,6 +190,69 @@ struct LoginView: View {
 			}.resume()
 		}
 	}
+}
+
+struct LoginView: View {
+	
+	@ObservedObject var loginVM = LoginVM()
+	
+    var body: some View {
+		VStack {
+			
+			Text("Nerdinary")
+				.foregroundColor(.white)
+				.font(.system(size: 48))
+				.bold()
+				.UseNiceShadow()
+				.padding(.top)
+			
+			Image("icon")
+				.resizable()
+				.clipShape(Circle())
+				.frame(width: 200, height: 200, alignment: .center)
+				.padding(.bottom)
+				.UseNiceShadow()
+			
+			//Spacer()
+			
+			VStack(spacing: 20) {
+				
+				InputTextField(title: "Email", text: $loginVM.email)
+					.keyboardType(.emailAddress)
+					.autocapitalization(.none)
+				
+				InputTextField(title: "Password", text: $loginVM.password, secure: true)
+					.autocapitalization(.none)
+				
+				Spacer().frame(height: 40)
+				
+				Button(action: {
+					UIApplication.shared.endEditing()
+					self.loginVM.login()
+				}) {
+					WideButtonView(text: "Login", backgroundColor: Color("Color Scheme Yellow"), foregroundColor: .black)
+					.UseNiceShadow()
+				}
+			}
+			.padding([.leading, .trailing], 30) //should refactor this for geometry reader at some point to make more modular
+			.alert(isPresented: $loginVM.failedToLogin) {
+				Alert(title: Text("Failed to login"), message: Text("Please try again."), dismissButton: .default(Text("Okay")))
+			}
+			
+			Spacer()
+			
+			RegisterButton(presenting: $loginVM.presentingRegisterView)
+		}
+		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)
+		.edgesIgnoringSafeArea(.all))
+		.ableToEndEditing()
+		.onAppear {
+			let useBiometrics = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+			if useBiometrics {
+				self.loginVM.loginWithBiometrics()
+			}
+		}
+    }
 }
 
 struct LoginView_Previews: PreviewProvider {
