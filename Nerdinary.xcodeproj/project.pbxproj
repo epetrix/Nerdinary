@@ -42,6 +42,7 @@
 		39CB9009245CC47B00D4C403 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB9008245CC47B00D4C403 /* RegisterVM.swift */; };
 		39CB900B245CD86E00D4C403 /* LocalWordsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB900A245CD86E00D4C403 /* LocalWordsVM.swift */; };
 		39CB900D245CDA4A00D4C403 /* GlobalWordsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB900C245CDA4A00D4C403 /* GlobalWordsVM.swift */; };
+		39CB900F245CDB8100D4C403 /* NewWordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB900E245CDB8100D4C403 /* NewWordVM.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -106,6 +107,7 @@
 		39CB9008245CC47B00D4C403 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		39CB900A245CD86E00D4C403 /* LocalWordsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWordsVM.swift; sourceTree = "<group>"; };
 		39CB900C245CDA4A00D4C403 /* GlobalWordsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalWordsVM.swift; sourceTree = "<group>"; };
+		39CB900E245CDB8100D4C403 /* NewWordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewWordVM.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				39CB9008245CC47B00D4C403 /* RegisterVM.swift */,
 				39CB900A245CD86E00D4C403 /* LocalWordsVM.swift */,
 				39CB900C245CDA4A00D4C403 /* GlobalWordsVM.swift */,
+				39CB900E245CDB8100D4C403 /* NewWordVM.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				3993306D2432745900B087C0 /* InputTextField.swift in Sources */,
 				39CB900B245CD86E00D4C403 /* LocalWordsVM.swift in Sources */,
 				39A0E911241F259400248D73 /* WordsListView.swift in Sources */,
+				39CB900F245CDB8100D4C403 /* NewWordVM.swift in Sources */,
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
 				392887C6244BCAB300308BBC /* HelpView.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
