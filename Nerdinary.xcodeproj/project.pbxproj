@@ -156,6 +156,7 @@
 				396CEFA82411BC8000C1FC41 /* AppDelegate.swift */,
 				396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */,
 				396CEFE524143BE500C1FC41 /* Views */,
+				39CB9005245CC37D00D4C403 /* View Models */,
 				396CEFE624143BEE00C1FC41 /* Data Model */,
 				396CEFB12411BC8300C1FC41 /* Assets.xcassets */,
 				396CEFB62411BC8300C1FC41 /* LaunchScreen.storyboard */,
@@ -271,6 +272,13 @@
 				392887C5244BCAB300308BBC /* HelpView.swift */,
 			);
 			path = "Supplementary Views";
+			sourceTree = "<group>";
+		};
+		39CB9005245CC37D00D4C403 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
