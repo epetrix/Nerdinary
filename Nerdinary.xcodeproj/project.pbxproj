@@ -39,6 +39,7 @@
 		39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB31EC24451ACB009832F2 /* QuizView.swift */; };
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
 		39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F98624461EEB00823892 /* QuizWordView.swift */; };
+		39CB9007245CC3A400D4C403 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB9006245CC3A400D4C403 /* LoginVM.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -100,6 +101,7 @@
 		39BB31EC24451ACB009832F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		39C7F98624461EEB00823892 /* QuizWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWordView.swift; sourceTree = "<group>"; };
+		39CB9006245CC3A400D4C403 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 		39CB9005245CC37D00D4C403 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				39CB9006245CC3A400D4C403 /* LoginVM.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -434,6 +437,7 @@
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
 				396F7B1D244CFB3900E0952E /* DBDeleteWord.swift in Sources */,
 				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
+				39CB9007245CC3A400D4C403 /* LoginVM.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
 				39A0E90E241F238500248D73 /* SettingsView.swift in Sources */,
