@@ -156,7 +156,7 @@
 				396CEFA82411BC8000C1FC41 /* AppDelegate.swift */,
 				396CEFAA2411BC8000C1FC41 /* SceneDelegate.swift */,
 				396CEFE524143BE500C1FC41 /* Views */,
-				396CEFE624143BEE00C1FC41 /* Model */,
+				396CEFE624143BEE00C1FC41 /* Data Model */,
 				396CEFB12411BC8300C1FC41 /* Assets.xcassets */,
 				396CEFB62411BC8300C1FC41 /* LaunchScreen.storyboard */,
 				396CEFB92411BC8300C1FC41 /* Info.plist */,
@@ -204,7 +204,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		396CEFE624143BEE00C1FC41 /* Model */ = {
+		396CEFE624143BEE00C1FC41 /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
 				396CEFDD2411BF6900C1FC41 /* DictEntry.swift */,
@@ -215,7 +215,7 @@
 				396F7B1C244CFB3900E0952E /* DBDeleteWord.swift */,
 				39A9329E2450B0860075EF6B /* DictEntryOx.swift */,
 			);
-			path = Model;
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 		39A0E905241BDB0D00248D73 /* Modifiers */ = {
