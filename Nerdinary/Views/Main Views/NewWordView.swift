@@ -72,6 +72,12 @@ struct NewWordView: View {
 	}
 }
 
+extension NewWordView {
+	init(_ vm: NewWordVM) {
+		self.newWordVM = vm
+	}
+}
+
 struct NewWordView_Previews: PreviewProvider {
 	
 	@State static var present: Bool = true

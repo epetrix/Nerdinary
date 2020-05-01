@@ -65,7 +65,7 @@ struct LoginView: View {
 					.foregroundColor(.black)
 			}
 			.sheet(isPresented: $loginVM.presentingRegisterView) {
-				RegisterView(registerVM: RegisterVM(vm: self.loginVM))
+				RegisterView(RegisterVM(vm: self.loginVM))
 			}
 		}
 		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)

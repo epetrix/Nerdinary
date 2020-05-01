@@ -37,7 +37,7 @@ struct LocalWordsView: View {
 				}
 				.sheet(isPresented: self.$localWordsVM.presentNewWordView) {
 //					NewWordView(loadFunc: self.localWordsVM.loadLocalWords, presenting: self.$localWordsVM.presentNewWordView)
-					NewWordView(newWordVM: NewWordVM(vm: self.localWordsVM))
+					NewWordView(NewWordVM(vm: self.localWordsVM))
 				}
 			}
 			.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom).edgesIgnoringSafeArea(.all))

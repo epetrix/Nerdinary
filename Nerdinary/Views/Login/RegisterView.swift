@@ -86,6 +86,12 @@ struct RegisterView: View {
     }
 }
 
+extension RegisterView {
+	init(_ vm: RegisterVM) {
+		self.registerVM = vm
+	}
+}
+
 struct RegisterView_Previews: PreviewProvider {
 	
 	@State static var presented: Bool = true
