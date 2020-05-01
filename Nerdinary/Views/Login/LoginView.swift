@@ -58,7 +58,15 @@ struct LoginView: View {
 			
 			Spacer()
 			
-			RegisterButton(presenting: $loginVM.presentingRegisterView)
+			Button(action: {
+				self.loginVM.presentingRegisterView = true
+			}) {
+				Text("Don't have an account? Register here")
+					.foregroundColor(.black)
+			}
+			.sheet(isPresented: $loginVM.presentingRegisterView) {
+				RegisterView(registerVM: RegisterVM(vm: self.loginVM))
+			}
 		}
 		.background(LinearGradient(gradient: Gradient(colors: [Color("Color Scheme Orange"), Color("Color Scheme Red")]), startPoint: .top, endPoint: .bottom)
 		.edgesIgnoringSafeArea(.all))

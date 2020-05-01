@@ -25,7 +25,6 @@
 		3993306B243273E000B087C0 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306A243273E000B087C0 /* ActivityIndicator.swift */; };
 		3993306D2432745900B087C0 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306C2432745900B087C0 /* InputTextField.swift */; };
 		3993306F2432747800B087C0 /* WideButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3993306E2432747800B087C0 /* WideButtonView.swift */; };
-		39933071243274AF00B087C0 /* RegisterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39933070243274AF00B087C0 /* RegisterButton.swift */; };
 		399330732432C3EC00B087C0 /* DBProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330722432C3EC00B087C0 /* DBProfile.swift */; };
 		399330752432C52000B087C0 /* DBEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330742432C52000B087C0 /* DBEntry.swift */; };
 		399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399330762432EA2300B087C0 /* DynamicWordView.swift */; };
@@ -40,6 +39,7 @@
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
 		39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F98624461EEB00823892 /* QuizWordView.swift */; };
 		39CB9007245CC3A400D4C403 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB9006245CC3A400D4C403 /* LoginVM.swift */; };
+		39CB9009245CC47B00D4C403 /* RegisterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB9008245CC47B00D4C403 /* RegisterVM.swift */; };
 		39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D19311241AAC49003AA25C /* ViewRouter.swift */; };
 		39EDE89F241849F8008A75EE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE89E241849F8008A75EE /* LoginView.swift */; };
 		39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39EDE8A0241864E7008A75EE /* HostingView.swift */; };
@@ -87,7 +87,6 @@
 		3993306A243273E000B087C0 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		3993306C2432745900B087C0 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		3993306E2432747800B087C0 /* WideButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WideButtonView.swift; sourceTree = "<group>"; };
-		39933070243274AF00B087C0 /* RegisterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterButton.swift; sourceTree = "<group>"; };
 		399330722432C3EC00B087C0 /* DBProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBProfile.swift; sourceTree = "<group>"; };
 		399330742432C52000B087C0 /* DBEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBEntry.swift; sourceTree = "<group>"; };
 		399330762432EA2300B087C0 /* DynamicWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicWordView.swift; sourceTree = "<group>"; };
@@ -102,6 +101,7 @@
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		39C7F98624461EEB00823892 /* QuizWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWordView.swift; sourceTree = "<group>"; };
 		39CB9006245CC3A400D4C403 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
+		39CB9008245CC47B00D4C403 /* RegisterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVM.swift; sourceTree = "<group>"; };
 		39D19311241AAC49003AA25C /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		39EDE89E241849F8008A75EE /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		39EDE8A0241864E7008A75EE /* HostingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingView.swift; sourceTree = "<group>"; };
@@ -268,7 +268,6 @@
 				3993306A243273E000B087C0 /* ActivityIndicator.swift */,
 				3993306C2432745900B087C0 /* InputTextField.swift */,
 				3993306E2432747800B087C0 /* WideButtonView.swift */,
-				39933070243274AF00B087C0 /* RegisterButton.swift */,
 				39C7F98624461EEB00823892 /* QuizWordView.swift */,
 				39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */,
 				392887C5244BCAB300308BBC /* HelpView.swift */,
@@ -280,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				39CB9006245CC3A400D4C403 /* LoginVM.swift */,
+				39CB9008245CC47B00D4C403 /* RegisterVM.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -425,7 +425,6 @@
 				392887C2244BAC0000308BBC /* AuthProfile.swift in Sources */,
 				39A0E902241ACCC000248D73 /* RegisterView.swift in Sources */,
 				39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */,
-				39933071243274AF00B087C0 /* RegisterButton.swift in Sources */,
 				3993306F2432747800B087C0 /* WideButtonView.swift in Sources */,
 				39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */,
 				39EDE8A1241864E7008A75EE /* HostingView.swift in Sources */,
@@ -438,6 +437,7 @@
 				396F7B1D244CFB3900E0952E /* DBDeleteWord.swift in Sources */,
 				399330772432EA2300B087C0 /* DynamicWordView.swift in Sources */,
 				39CB9007245CC3A400D4C403 /* LoginVM.swift in Sources */,
+				39CB9009245CC47B00D4C403 /* RegisterVM.swift in Sources */,
 				396CEFA92411BC8000C1FC41 /* AppDelegate.swift in Sources */,
 				396CEFB02411BC8000C1FC41 /* DashBoard.swift in Sources */,
 				39A0E90E241F238500248D73 /* SettingsView.swift in Sources */,
