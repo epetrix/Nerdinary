@@ -10,8 +10,6 @@ import SwiftUI
 
 struct DashBoard: View {
 	
-	@EnvironmentObject var viewRouter: ViewRouter
-	
 	@State var selectedView = 0
 	
     var body: some View {
@@ -54,6 +52,6 @@ struct DashBoard: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-		DashBoard().environmentObject(ViewRouter())
+		DashBoard()
     }
 }
