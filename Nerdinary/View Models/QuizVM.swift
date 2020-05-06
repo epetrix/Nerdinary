@@ -16,7 +16,7 @@ class QuizVM: ObservableObject {
 	@Published var showingIndicator: Bool = false
 	@Published var selectedAnswer: Entry = Entry(headword: "", shortdef: "", definitions: [], functionalLabel: .noun)
 	
-	@Published private var flipped = [false, false, false, false]
+	@Published var flipped = [false, false, false, false]
 	
 	func checkCorrect(answer: Entry) {
 		if answer == quizword {
@@ -101,5 +101,13 @@ class QuizVM: ObservableObject {
 			print("Failed")
 			
 		}.resume()
+	}
+}
+
+//For previews
+extension QuizVM {
+	func addTestEntries(_ entries: [Entry]) -> QuizVM {
+		self.entries = entries
+		return self
 	}
 }
