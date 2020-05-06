@@ -28,6 +28,18 @@ class QuizVM: ObservableObject {
 	}
 	
 	func loadFromDB() {
+		#if DEBUG
+		showingIndicator = true
+		for n in 0..<4 {
+			self.flipped[n] = false
+		}
+		
+		let randomInt = Int.random(in: 0..<4)
+		self.quizword = self.entries[randomInt]
+		
+		self.showingIndicator = false
+		#endif
+		
 		let group = DispatchGroup()
 		group.enter()
 		
@@ -99,6 +111,7 @@ class QuizVM: ObservableObject {
 			print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
 			//self.wordDoesntExistAlert = true
 			print("Failed")
+			self.showingIndicator = false
 			
 		}.resume()
 	}
