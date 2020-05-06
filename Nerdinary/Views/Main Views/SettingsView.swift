@@ -10,11 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
 	
-    @EnvironmentObject var viewRouter: ViewRouter
-	
-	@State private var biometricToggle: Bool = false
-	@State private var darkMode: Int = 0
-	@State var showHelp: Bool = false
+	@ObservedObject var vm = ViewModel()
 	
 	var body: some View {
 		
@@ -32,25 +28,25 @@ struct SettingsView: View {
 			
 			Form {
 				Section(header: Text("General Settings")) {
-					Toggle(isOn: $biometricToggle) { //giving this a shadow breaks it
+					Toggle(isOn: $vm.biometricToggle) { //giving this a shadow breaks it
 						Text("Use Biometrics")
 					}
 					.padding(.leading, 5)
 //					.toggleStyle(NerdToggleStyle())
 					.onAppear {
-						self.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
+						self.vm.biometricToggle = UserDefaults.standard.bool(forKey: "UseBiometricsToLogin")
 					}
 				}
 				
 				Section(header: Text("Help")) {
 					Button(action: {
 						withAnimation {
-							self.showHelp.toggle()
+							self.vm.showHelp.toggle()
 						}
 					}) {
 						Text("Help")
 					}
-					.sheet(isPresented: $showHelp) {
+					.sheet(isPresented: $vm.showHelp) {
 						HelpView()
 					}
 				}
@@ -61,7 +57,7 @@ struct SettingsView: View {
 			HStack(spacing: 10) {
 			
 				Button(action: {
-					self.deleteUserProfile() //only need to delete user profile
+					self.vm.deleteUserProfile() //only need to delete user profile
 				}) {
 					WideButtonView(text: "Delete Account", backgroundColor: Color("Color Scheme Red"), cornerRadius: 4, systemFontSize: 24)
 				}
@@ -70,7 +66,7 @@ struct SettingsView: View {
 					UserDefaults.standard.set(false, forKey: "UserIsLoggedIn")
 					UserDefaults.standard.set(false, forKey: "UseBiometricsToLogin")
 					UserDefaults.standard.set(0, forKey: "userID")
-					self.viewRouter.currentPage = .login
+					self.vm.viewRouter.currentPage = .login
 				}) {
 					WideButtonView(text: "Logout", backgroundColor: Color("Color Scheme Green"), cornerRadius: 4, systemFontSize: 24)
 				}
@@ -78,63 +74,74 @@ struct SettingsView: View {
 			.padding([.horizontal, .bottom])
 		}
 		.onDisappear {
-			UserDefaults.standard.set(self.biometricToggle, forKey: "UseBiometricsToLogin")
+			UserDefaults.standard.set(self.vm.biometricToggle, forKey: "UseBiometricsToLogin")
 		}
 	}
+}
+
+extension SettingsView {
 	
-	func deleteUserProfile() {
-		let group = DispatchGroup()
-		group.enter()
+	class ViewModel: ObservableObject {
 		
-		print("Deleting user...")
+		@EnvironmentObject var viewRouter: ViewRouter
 		
-		let uid = UserDefaults.standard.integer(forKey: "userID")
-		if uid == 0 {
-			print("Invalid User ID")
-			group.leave()
-			return
-		}
+		@Published var biometricToggle: Bool = false
+		@Published var darkMode: Int = 0
+		@Published var showHelp: Bool = false
 		
-		guard let url = URL(string: "http://127.0.0.1:5000/user/\(uid)") else {
-			print("Invalid URL")
-			group.leave()
-			return
-		}
-		
-		var request = URLRequest(url: url)
-		request.httpMethod = "DELETE"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		
-		//print(String(data: request.httpBody!, encoding: .utf8)!)
-		
-		URLSession.shared.dataTask(with: request) { (data, response, error) in
+		func deleteUserProfile() {
+			let group = DispatchGroup()
+			group.enter()
 			
-			if let error = error {
-				print("Error occurred: \(error)")
+			print("Deleting user...")
+			
+			let uid = UserDefaults.standard.integer(forKey: "userID")
+			if uid == 0 {
+				print("Invalid User ID")
 				group.leave()
 				return
 			}
 			
-			if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
-				if httpResponse.statusCode != 202 {
-					print("Error code: \(httpResponse.statusCode)")
-					print("Response:\n\(dataString)")
-					//TODO: - make alert here
+			guard let url = URL(string: "http://127.0.0.1:5000/user/\(uid)") else {
+				print("Invalid URL")
+				group.leave()
+				return
+			}
+			
+			var request = URLRequest(url: url)
+			request.httpMethod = "DELETE"
+			request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+			
+			//print(String(data: request.httpBody!, encoding: .utf8)!)
+			
+			URLSession.shared.dataTask(with: request) { (data, response, error) in
+				
+				if let error = error {
+					print("Error occurred: \(error)")
 					group.leave()
 					return
 				}
 				
-				else {
-					DispatchQueue.main.async {
+				if let data = data, let dataString = String(data: data, encoding: .utf8), let httpResponse = response as? HTTPURLResponse {
+					if httpResponse.statusCode != 202 {
+						print("Error code: \(httpResponse.statusCode)")
 						print("Response:\n\(dataString)")
+						//TODO: - make alert here
 						group.leave()
+						return
+					}
+					
+					else {
+						DispatchQueue.main.async {
+							print("Response:\n\(dataString)")
+							group.leave()
+						}
 					}
 				}
-			}
-			
-		}.resume()
+				
+			}.resume()
+		}
 	}
-	
 }
 
 struct Settings_Previews: PreviewProvider {
