@@ -18,7 +18,7 @@ struct WordsListView: View {
 		GeometryReader { geometry in
 			ScrollView(.vertical, showsIndicators: false) {
 				ForEach(self.entries, id: \.id) { entry in
-					DynamicWordView(isGlobal: self.isGlobal, entry: entry, deleteFunc: self.deleteEntry)
+					DynamicWordView(vm: .init(isGlobal: self.isGlobal, entry: entry, deleteFunc: self.deleteEntry))
 					.modifier(ListRowModifier())
 					.animation(.easeInOut(duration: 0.3))
 					//scroll down if area becomes larger when opening a word
