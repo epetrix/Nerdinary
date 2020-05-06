@@ -36,6 +36,7 @@
 		39A9329F2450B0860075EF6B /* DictEntryOx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A9329E2450B0860075EF6B /* DictEntryOx.swift */; };
 		39B4CBFE244770C3008F0CBD /* CorrectAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */; };
 		39BB31ED24451ACB009832F2 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BB31EC24451ACB009832F2 /* QuizView.swift */; };
+		39C5D2DF24635C8900023564 /* QuizVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C5D2DE24635C8900023564 /* QuizVM.swift */; };
 		39C6F1D124411D540010D712 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C6F1D024411D540010D712 /* Entry.swift */; };
 		39C7F98724461EEB00823892 /* QuizWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C7F98624461EEB00823892 /* QuizWordView.swift */; };
 		39CB9007245CC3A400D4C403 /* LoginVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CB9006245CC3A400D4C403 /* LoginVM.swift */; };
@@ -101,6 +102,7 @@
 		39A9329E2450B0860075EF6B /* DictEntryOx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictEntryOx.swift; sourceTree = "<group>"; };
 		39B4CBFD244770C3008F0CBD /* CorrectAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorrectAnswerView.swift; sourceTree = "<group>"; };
 		39BB31EC24451ACB009832F2 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		39C5D2DE24635C8900023564 /* QuizVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizVM.swift; sourceTree = "<group>"; };
 		39C6F1D024411D540010D712 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		39C7F98624461EEB00823892 /* QuizWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizWordView.swift; sourceTree = "<group>"; };
 		39CB9006245CC3A400D4C403 /* LoginVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVM.swift; sourceTree = "<group>"; };
@@ -289,6 +291,7 @@
 				39CB900A245CD86E00D4C403 /* LocalWordsVM.swift */,
 				39CB900C245CDA4A00D4C403 /* GlobalWordsVM.swift */,
 				39CB900E245CDB8100D4C403 /* NewWordVM.swift */,
+				39C5D2DE24635C8900023564 /* QuizVM.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				39CB900F245CDB8100D4C403 /* NewWordVM.swift in Sources */,
 				39A0E904241BDACD00248D73 /* ViewExtensionsAndModifiers.swift in Sources */,
 				392887C6244BCAB300308BBC /* HelpView.swift in Sources */,
+				39C5D2DF24635C8900023564 /* QuizVM.swift in Sources */,
 				39D19312241AAC49003AA25C /* ViewRouter.swift in Sources */,
 				39A0E90A241BDBAA00248D73 /* GlobalWordsView.swift in Sources */,
 				396F7B1D244CFB3900E0952E /* DBDeleteWord.swift in Sources */,
